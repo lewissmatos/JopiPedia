@@ -426,7 +426,7 @@ select.form-control.form-custom {
     height: 40px;
     width: 40px;
     padding: 8px 8px; }
-  .btn:hover, .btn:focus {
+  /* .btn:hover, .btn:focus {
     color: #3b3f5c;
     background-color: #f1f2f3;
     border-color: #d3d3d3;
@@ -435,7 +435,7 @@ select.form-control.form-custom {
     box-shadow: 0 2px 5px 0 #e0e6ed, 0 2px 10px 0 #e0e6ed;
     -webkit-transform: translateY(-3px);
     transform: translateY(-3px); }
-
+ */
 .btn-group .btn:hover, .btn-group .btn:focus {
   -webkit-transform: none;
   transform: none; }

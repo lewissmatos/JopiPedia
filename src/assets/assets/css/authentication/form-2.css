@@ -13,7 +13,7 @@ html {
 
 body {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   background-color: #fff; }
@@ -81,7 +81,7 @@ body {
     font-weight: 700;
     margin-bottom: 15px;
     text-align: center;
-    margin-top: 50px; }
+    margin-top: 20px; }
     .form-form .form-form-wrap p.signup-link.register {
       font-size: 13px;
       color: #888ea8;
