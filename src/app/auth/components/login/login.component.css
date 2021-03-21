@@ -1,0 +1,14 @@
+.login-container{
+    border-radius: 20px;
+    background-color:rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fondo{
+    background-color: rgb(250, 250, 250);
+    padding-top: 30px; 
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
