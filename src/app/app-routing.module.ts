@@ -6,11 +6,26 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: '/auth/login',
+        pathMatch: 'full'
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+      }
+    ]
+  },
+  {
+    path: '',
     component: DashboardLayoutComponent,
     children: [
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/dashboard/home',
         pathMatch: 'full'
       },
       {
@@ -19,21 +34,6 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: '/auth',
-        pathMatch: 'full'
-      },
-      {
-        path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-      }
-    ]
-  }
 ];
 
 @NgModule({
