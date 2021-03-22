@@ -27,17 +27,26 @@
                     ">
                         <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px; ">
                             <label style=" font-size: 10px; float: left;">NOMBRE</label>
-                            <input class="form-control" type="text" placeholder="Nombre">
+                            <input class="form-control" 
+                            [class.is-invalid]="invalidName"
+                            formControlName="name"
+                            type="text" placeholder="Nombre">
                         </div>
 
                         <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px;">
                             <label style=" font-size: 10px;  float: left;">APELLIDO</label>
-                            <input class="form-control" type="text" placeholder="Apellido">
+                            <input class="form-control"
+                            [class.is-invalid]="invalidLName"
+                            formControlName="lName"
+                            type="text" placeholder="Apellido">
                         </div>
                        
                         <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px;">
                             <label style=" font-size: 10px;  float: left;">NOMBRE DE USUARIO</label>
-                            <input class="form-control" type="text" placeholder="Usuario">
+                            <input class="form-control" 
+                            formControlName="user"
+                            [class.is-invalid]="invalidUser"
+                            type="text" placeholder="Usuario">
                         </div>
                     </div>
                 
@@ -45,17 +54,26 @@
                     col-12">
                         <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px;">
                             <label style=" font-size: 10px;  float: left;">EMAIL</label>
-                            <input class="form-control" type="text" placeholder="e-mail">
+                            <input class="form-control"
+                            formControlName="email"
+                            [class.is-invalid]="invalidEmail"
+                            type="text" placeholder="e-mail">
                         </div>
 
                         <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px; ">
                             <label style=" font-size: 10px; float: left;">CONTRASEÑA</label>
-                            <input class="form-control" type="text" placeholder="Contraseña">
+                            <input class="form-control" 
+                            formControlName="pass"
+                            [class.is-invalid]="invalidPass1"
+                            type="text" placeholder="Contraseña">
                         </div>
 
                         <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px;">
                             <label style=" font-size: 10px;  float: left;">REPETIR CONTRASEÑA</label>
-                            <input class="form-control" type="text" placeholder="Contraseña">
+                            <input class="form-control" 
+                            formControlName="rPass"
+                            [class.is-invalid]="invalidPass2"
+                            type="text" placeholder="Contraseña">
                         </div>
                         
                     </div>
