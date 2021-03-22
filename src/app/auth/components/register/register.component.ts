@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   get invalidName() {
@@ -32,8 +33,14 @@ export class RegisterComponent implements OnInit {
     return this.formData.get('pass')?.invalid && this.formData.get('pass')?.touched
   }
   get invalidPass2() {
-    return this.formData.get('rPass')?.invalid && this.formData.get('rPass')?.touched
+    const pass = this.formData.get('pass')?.value
+    const rPass = this.formData.get('rPass')?.value
+
+    return (pass === rPass) ? false : true
   }
+
+  
+ 
   
   v = Validators
   createForm() {
@@ -41,11 +48,12 @@ export class RegisterComponent implements OnInit {
       name: ['', [this.v.required, this.v.minLength(2), this.v.maxLength(30)]],
       lName: ['', [ this.v.required, this.v.minLength(2), this.v.maxLength(30)]],
       user: ['', [this.v.required, this.v.minLength(5), this.v.maxLength(30)]],
-      email: ['', [this.v.required, this.v.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+/.[a-z]{2,3}$')]],
+      email: ['', Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+/.[a-z]{2,3}$')],
       pass: ['', [this.v.required,this.v.minLength(8), this.v.maxLength(30)]],
       rPass: ['', [this.v.required, this.v.minLength(8), this.v.maxLength(30)]],
     })
   }
+  
   
   signUp() {
     if (this.formData.invalid) {
