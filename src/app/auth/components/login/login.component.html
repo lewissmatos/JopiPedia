@@ -1,6 +1,6 @@
 <div class="animated fadeIn fast fondo ">
 
-    <form action="">
+    <form [formGroup]="formData" (ngSubmit)="logIn()">
             <div class="row " >
 
                 <div class="login-container 
@@ -19,15 +19,24 @@
         
                     <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px; ">
                         <label style=" font-size: 10px; float: left;">USUARIO</label>
-                        <input class="form-control" type="text" placeholder="Usuario">
+                        <input 
+                        class="form-control" 
+                        formControlName="user"
+                        [class.is-invalid]="invalidUser"  
+                        type="text" placeholder="Usuario">
+
                     </div>
                     <div class="text-start mb-4" style="padding-left: 36px; padding-right: 36px;">
                         <label style=" font-size: 10px;  float: left;">CONTRASEÑA</label>
-                        <input class="form-control" type="text" placeholder="Contraseña">
+                        <input 
+                        class="form-control" 
+                        [class.is-invalid]="invalidPass"  
+                        formControlName="pass"
+                        type="text" placeholder="Contraseña">                       
                     </div>
         
                     <div class="text-center mb-4" style="padding-left: 36px; padding-right: 36px; ">
-                        <button class="btn btn-primary w-100" style="padding: 10px;" type="button">Iniciar sesión</button>
+                        <button class="btn btn-primary w-100" style="padding: 10px;" type="submit">Iniciar sesión</button>
                     </div>
         
                     <div class="text-center mt-2">

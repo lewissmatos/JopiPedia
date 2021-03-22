@@ -1,0 +1,52 @@
+<nav class="navbar nav-bg p-1 text-center" style="display: inline-block; width: 100%;">
+    
+        <div class="row">
+
+          <div class=" pt-3 pb-3 
+          col-5
+          col-sm-4
+          col-md-3
+          col-lg-2                  
+          " 
+
+          style="display: flex;" >  
+                        
+            <a class="nav-link a-b ml-2 " 
+                [ngClass]="{'bold': act1, 'no-bold': !act1}"
+                (click)="change()"
+                routerLink="/dashboard/home" >Home
+            </a>     
+
+            <a class="nav-link a-b ml-2 " 
+                [ngClass]="{'bold': !act1, 'no-bold': act1}"
+                (click)="change2()"
+                routerLink="/dashboard/home" >Mas
+            </a>        
+
+          </div>
+
+          <div class="p-3 
+          col-5
+          col-sm-6
+          col-md-7
+          col-lg-9 ">
+              
+              <div class=" input-group ">
+                <input type="text" class="form-control"  placeholder="Buscar" >
+                <button class="btn btn-dark" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+              </div>  
+
+          </div> 
+                
+          <div class="
+          col-2
+          col-sm-2
+          col-md-2
+          col-lg-1  p-3">
+            <i class="fas fa-user btn-profile"></i>
+          </div>
+          
+      </div>
+</nav>
