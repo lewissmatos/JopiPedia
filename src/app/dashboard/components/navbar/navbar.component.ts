@@ -12,18 +12,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  act1: boolean = true
-  act2: boolean = false
   
-  change() {
-    this.act1 = true
-    this.act2 = false
-   
-  }
-  change2() {
-
-    this.act1 = false
-    this.act2 = true
-  }
 
 }

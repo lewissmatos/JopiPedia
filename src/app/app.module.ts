@@ -11,7 +11,7 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
   declarations: [
     AppComponent,
     AuthLayoutComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
   ],
   imports: [
     BrowserModule,

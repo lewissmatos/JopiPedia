@@ -3,33 +3,25 @@
         <div class="row">
 
           <div class=" pt-3 pb-3 
-          col-5
-          col-sm-4
-          col-md-3
-          col-lg-2                  
+          col-3
+          col-sm-2
+          col-md-2
+          col-lg-1                  
           " 
 
           style="display: flex;" >  
-                        
+                          
             <a class="nav-link a-b ml-2 " 
-                [ngClass]="{'bold': act1, 'no-bold': !act1}"
-                (click)="change()"
-                routerLink="/dashboard/home" >Home
+                routerLink="/dashboard/home" >Tests
             </a>     
-
-            <a class="nav-link a-b ml-2 " 
-                [ngClass]="{'bold': !act1, 'no-bold': act1}"
-                (click)="change2()"
-                routerLink="/dashboard/home" >Mas
-            </a>        
 
           </div>
 
           <div class="p-3 
-          col-5
-          col-sm-6
-          col-md-7
-          col-lg-9 ">
+          col-7
+          col-sm-8
+          col-md-8
+          col-lg-10 ">
               
               <div class=" input-group ">
                 <input type="text" class="form-control"  placeholder="Buscar" >
