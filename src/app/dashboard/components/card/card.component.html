@@ -1,10 +1,10 @@
 <div class="card-container" 
-  [style.background-color]="bgColor">
+  [style.background-color]="cardData.bgColor">
     <div class="card-body">
-      <b><h3 class="card-title">Biologia</h3></b>
-      <h6 class="card-subtitle mb-2 text-muted">Conoce acerca de la vida!</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <b><h3 class="card-title">{{cardData.title}}</h3></b>
+      <p class="card-subtitle mb-2 ">{{cardData.subTitle}}</p>
+      <p class="card-text">{{cardData.desc}}</p>
       <button class="btn btn-outline-success w-100">Hacer test</button>
-      
+
     </div>
 </div>

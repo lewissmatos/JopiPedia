@@ -7,11 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() bgColor: string = ''
+  @Input() cardData: any = {
+    bgColor: '',
+    title: '',
+    subTitle: '',
+    desc: ''
+  }
 
   constructor() { 
-    if (this.bgColor === '') {
-      this.bgColor = '#FFF'
+    if (this.cardData.bgColor === '') {
+      this.cardData.bgColor = '#FFF'
     }
   }
 
