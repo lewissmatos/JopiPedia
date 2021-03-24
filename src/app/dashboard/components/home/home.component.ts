@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
       bgColor: '#2980B9',
       title: 'Fisica',
       subTitle: 'dsad',
-      desc: 'aaaaaa'
+      desc: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     },
     {
       bgColor: '#2ECC71',

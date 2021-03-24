@@ -23,6 +23,10 @@ $lines: 5;
     cursor: pointer;
 }
 
+.card-container  :hover {
+    transform: scale(1.01);
+  }
+
 .card-subtitle{
     font-style: italic;
     color: rgb(255, 255, 255, 0.6);
