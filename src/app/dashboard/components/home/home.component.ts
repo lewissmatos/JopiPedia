@@ -12,37 +12,37 @@ export class HomeComponent implements OnInit {
       bgColor: '#F13785',
       title: 'Quimica',
       subTitle: 'dsad',
-      desc: 'sduaskhudsahdhuksahudkasgyjdasiuffjwtfxdhgqryjhdffgyu'
+      desc: ''
     },
     {
-      bgColor: '#B14285',
+      bgColor: '#2980B9',
       title: 'Fisica',
       subTitle: 'dsad',
-      desc: 'sduaskhudsahdhuksahudkasgyjdasiuffjwtfxdhgqryjhdffgyu'
+      desc: ''
     },
     {
-      bgColor: '#F13785',
+      bgColor: '#2ECC71',
       title: 'Biologia',
       subTitle: 'dsad',
-      desc: 'sduaskhudsahdhuksahudkasgyjdasiuffjwtfxdhgqryjhdffgyu'
+      desc: ''
     },
     {
-      bgColor: '#B14285',
-      title: 'Fisica',
+      bgColor: '#E74C3C',
+      title: 'Matematicas',
       subTitle: 'dsad',
-      desc: 'sduaskhudsahdhuksahudkasgyjdasiuffjwtfxdhgqryjhdffgyu'
+      desc: ''
     },
     {
-      bgColor: '#F13785',
-      title: 'Quimica',
+      bgColor: '#F1948A',
+      title: 'Mitologia',
       subTitle: 'dsad',
-      desc: 'sduaskhudsahdhuksahudkasgyjdasiuffjwtfxdhgqryjhdffgyu'
+      desc: ''
     },
     {
-      bgColor: '#B14285',
-      title: 'Fisica',
+      bgColor: '#5D6D7E',
+      title: 'Tecnologia',
       subTitle: 'dsad',
-      desc: 'sduaskhudsahdhuksahudkasgyjdasiuffjwtfxdhgqryjhdffgyu'
+      desc: ''
     },
   ]
 

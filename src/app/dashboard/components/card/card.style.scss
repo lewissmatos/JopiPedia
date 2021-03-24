@@ -1,3 +1,20 @@
+
+$line-height: 1.4;
+$lines: 5;
+
+.card-desc-multi{
+    display: block;
+    display: -webkit-box;
+    height: $line-height * $lines;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
 .card-container {
     color: white !important;
     border-radius: 10px;
@@ -9,10 +26,4 @@
 .card-subtitle{
     font-style: italic;
     color: rgb(255, 255, 255, 0.6);
-}
-.card-desc{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow:ellipsis;
-    max-height:10.6em; 
 }

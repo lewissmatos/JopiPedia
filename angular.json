@@ -124,5 +124,10 @@
       }
     }
   },
-  "defaultProject": "JopiPedia"
+  "defaultProject": "JopiPedia",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "sass"
+    }
+  }
 }
