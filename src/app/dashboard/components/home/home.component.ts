@@ -9,49 +9,49 @@ export class HomeComponent implements OnInit {
 
   data: any[] = [
     {
-      bgColor: '#F13785',
+      bgColor: 'rgb(216, 27, 96, 0.7)',
       title: 'Quimica',
       subTitle: 'dsad',
       desc: 'aaaaaa'
     },
     {
-      bgColor: '#2980B9',
+      bgColor: 'rgb(93, 173, 226, 0.7)',
       title: 'Fisica',
       subTitle: 'dsad',
       desc: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     },
     {
-      bgColor: '#2ECC71',
+      bgColor: 'rgb(39, 174, 96, 0.7)',
       title: 'Biologia',
       subTitle: 'dsad',
       desc: 'aaaaa'
     },
     {
-      bgColor: '#E74C3C',
+      bgColor: 'rgb(255, 87, 34, 0.7)',
       title: 'Matematicas',
       subTitle: 'dsad',
       desc: 'aaaaa'
     },
     {
-      bgColor: '#F1948A',
+      bgColor: 'rgb(121, 85, 72, 0.7)',
       title: 'Mitologia',
       subTitle: 'dsad',
       desc: 'aaaaa'
     },
     {
-      bgColor: '#5D6D7E',
+      bgColor: 'rgb(69, 90, 100, 0.7)',
       title: 'Tecnologia',
       subTitle: 'dsad',
       desc: 'aaaaa'
     },
     {
-      bgColor: '#F1C40F',
+      bgColor: 'rgb(253, 216, 53, 0.7)',
       title: 'Astrologia',
       subTitle: 'dsad',
       desc: 'aaaaa'
     },
     {
-      bgColor: '#A04000',
+      bgColor: 'rgb(135, 54, 0, 0.7)',
       title: 'Historia',
       subTitle: 'dsad',
       desc: 'aaaaa'
