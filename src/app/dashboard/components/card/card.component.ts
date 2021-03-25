@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { cardData } from '../../Models/cardData.model';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() public cardData: any = {
+  @Input() public cardData: cardData = {
     bgColor: '',
     title: '',
     subTitle: '',
