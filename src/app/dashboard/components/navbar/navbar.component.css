@@ -3,9 +3,12 @@
     color: black;
     font-size: 18px;
 }
-a{
+
+.nav-items{
     color: black;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .btn-profile{ 
@@ -13,10 +16,6 @@ a{
     cursor: pointer;
 }
 
-
-.bold{
-    font-weight: bold;
-}
 
 .no-bold{
     font-weight: normal;

@@ -1,10 +1,10 @@
 .footer{
     background-color: whitesmoke;
-    margin-top: 60px;
     font-weight: bold;
     height: 80px;
     text-align: center;
 }
 
 .footer-element{
+    color: black;
 }
