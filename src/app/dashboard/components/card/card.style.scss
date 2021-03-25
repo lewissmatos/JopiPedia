@@ -1,6 +1,6 @@
 
-$line-height: 1.6;
-$lines: 4;
+$line-height: 1.4;
+$lines: 3;
 
 .card-desc-multi{
     display: block;
@@ -24,7 +24,7 @@ $lines: 4;
     margin-bottom: 10px; margin-top: 10px;
     cursor: pointer;
     flex-wrap: nowrap;
-    height: 210px;
+    height: 200px;
 }
 
 .card-container  :hover {
@@ -34,4 +34,10 @@ $lines: 4;
 .card-subtitle{
     font-style: italic;
     color: rgb(255, 255, 255, 0.6);
+}
+
+.go-test{
+    font-size: 10px; color: rgb(255, 255, 255, 0.4); 
+    float: right;
+    margin-bottom: 24px;
 }

@@ -10,3 +10,8 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.label-g{
+    font-size: 10px; color: rgb(104, 103, 103);
+    float: left;
+}
