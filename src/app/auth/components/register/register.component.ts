@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
+import { User } from '../../Models/user.model';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,6 +9,7 @@ import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   formData!: FormGroup
+  userData!: User
 
   constructor(private fBuilder: FormBuilder) {
     this.createForm()
@@ -54,7 +56,6 @@ export class RegisterComponent implements OnInit {
     })
   }
   
-  
   signUp() {
     if (this.formData.invalid) {
       Object.values(this.formData.controls).forEach(control => {
@@ -67,5 +68,9 @@ export class RegisterComponent implements OnInit {
         }
       })
     }
+
+    this.userData = this.formData.value
+    console.log(this.userData)
+
   }
 }
