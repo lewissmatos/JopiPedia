@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { User } from '../../Models/user.model';
+
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -71,6 +74,15 @@ export class RegisterComponent implements OnInit {
 
     this.userData = this.formData.value
     console.log(this.userData)
+
+    if (this.formData.valid == false) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Registro invdalido,',
+        text: 'Debes llenar todos los campos',
+      })
+      
+    }
 
   }
 }

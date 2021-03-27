@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,8 +47,16 @@ export class LoginComponent implements OnInit {
           control.markAsTouched()
         }
       })
+    }   
+
+    if (this.formData.valid == false) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error de inicio de sesión,',
+        text: 'Debes introducir un usuario valido',
+      })
+      
     }
-   
   }  
   
 }
