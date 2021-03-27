@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   data: cardData[] = []
   dataFiltered: cardData[] = []
 
-  xD = false
+  obs = false
 
   constructor() {
     this.data = [
@@ -73,18 +73,12 @@ export class HomeComponent implements OnInit {
   }
 
   search = (title: string) => {
-    this.dataFiltered = this.data.filter((x: cardData) => x.title.toLowerCase().includes(title.toLowerCase()))
-    console.log(this.dataFiltered)
+    this.dataFiltered = this.data.filter((x: cardData) => x.title.toLowerCase().includes(title.toLowerCase()))    
     
     if (title.length > 0) {
-      this.xD = true
+      this.obs = true
     }
 
   }
-
- 
-    
-  }
-
-
 }
+

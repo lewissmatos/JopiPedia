@@ -1,7 +1,9 @@
 <div class="animated fadeIn fast" >
 
     <div class="row">
-        <div class="col-4
+        <div class="
+                    mt-1
+                    col-4
                     col-sm-4
                     col-md-6
                     col-lg-8
@@ -10,7 +12,7 @@
             <h1 >Tests</h1>
         </div>
 
-        <div class=" w-100 mt-3
+        <div class=" w-100 mt-2
                     col-8
                     col-sm-8
                     col-md-6
@@ -38,7 +40,7 @@
 
     <hr class="mb-5">
     
-    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="dataFiltered.length == 0 || xD == true">
+    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="!obs">
 
         <app-card 
         *ngFor="let cards of data"  [cardData]="cards" 
@@ -71,5 +73,8 @@
 
     </div >
 
+    <div class="alert alert-danger animated fadeIn" role="alert" *ngIf="obs && dataFiltered.length === 0">
+        Su termino de bsuqueda no pertenece a ningun titulo! <i class="far fa-frown"></i>
+    </div>
 
 </div>
