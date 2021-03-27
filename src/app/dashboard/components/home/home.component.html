@@ -10,7 +10,7 @@
             <h1 >Tests</h1>
         </div>
 
-        <div class=" w-100 mt-2
+        <div class=" w-100 mt-3
                     col-8
                     col-sm-8
                     col-md-6
@@ -38,19 +38,19 @@
 
     <hr class="mb-5">
     
-    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="dataFiltered.length === 0">
+    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="dataFiltered.length == 0 || xD == true">
 
-            <app-card 
-             *ngFor="let cards of data"  [cardData]="cards" 
-            
-            class="
-                animated fadeIn
-                col-lg-3 
-                col-md-4      
-                col-sm-6 
-                col-12 "
-            >
-            </app-card>
+        <app-card 
+        *ngFor="let cards of data"  [cardData]="cards" 
+        
+        class="
+            animated fadeIn
+            col-lg-3 
+            col-md-4      
+            col-sm-6 
+            col-12 "
+        >
+        </app-card>
                 
     </div >
 
