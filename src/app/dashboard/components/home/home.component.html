@@ -18,12 +18,18 @@
                     
                    >
 
-            <div class="input-group" >
+            <!-- <div class="input-group" >
                 <input type="text" class="form-control"  placeholder="Buscar" #title >
                 <button class="btn btn-dark" type="button" (click)="search(title.value)">
                     <i class="fas fa-search"></i>
                 </button>
-            </div>  
+            </div>   -->
+
+
+            <div class="search">
+                <i class="fa fa-fw fa-search"></i>
+                <input #title (keyup)="search(title.value)" id="Buscar" type="text">
+            </div>
 
         </div>
 
@@ -32,7 +38,7 @@
 
     <hr class="mb-5">
     
-    <div class="row" style="margin-bottom: 70px;" *ngIf="dataFiltered.length === 0">
+    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="dataFiltered.length === 0">
 
             <app-card 
              *ngFor="let cards of data"  [cardData]="cards" 
@@ -48,7 +54,7 @@
                 
     </div >
 
-    <div class="row" style="margin-bottom: 70px;" *ngIf="dataFiltered.length > 0">
+    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="dataFiltered.length > 0">
 
           
         <app-card 

@@ -1,0 +1,38 @@
+.search {
+    display: flex;
+    align-items: center;
+    
+    padding: .25rem 1rem;
+    margin-bottom: 15px;
+    
+    background: rgba(rgb(41, 41, 41), .2);
+    
+    border: none;
+    border-radius: 999px;
+    
+    transition: .3s all;
+    
+    color: #fff;
+    
+    &.active {
+        background: rgba(#fff, .9);
+        outline: none;
+        color: #444;
+    }
+    
+    input[type=text] {
+        flex-grow: 1;
+        padding-left: .5rem;
+        
+        color: inherit;
+        
+        font-size: 1.20rem;
+            
+        background: transparent;
+        border: none;
+        
+        &:focus, &:active {
+            outline: none;
+        }
+    }
+}
