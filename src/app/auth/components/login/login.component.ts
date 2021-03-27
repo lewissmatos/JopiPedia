@@ -1,7 +1,10 @@
+import { AuthService } from './../../Services/auth.service';
+import { User } from './../../Models/user.model';
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup } from '@angular/forms';
 
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,52 +14,53 @@ import Swal from 'sweetalert2'
 export class LoginComponent implements OnInit {
 
   formData!: FormGroup;
+  userData!: User
 
-  constructor(private fBuilder: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
     
     this.createForm()
   }
 
   ngOnInit(): void {
   }
-
   
-  get invalidUser() {
-    return this.formData.get('user')?.invalid && this.formData.get('user')?.touched
-  }
-  get invalidPass() {
-    return this.formData.get('pass')?.invalid && this.formData.get('pass')?.touched
-  }
-  
-  v = Validators
   createForm() {
     this.formData = this.fBuilder.group({
-      user: ['', [this.v.required, this.v.minLength(5), this.v.maxLength(30)]],
-      pass: ['', [this.v.required, this.v.minLength(8), this.v.maxLength(30)]],
+      user: [''],
+      pass: [''],
     })
   }
   
+  public dis = false
+
   logIn() {
-    if (this.formData.invalid) {
-      Object.values(this.formData.controls).forEach(control => {
+      this.dis = true
 
-        if (control instanceof FormGroup) {
-          Object.values(control.controls).forEach(control => control.markAllAsTouched())
-        } else {
+      this.userData = this.formData.value
+      console.log(this.userData)
 
-          control.markAsTouched()
+      this.authService.login(this.userData).subscribe(
+        res => {
+          localStorage.setItem('token', res.token)
+          this.router.navigate(['/dashboard/home'])    
+        },
+        error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error de inicio de sesión',
+            text: error.error.msg,
+
+            
+          })
+
+          this.dis = false
         }
-      })
-    }   
-
-    if (this.formData.valid == false) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error de inicio de sesión,',
-        text: 'Debes introducir un usuario valido',
-      })
-      
-    }
+      )
+    
   }  
   
 }

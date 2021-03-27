@@ -22,7 +22,6 @@
                         <input 
                         class="form-control" 
                         formControlName="user"
-                        [class.is-invalid]="invalidUser"  
                         type="text" placeholder="Usuario">
 
                     </div>
@@ -32,16 +31,21 @@
                         <label class="label-g">CONTRASEÑA</label>
                         <input 
                         class="form-control" 
-                        [class.is-invalid]="invalidPass"  
                         formControlName="pass"
-                        type="text" placeholder="Contraseña">                       
+                        type="password" placeholder="Contraseña">                       
                     </div>
         
                     <div class="text-center mb-4" style="padding-left: 36px; padding-right: 36px; ">
                         <button
                         class="btn btn-primary w-100" 
                         style="padding: 10px;" 
-                        type="submit">Iniciar sesión</button>
+                        type="submit"
+                        [disabled]='dis'
+                        >
+                        
+                        <i *ngIf="dis"  class="fas fa-sync fa-spin"></i>
+                             {{dis? 'Accediendo': 'Iniciar sesion'}}
+                        </button>
                     </div>
         
                     <div class="text-center mt-2">

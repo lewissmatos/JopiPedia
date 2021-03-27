@@ -83,7 +83,12 @@
                 <div class="text-center mb-4" style="padding-left: 36px; padding-right: 36px; ">
                     <button class="btn btn-primary w-100" style="padding: 10px;"
                     (click)="signUp()"
-                    type="button">Registrarse</button>
+                    type="button"
+                    [disabled]='dis'
+                    >
+                    <i *ngIf="dis"  class="fas fa-sync fa-spin"></i>
+                    {{dis? 'Accediendo': 'Registrarse'}}
+                </button>
                 </div>
 
                 <div class="text-center mt-2">

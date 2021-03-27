@@ -1,8 +1,10 @@
+import { Router, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { User } from '../../Models/user.model';
 
 import Swal from 'sweetalert2'
+import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,10 @@ export class RegisterComponent implements OnInit {
   formData!: FormGroup
   userData!: User
 
-  constructor(private fBuilder: FormBuilder) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private fBuilder: FormBuilder) {
     this.createForm()
   }
 
@@ -53,13 +58,18 @@ export class RegisterComponent implements OnInit {
       name: ['', [this.v.required, this.v.minLength(2), this.v.maxLength(30)]],
       lName: ['', [ this.v.required, this.v.minLength(2), this.v.maxLength(30)]],
       user: ['', [this.v.required, this.v.minLength(5), this.v.maxLength(30)]],
-      email: ['', Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+/.[a-z]{2,3}$')],
+      email: ['', [this.v.required, this.v.minLength(10), this.v.maxLength(30)]],
       pass: ['', [this.v.required,this.v.minLength(8), this.v.maxLength(30)]],
       rPass: ['', [this.v.required, this.v.minLength(8), this.v.maxLength(30)]],
     })
   }
-  
+
+  public dis = false
+
   signUp() {
+
+    this.dis = true
+
     if (this.formData.invalid) {
       Object.values(this.formData.controls).forEach(control => {
 
@@ -71,17 +81,39 @@ export class RegisterComponent implements OnInit {
         }
       })
     }
-
-    this.userData = this.formData.value
-    console.log(this.userData)
+   
 
     if (this.formData.valid == false) {
       Swal.fire({
         icon: 'error',
-        title: 'Registro invdalido,',
+        title: 'Registro invdalid',
         text: 'Debes llenar todos los campos',
       })
       
+      this.dis = false
+    }
+
+    else {
+
+      this.userData = this.formData.value
+      console.log(this.userData)
+
+      this.authService.register(this.userData).subscribe(
+        res => {
+          localStorage.setItem('token', res.token)
+          this.router.navigate(['/dashboard/home'])
+        },
+        error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Llene todos los campos correctamente',
+            text: error.error.msg,
+          })
+
+          this.dis = false
+
+        }
+      )
     }
 
   }
