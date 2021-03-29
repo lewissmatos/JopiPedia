@@ -109,12 +109,9 @@ export class RegisterComponent implements OnInit {
             title: 'Llene todos los campos correctamente',
             text: error.error.msg,
           })
-
           this.dis = false
-
         }
       )
     }
-
   }
 }

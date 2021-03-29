@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/auth/Models/user.model';
 import Swal from 'sweetalert2'
+import { UserServicesService } from '../../services/user-services.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +11,11 @@ import Swal from 'sweetalert2'
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  currentUser: User = {}
+
+  constructor(private router: Router, private userService: UserServicesService) {    
+    this.getUserInfo()
+  }
 
   ngOnInit(): void {
   }
@@ -27,10 +33,19 @@ export class ProfileComponent implements OnInit {
     }).then(
       res => {
       if (res.isConfirmed) {
-        this.router.navigate(['/auth/login'])
         localStorage.removeItem('token')
+        this.router.navigate(['/auth/login'])
       }
     })
   }
 
+  getUserInfo() {
+    this.userService.getUserInfo().subscribe(
+      res => {
+        this.currentUser = res.user
+        console.log(this.currentUser)
+      },
+      error => console.log(error)
+    )
+  }
 }
