@@ -11,7 +11,6 @@ export class CardComponent implements OnInit {
   @Input() public cardData: cardData = {
     bgColor: '',
     title: '',
-    subTitle: '',
     desc: ''
   }
 
