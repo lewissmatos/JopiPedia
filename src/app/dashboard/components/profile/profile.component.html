@@ -24,11 +24,11 @@
                         
                        >
     
-                <div class="search">
+                <div class=" animated fadeIn">
                     
                     <button (click)="edit()"
                      style="float: right;" 
-                     class=" mr-2 btn "
+                     class=" mr-2 btn animated fadeIn fast"
                      [ngClass]="{'btn-primary' : !toEdit, 'btn-danger': toEdit}"
                      >
                         {{toEdit? 'Cancelar': 'Editar'}}
@@ -36,7 +36,7 @@
                     </button>
 
                     <button *ngIf="toEdit" (click)="editUserInfo()"
-                     style="float: right;" class="btn btn-success mr-2"
+                     style="float: right;" class="btn btn-success mr-2 animated fadeIn fast"
                      
                      >
                         Guardar

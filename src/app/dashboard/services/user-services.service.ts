@@ -21,8 +21,7 @@ export class UserServicesService {
     return this.http.get<any>(this.api, this.httpOptions)
   }
 
-  editUserInfo(data: User) {
-    
+  editUserInfo(data: User) {    
     return this.http.put<any>(this.api, data, this.httpOptions)
   }
 

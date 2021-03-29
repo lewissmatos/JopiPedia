@@ -65,8 +65,7 @@ export class ProfileComponent implements OnInit {
     delete(this.editedUserData._id)
     delete (this.editedUserData.user)
     this.userService.editUserInfo(this.editedUserData).
-      subscribe(res => {
-        console.log(res)
+      subscribe(res => {        
         this.currentUser = res.data
         this.toEdit = false
       }, error => console.log(error)
