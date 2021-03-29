@@ -11,7 +11,9 @@ import { UserServicesService } from '../../services/user-services.service';
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser: User = {}
+  currentUser: User = {name: '', lName: ''}
+  editedUserData: User = {}
+  toEdit = false
 
   constructor(private router: Router, private userService: UserServicesService) {    
     this.getUserInfo()
@@ -43,9 +45,31 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserInfo().subscribe(
       res => {
         this.currentUser = res.user
-        console.log(this.currentUser)
+        this.editedUserData = {...this.currentUser}
       },
       error => console.log(error)
     )
+  }
+
+
+    
+  edit() {
+    if (this.toEdit) {
+      this.editedUserData = {...this.currentUser}
+    }
+    this.toEdit = !this.toEdit
+  }
+
+  editUserInfo() {
+    delete(this.editedUserData.email)
+    delete(this.editedUserData._id)
+    delete (this.editedUserData.user)
+    this.userService.editUserInfo(this.editedUserData).
+      subscribe(res => {
+        console.log(res)
+        this.currentUser = res.data
+        this.toEdit = false
+      }, error => console.log(error)
+      )
   }
 }

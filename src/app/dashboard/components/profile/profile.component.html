@@ -26,10 +26,23 @@
     
                 <div class="search">
                     
-                    <button style="float: right;" class="btn btn-primary">
-                        Editar
-                        <i class="ml-2 fas fa-pen"></i>
+                    <button (click)="edit()"
+                     style="float: right;" 
+                     class=" mr-2 btn "
+                     [ngClass]="{'btn-primary' : !toEdit, 'btn-danger': toEdit}"
+                     >
+                        {{toEdit? 'Cancelar': 'Editar'}}
+                        <i *ngIf="!toEdit" class="ml-2 fas fa-pen"></i>
                     </button>
+
+                    <button *ngIf="toEdit" (click)="editUserInfo()"
+                     style="float: right;" class="btn btn-success mr-2"
+                     
+                     >
+                        Guardar
+                        <i class="ml-2 fas fa-save"></i>
+                    </button>
+                    
                     
                 </div>
     
@@ -51,7 +64,8 @@
                 <img width="90%" src="https://lh3.googleusercontent.com/proxy/6J7lIInw8DfuVwohXEs2uwwwwRqboFummn7o5Dqbsywl13vZPQJgCjMrYmJDo4g_SzL-Iimvy5VObO751_Ou0tklwlRr0II7ZkesWQXrYeNZiqusTvjF" >
             </div>
 
-            <div class="
+            <div *ngIf="!toEdit" class="
+                        animated fadeIn
                         col-lg-10
                         col-md-10
                         col-sm-8
@@ -59,6 +73,18 @@
 
                         <h3>{{currentUser.name + ' ' + currentUser.lName}}</h3>
                         <p>@{{currentUser.user}}</p>
+            </div>
+
+            <div *ngIf="toEdit" class="
+                        animated fadeIn
+                        col-lg-10
+                        col-md-10
+                        col-sm-8
+                        col-8">
+
+                        <input class="form-control w-50" [(ngModel)]="editedUserData.name" placeholder="Nombre" type="text" name="" id="">
+                        <input class="form-control w-50 mt-2" [(ngModel)]="editedUserData.lName" placeholder="Apellido" type="text" name="" id="">
+                        
             </div>
             
         </div>
