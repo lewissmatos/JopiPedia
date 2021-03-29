@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       {
         bgColor: 'rgb(39, 174, 96, 0.7)',
         title: 'biologia',
-        desc: 'Estudia a los seres vivos y sus características, como su origen, su evolución y Page 2 sus propiedades, nutrición, morfogénesis, reproducción (asexual y sexual), patogenia, etc.'
+        desc: 'Estudia a los seres vivos y sus características, como su origen, su evolución y sus propiedades, nutrición, morfogénesis, reproducción (asexual y sexual), patogenia, etc.'
       },
       {
         bgColor: 'rgb(255, 87, 34, 0.7)',

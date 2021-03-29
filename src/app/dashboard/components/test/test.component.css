@@ -1,0 +1,18 @@
+
+.question-window{
+    padding: 10px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+  }
+
+.desc-window{
+    padding: 10px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid #ffc107;
+    border-radius: 20px;
+  }

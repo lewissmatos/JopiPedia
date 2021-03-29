@@ -9,6 +9,7 @@ import { CardComponent } from './components/card/card.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RecordsComponent } from './components/records/records.component';
+import { TestComponent } from './components/test/test.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RecordsComponent } from './components/records/records.component';
     SidebarComponent,
     CardComponent,
     ProfileComponent,
-    RecordsComponent,    
+    RecordsComponent,
+    TestComponent,    
   ],
   imports: [
     CommonModule,
