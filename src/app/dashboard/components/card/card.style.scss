@@ -1,6 +1,6 @@
 
-$line-height: 1.4;
-$lines: 3;
+$line-height: 1.2;
+$lines: 5;
 
 .card-desc-multi{
     display: block;
@@ -12,7 +12,9 @@ $lines: 3;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
-
+    font-style: italic;
+    color: rgb(255, 255, 255, 0.7);
+    margin-top: 10px;
 }
 
 
@@ -24,17 +26,12 @@ $lines: 3;
     margin-bottom: 10px; margin-top: 10px;
     cursor: pointer;
     flex-wrap: nowrap;
-    height: 200px;
+    height: 190px;
 }
 
 .card-container  :hover {
     transform: scale(1.01);
   }
-
-.card-subtitle{
-    font-style: italic;
-    color: rgb(255, 255, 255, 0.6);
-}
 
 .go-test{
     font-size: 10px; color: rgb(255, 255, 255, 0.4); 
