@@ -8,21 +8,29 @@ import { User } from 'src/app/auth/Models/user.model';
 export class UserServicesService {
 
   api = 'https://jopipedia.herokuapp.com/api/user'
-  httpOptions = {
+  /* httpOptions = {
     headers: new HttpHeaders({    
-      'Authorization': `${localStorage.getItem('token')}`
+      'Authorization': localStorage.getItem('token') + ''
     })
 
-  }
+  } */
 
   constructor(private http: HttpClient) { }
 
   getUserInfo() {
-    return this.http.get<any>(this.api, this.httpOptions)
+    return this.http.get<any>(this.api, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
   }
 
   editUserInfo(data: User) {    
-    return this.http.put<any>(this.api, data, this.httpOptions)
+    return this.http.put<any>(this.api, data, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
   }
 
 }
