@@ -30,7 +30,7 @@
 
             <div class="search">
                 <i class="fa fa-fw fa-search"></i>
-                <input #title (keyup)="search(title.value)" id="Buscar" type="text">
+                <input #title (keyup)="search(title.value.trim())" id="Buscar" type="text">
             </div>
 
         </div>
