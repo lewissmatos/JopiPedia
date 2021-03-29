@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
   logIn() {
       this.dis = true
 
-      this.userData = this.formData.value
-      console.log(this.userData)
+      this.userData = this.formData.value     
 
       this.authService.login(this.userData).subscribe(
         res => {
@@ -52,9 +51,7 @@ export class LoginComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Error de inicio de sesión',
-            text: error.error.msg,
-
-            
+            text: error.error.msg,            
           })
 
           this.dis = false

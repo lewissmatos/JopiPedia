@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/auth/Models/user.model';
 import Swal from 'sweetalert2'
@@ -9,17 +9,62 @@ import { UserServicesService } from '../../services/user-services.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewInit{
 
   currentUser: User = { name: '', lName: '' }
-  editedUserData: User = {}
+  editedUserData: User = {  name: '', lName: '' }
   toEdit = false
 
-  constructor(private router: Router, private userService: UserServicesService) {
+  constructor(private router: Router, private userService: UserServicesService) {    
     this.getUserInfo()
+  }
+  ngAfterViewInit(): void {
   }
 
   ngOnInit(): void {
+  }
+  
+  getUserInfo() {
+    this.userService.getUserInfo().subscribe(
+      res => {
+        this.currentUser = res.user
+        this.editedUserData = { ...this.currentUser }
+      },
+      error => console.log(error)
+    )
+  }
+    
+  edit() {
+    if (this.toEdit) {
+      this.editedUserData = { ...this.currentUser }
+    }
+    this.toEdit = !this.toEdit
+  }
+  
+  editUserInfo() {
+
+    if (this.editedUserData.name?.length === 0 || this.editedUserData.lName?.length === 0 ) {
+      Swal.fire({
+      title: 'Editar información',
+      text: "debe llenar ambos campos para guardar",
+      icon: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',     
+      confirmButtonText: 'Aceptar'
+      })     
+    } else {
+      
+      delete(this.editedUserData.email)
+      delete(this.editedUserData._id)
+      delete (this.editedUserData.user)
+      this.userService.editUserInfo(this.editedUserData).
+      subscribe(res => {        
+        this.currentUser = res.data
+        this.toEdit = false
+      }, error => console.log(error)
+      )
+    }
+    
   }
 
   logOut() {
@@ -39,50 +84,5 @@ export class ProfileComponent implements OnInit {
           this.router.navigate(['/auth/login'])
         }
       })
-  }
-
-  getUserInfo() {
-    this.userService.getUserInfo().subscribe(
-      res => {
-        this.currentUser = res.user
-        this.editedUserData = { ...this.currentUser }
-      },
-      error => console.log(error)
-    )
-  }
-
-
-    
-  edit() {
-    if (this.toEdit) {
-      this.editedUserData = { ...this.currentUser }
-    }
-    this.toEdit = !this.toEdit
-  }
-
-  editUserInfo() {
-
-    if (this.editedUserData.name?.length === 0 || this.editedUserData.lName?.length === 0 ) {
-      Swal.fire({
-      title: 'Editar información',
-      text: "debe llenar ambos campos para guardar",
-      icon: 'warning',
-      showCancelButton: false,
-      confirmButtonColor: '#3085d6',     
-      confirmButtonText: 'Aceptar'
-      })     
-    } else {
-      
-      delete(this.editedUserData.email)
-      delete(this.editedUserData._id)
-      delete (this.editedUserData.user)
-      this.userService.editUserInfo(this.editedUserData).
-        subscribe(res => {        
-          this.currentUser = res.data
-          this.toEdit = false
-        }, error => console.log(error)
-        )
-    }
-
   }
 }
