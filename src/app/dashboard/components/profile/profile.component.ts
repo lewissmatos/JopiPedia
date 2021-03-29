@@ -66,7 +66,7 @@ export class ProfileComponent implements OnInit {
       Swal.fire({
       title: 'Editar información',
       text: "debe llenar ambos campos para guardar",
-      icon: 'info',
+      icon: 'warning',
       showCancelButton: false,
       confirmButtonColor: '#3085d6',     
       confirmButtonText: 'Aceptar'
