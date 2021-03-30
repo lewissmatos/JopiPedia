@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/auth/Models/user.model';
 import Swal from 'sweetalert2'
 import { UserServicesService } from '../../services/user-services.service';
+import { ThemesService } from '../../services/themes.service';
+import { cardData } from '../../Models/cardData.model';
 
 @Component({
   selector: 'app-profile',
@@ -15,8 +17,16 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   editedUserData: User = {  name: '', lName: '' }
   toEdit = false
 
-  constructor(private router: Router, private userService: UserServicesService) {    
+  themes: cardData[]=[]
+
+  constructor(
+              private tService: ThemesService,
+              private router: Router,
+              private userService: UserServicesService)
+  {
+    
     this.getUserInfo()
+    this.getAllThemes()
   }
   ngAfterViewInit(): void {
   }
@@ -84,5 +94,14 @@ export class ProfileComponent implements OnInit, AfterViewInit{
           this.router.navigate(['/auth/login'])
         }
       })
+  }
+
+  getAllThemes() {
+    return this.tService.getAllThemes()
+      .subscribe(
+        res => {
+          this.themes = res.data
+        }
+    )
   }
 }

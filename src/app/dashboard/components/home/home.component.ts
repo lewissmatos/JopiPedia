@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   
 
   search = (title: string) => {
-    this.dataFiltered = this.data.filter((cd: cardData) => cd.title.toLowerCase().includes(title.toLowerCase()))    
+    this.dataFiltered = this.data.filter((cd: cardData) => cd.title?.toLowerCase().includes(title.toLowerCase()))    
     
   
     if (title.length > 0) {

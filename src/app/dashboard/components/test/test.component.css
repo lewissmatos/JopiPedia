@@ -11,9 +11,9 @@
 .desc-window{
     padding: 10px;
     width: 100%;
-    height: 280px;
+    height: 210px;
     overflow: hidden;
-    border: 1px solid #ffc107;
+    border: 1px solid white;
     border-radius: 20px;
   }
 
