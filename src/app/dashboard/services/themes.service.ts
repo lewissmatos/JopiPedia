@@ -17,4 +17,12 @@ export class ThemesService {
       })
     })
   }
+
+  getThemeById(id: string) {
+    return this.http.get<any>(this.api + 'getthemebyid/' + id, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
+  }
 }

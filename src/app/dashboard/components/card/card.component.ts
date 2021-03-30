@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class CardComponent implements OnInit {
 
   @Input() public cardData: cardData = {
+    _id: '',
     bgColor: '',
     title: '',
     desc: ''
@@ -23,8 +24,8 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goTest() {
-    this.router.navigate(['dashboard/test'])
+  goTest(_id: any) {
+    this.router.navigate(['dashboard/test', _id ])
   }
 
 }

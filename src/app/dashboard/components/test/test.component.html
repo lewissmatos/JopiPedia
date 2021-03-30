@@ -12,7 +12,7 @@
                         col-lg-8
             ">
     
-                <h1 >Biologia</h1>
+                <h2 class="mt-1">{{currentTheme.title | uppercase }}</h2>
             </div>
     
             <div class=" w-100 mt-2 
@@ -27,16 +27,17 @@
                 <div class=" animated fadeIn" style="float: right;">
                     
                     <button 
-                     
-                     class=" btn btn-success"
+                    [style.background-color]='currentTheme.bgColor'
+                     class=" btn "
                      >                        
-                     <i class="fas fa-chevron-left"></i>
+                     <i style="color: white;" class="fas fa-chevron-left"></i>
                     </button>
 
                     <button 
-                      class="btn btn-success ml-2 "                     
+                    [style.background-color]='currentTheme.bgColor'
+                      class="btn  ml-2 "                     
                      >                        
-                     <i class="fas fa-chevron-right"></i>
+                     <i style="color: white;" class="fas fa-chevron-right"></i>
                     </button>
                     
                     
@@ -50,7 +51,7 @@
 
     <div class="row p-2" >
 
-        <div class="question-window mb-3 
+        <div [style.border-color]="currentTheme.bgColor" class="question-window mb-3 
         
                     col-lg-8
                     col-md-7
@@ -59,10 +60,10 @@
                     "
                 >
 
-                <h4 class="text-primary">Pregunta</h4>
+                <h4  [style.color]="currentTheme.bgColor" style="color: white;"  >Pregunta</h4>
         </div>
 
-        <div class="desc-window mb-3
+        <div [style.border-color]="currentTheme.bgColor" class="desc-window mb-3
         
                     col-lg-3 offset-lg-1
                     col-md-4 offset-md-1
@@ -71,7 +72,9 @@
                     "
                 >
 
-                <h4 class="text-warning">Descripcion del tema</h4>
+                <h4 [style.color]="currentTheme.bgColor" style="color: white;" >Descripcion del tema</h4>
+
+                <p class="mt-3">{{currentTheme.desc}}</p>
 
         </div>
 
