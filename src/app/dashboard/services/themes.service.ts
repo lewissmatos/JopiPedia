@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ThemesService {
 
-  api: string = 'http://jopipedia.herokuapp.com/api/tema/'
+  api: string = 'https://jopipedia.herokuapp.com/api/tema/'
 
   constructor(private http: HttpClient) { }
 
