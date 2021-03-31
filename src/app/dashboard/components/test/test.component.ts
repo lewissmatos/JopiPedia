@@ -14,7 +14,7 @@ export class TestComponent implements OnInit {
 
   currentTheme: cardData = {
     _id: '',
-    bgColor: '',
+    bgColor: '#FFF',
     title: '',
     desc: '',
   }
