@@ -104,9 +104,7 @@ export class AdminTemasComponent implements OnInit {
 
   editTheme(data: any) {
     this.toEdit = true
-
     this.data = data
-    console.log(data)
   }
 
   saveEdit() {

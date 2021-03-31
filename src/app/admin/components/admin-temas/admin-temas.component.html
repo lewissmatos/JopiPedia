@@ -1,5 +1,5 @@
 
-<div class="container mt-3">
+<div class="container mt-3 animated fadeIn fast" >
 
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-6 col-12">
@@ -24,7 +24,7 @@
 
             <h3 class="mb-3 ">Preview del tema</h3>
 
-            <div class="card-container" style="background-color: #808B96;" 
+            <div class="animated fadeIn fast card-container" style="background-color: #808B96;" 
                 [style.background-color]="data.bgColor">
                     <div class="card-body">
                     <b><h4 class="card-title">{{data.title | uppercase}}</h4></b>
@@ -38,14 +38,14 @@
         
         <div class="w-100 text-center">
             <hr>
-            <button *ngIf="!toEdit" (click)="createTheme()" class="btn btn-success w-50 mt-3" type="button">Guardar tema</button>
-            <button *ngIf="toEdit" (click)="saveEdit()" class="btn btn-info w-50 mt-3" type="button">Guardar cambios</button>
+            <button *ngIf="!toEdit" (click)="createTheme()" class="btn btn-success w-50 mt-3 animated fadeIn fast" type="button">Guardar tema</button>
+            <button *ngIf="toEdit" (click)="saveEdit()" class="btn btn-info w-50 mt-3 animated fadeIn fast" type="button">Guardar cambios</button>
 
         </div>
 
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5 animated fadeIn fast">
         <h3 class="mb-3">Temas</h3>
 
         <ol class="list-group list-group-numbered">
