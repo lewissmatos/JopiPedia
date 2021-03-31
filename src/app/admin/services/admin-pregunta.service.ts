@@ -1,33 +1,32 @@
-import { cardData } from './../Models/cardData.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ThemesService {
+export class AdminPreguntaService {
 
-  api: string = 'https://jopipedia.herokuapp.com/api/tema/'
+  api: string = 'https://jopipedia.herokuapp.com/api/pregunta/'
 
   constructor(private http: HttpClient) { }
 
-  getAllThemes() {
-    return this.http.get<any>(this.api + 'getalltheme', {
+  getAllPreguntas() {
+    return this.http.get<any>(this.api + 'getallpregunta', {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
       })
     })
   }
 
-  getThemeById(id: string) {
+  /* getPreguntaById(id: string) {
     return this.http.get<any>(this.api + 'getthemebyid/' + id, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
       })
     })
-  }
+  } */
 
-  createTheme(data: cardData) {
+  createPregunta(data: any) {
     return this.http.post<any>(this.api, data, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
@@ -35,7 +34,7 @@ export class ThemesService {
     })
   }
 
-  updateTheme(data: cardData, id: any) {
+  updatePregunta(data: any, id: any) {
     return this.http.put<any>(this.api + id, data, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
@@ -43,7 +42,7 @@ export class ThemesService {
     })
   }
   
-  deleteTheme(id: any) {
+  deletePregunta(id: any) {
     return this.http.post<any>(this.api + id, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
