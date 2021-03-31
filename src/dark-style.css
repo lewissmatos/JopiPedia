@@ -5,3 +5,36 @@ body.dark {
 body.dark h1 {
     color: white;
 }
+body.dark h2 {
+    color: white;
+}
+body.dark h3 {
+    color: white;
+}
+body.dark h4 {
+    color: white;
+}
+body.dark h5 {
+    color: white;
+}
+body.dark h6 {
+    color: white;
+}
+body.dark p {
+    color: white;
+}
+body.dark b {
+    color: white;
+}
+body.dark li {
+
+    background-color: rgba(255, 255, 255, 0);
+    border: solid 1px rgba(255, 255, 255, 0.6);
+
+}
+
+body.dark input {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
