@@ -40,6 +40,7 @@ export class AdminTemasComponent implements OnInit {
         icon: 'error',
         title: 'Error!',
         text: 'Debe completar todos los campos',
+        confirmButtonColor: '#7AC0AB'
       })
     } else {    
         this.tService.createTheme(this.data)
@@ -52,7 +53,7 @@ export class AdminTemasComponent implements OnInit {
               Swal.fire({
                 icon: 'success',
                 title: 'Tema agregado correctamente!',
-                confirmButtonColor: '#FF7952'
+                confirmButtonColor: '#7AC0AB'
               })
     
             }, error => {
@@ -60,7 +61,7 @@ export class AdminTemasComponent implements OnInit {
               Swal.fire({            
                 icon: 'error',
                 title: 'Ha ocurrido un error.',
-                confirmButtonColor: '#FF7952'
+                confirmButtonColor: '#7AC0AB'
               })
           }
         )      
@@ -73,7 +74,7 @@ export class AdminTemasComponent implements OnInit {
       icon: 'question',
       title: 'Eliminar',
       text: 'Seguro que desea eliminar?',
-      confirmButtonColor: '#FF7952',
+      confirmButtonColor: '#7AC0AB',
       showCancelButton: true,
       cancelButtonColor: '#FF7952'
     }).then(
@@ -88,14 +89,14 @@ export class AdminTemasComponent implements OnInit {
             icon: 'success',
             title: 'Eliminado!',
             text: 'Tema eliminado correctamente!',
-            confirmButtonColor: '#FF7952',
+            confirmButtonColor: '#7AC0AB',
           })
       }, error => {
         console.log(error)
         Swal.fire({            
           icon: 'error',
           title: 'Ha ocurrido un error.',
-          confirmButtonColor: '#FF7952',
+          confirmButtonColor: '#7AC0AB',
         })
     }
           )
@@ -117,7 +118,7 @@ export class AdminTemasComponent implements OnInit {
         icon: 'error',
         title: 'Error!',
         text: 'Debe completar todos los campos',
-        confirmButtonColor: '#FF7952',
+        confirmButtonColor: '#7AC0AB',
       })
     } else {    
         this.tService.updateTheme(this.data, this.data._id)
@@ -130,7 +131,7 @@ export class AdminTemasComponent implements OnInit {
               Swal.fire({
                 icon: 'success',
                 title: 'Tema actualizado correctamente!',
-                confirmButtonColor: '#FF7952',
+                confirmButtonColor: '#7AC0AB',
               })
     
             }, error => {
@@ -138,7 +139,7 @@ export class AdminTemasComponent implements OnInit {
               Swal.fire({            
                 icon: 'error',
                 title: 'Ha ocurrido un error.',
-                confirmButtonColor: '#FF7952',
+                confirmButtonColor: '#7AC0AB',
               })
           }
         )      
