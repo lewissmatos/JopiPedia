@@ -26,6 +26,20 @@ body.dark p {
 body.dark b {
     color: white;
 }
+body.dark span {
+    color: white;
+}
+
+body.dark text {
+    color: white;
+}
+
+body.dark  {
+    color: white;
+}
+
+
+
 body.dark li {
 
     background-color: rgba(255, 255, 255, 0);

@@ -37,10 +37,11 @@ export class AdminTemasComponent implements OnInit {
   createTheme() {
     if (this.data.title == null || this.data.desc == null ) {
       Swal.fire({
+        background: '#758080',                
         icon: 'error',
         title: 'Error!',
-        text: 'Debe completar todos los campos',
-        confirmButtonColor: '#7AC0AB'
+        html: '<p>Debe completar todos los campos</p>',
+        confirmButtonColor: '#7AC0AB',        
       })
     } else {    
         this.tService.createTheme(this.data)
@@ -48,19 +49,22 @@ export class AdminTemasComponent implements OnInit {
             res => {
               console.log(res)
               this.getAllThemes()
-              this.data = { bgColor: '#808B96' }
-              
+              this.data = { bgColor: '#808B96' }              
               Swal.fire({
+                background: '#758080',
                 icon: 'success',
-                title: 'Tema agregado correctamente!',
+                title: 'Agregado!',
+                html: '<p>Tema agregado correctamente.</p>',
                 confirmButtonColor: '#7AC0AB'
               })
     
             }, error => {
               console.log(error)
-              Swal.fire({            
+              Swal.fire({
+                background: '#758080',
                 icon: 'error',
-                title: 'Ha ocurrido un error.',
+                title: 'Error!',
+                html: '<p>Ha ocurrido un error.</p>',
                 confirmButtonColor: '#7AC0AB'
               })
           }
@@ -71,9 +75,10 @@ export class AdminTemasComponent implements OnInit {
   deteleTheme(id: any) {
   
     Swal.fire({
+      background: '#758080',                
       icon: 'question',
       title: 'Eliminar',
-      text: 'Seguro que desea eliminar?',
+      html: '<p>Seguro que desea eliminar?</p>',      
       confirmButtonColor: '#7AC0AB',
       showCancelButton: true,
       cancelButtonColor: '#FF7952'
@@ -86,16 +91,19 @@ export class AdminTemasComponent implements OnInit {
         res => {
           this.getAllThemes()
           Swal.fire({
+            background: '#758080',                
             icon: 'success',
-            title: 'Eliminado!',
-            text: 'Tema eliminado correctamente!',
+            title: 'Eliminado!',            
+            html: '<p>Tema eliminado correctamente!</p>',
             confirmButtonColor: '#7AC0AB',
           })
       }, error => {
         console.log(error)
-        Swal.fire({            
+          Swal.fire({
+          background: '#758080',                
           icon: 'error',
-          title: 'Ha ocurrido un error.',
+          title: 'Error!',
+          html: '<p>Ha ocurrido un error.</p>',          
           confirmButtonColor: '#7AC0AB',
         })
     }
@@ -115,6 +123,7 @@ export class AdminTemasComponent implements OnInit {
   saveEdit() {
     if (this.data.title == null || this.data.desc == null ) {
       Swal.fire({
+        background: '#758080',                
         icon: 'error',
         title: 'Error!',
         text: 'Debe completar todos los campos',
@@ -129,6 +138,7 @@ export class AdminTemasComponent implements OnInit {
               this.toEdit = false
               
               Swal.fire({
+                background: '#758080',              
                 icon: 'success',
                 title: 'Tema actualizado correctamente!',
                 confirmButtonColor: '#7AC0AB',
@@ -136,7 +146,8 @@ export class AdminTemasComponent implements OnInit {
     
             }, error => {
               console.log(error)
-              Swal.fire({            
+              Swal.fire({
+                background: '#758080',              
                 icon: 'error',
                 title: 'Ha ocurrido un error.',
                 confirmButtonColor: '#7AC0AB',
