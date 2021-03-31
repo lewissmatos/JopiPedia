@@ -6,13 +6,15 @@ import { HomeComponent } from './components/home/home.component';
 import { AdminTemasComponent } from './components/admin-temas/admin-temas.component';
 import { AdminPreguntasComponent } from './components/admin-preguntas/admin-preguntas.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [HomeComponent, AdminTemasComponent, AdminPreguntasComponent, AdminUsersComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

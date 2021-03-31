@@ -1,1 +1,64 @@
-<p>admin-temas works!</p>
+
+<div class="container mt-3">
+
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-6 col-12">
+            <form action="" class="form-group">
+                <h3 class="mb-3 l">Agregar tema</h3>
+                <label class="label" for="titulo">TITULO</label>
+                <input type="text" [(ngModel)]="data.title" name="title" id="titulo" class="form-control mb-2" placeholder="Titulo" >
+                
+                <label class="label" for="descipcion">DESCRIPCION</label>
+                <input type="text" [(ngModel)]="data.desc" name="desc" id="descipcion" class="form-control mb-2" placeholder="Descripcion" >
+
+                <div>
+                    <label class="label" for="color">COLOR (RGB)</label>
+                    <input type="color"  [(ngModel)]="data.bgColor" name="bgColor" id="color" class="form-control mb-2" style="width: 40%; height: 40px;"  placeholder="Color de fondo" >
+
+                </div>
+
+                <button class="btn btn-success btn-block mt-3" type="button">Guardar tema</button>
+            </form>
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-sm-6 col-12">
+
+            <h3 class="mb-3 ">Preview del tema</h3>
+
+            <div class="card-container" style="background-color: #808B96;" 
+                [style.background-color]="data.bgColor">
+                    <div class="card-body">
+                    <b><h4 class="card-title">{{data.title | uppercase}}</h4></b>
+                    <p class="card-desc-multi">{{data.desc}}</p>
+                    <label class="go-test">CLICK PARA ENTRAR</label>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h3 class="mb-3">Temas</h3>
+
+        <ol class="list-group list-group-numbered">
+                <li class="list-group-item" *ngFor="let theme of allThemes">
+                    <b>
+                        {{theme.title | uppercase}}
+                    </b> 
+                    <div class="float-right">
+                        <button class="btn btn-success">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button class="ml-2 btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
+                </li>                
+           
+        </ol>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,44 @@
+
+$line-height: 1.2;
+$lines: 5;
+
+.card-desc-multi{
+    display: block;
+    display: -webkit-box;
+    height: $line-height * $lines;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    font-style: italic;
+    color: rgb(255, 255, 255, 0.7);
+    margin-top: 10px;
+}
+
+
+
+.card-container {
+    color: white !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 10px; margin-top: 10px;
+    cursor: pointer;
+    flex-wrap: nowrap;
+    height: 190px;
+}
+
+.card-container  :hover {
+    transform: scale(1.01);
+  }
+
+.go-test{
+    font-size: 10px; color: rgb(255, 255, 255, 0.4); 
+    float: right;
+    bottom: auto;
+    margin-bottom: 24px;
+
+    border-bottom: none;
+}
+
