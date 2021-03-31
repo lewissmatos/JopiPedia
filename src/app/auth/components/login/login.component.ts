@@ -6,6 +6,7 @@ import {  FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 
+declare const $:any
 
 @Component({
   selector: 'app-login',
@@ -48,9 +49,13 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.token)
           if (res.isAdmin) {
             this.router.navigate(['/admin/home'])
+            localStorage.setItem('modo', 'dark')
+            $('#body').addClass('dark')
           }
           else {
-            this.router.navigate(['/dashboard/home'])    
+            this.router.navigate(['/dashboard/home'])  
+            $('#body').removeClass('dark')
+            localStorage.removeItem('modo')
           }
         },
         error => {

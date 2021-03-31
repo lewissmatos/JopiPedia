@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare const $:any
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'JopiPedia';
+
+  constructor() {
+    if (localStorage.getItem('modo') == 'dark') {
+      $('#body').addClass('dark')
+    }
+  }
 }
