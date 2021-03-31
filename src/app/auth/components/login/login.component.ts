@@ -6,6 +6,7 @@ import {  FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
         res => {
           localStorage.setItem('token', res.token)
           if (res.isAdmin) {
-            this.router.navigate(['/admin/home'])    
+            this.router.navigate(['/admin/home'])
           }
           else {
             this.router.navigate(['/dashboard/home'])    
