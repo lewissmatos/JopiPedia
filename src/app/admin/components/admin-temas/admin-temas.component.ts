@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { title } from 'node:process';
 import { cardData } from 'src/app/dashboard/Models/cardData.model';
 import { ThemesService } from 'src/app/dashboard/services/themes.service';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-admin-temas',
   templateUrl: './admin-temas.component.html',
@@ -11,7 +12,7 @@ export class AdminTemasComponent implements OnInit {
 
   allThemes: cardData[] = []
   data: cardData = {
-
+    bgColor: '#808B96'
   }
   constructor(private tService: ThemesService) {
     this.getAllThemes()
@@ -25,8 +26,61 @@ export class AdminTemasComponent implements OnInit {
       .subscribe(
         res => {
           this.allThemes = res.data
+          this.allThemes.reverse()
       }, error =>  console.log(error)
     )
+  }
+
+  createTheme() {
+    if (this.data.title == null || this.data.desc == null ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Debe completar todos los campos',
+      })
+    } else {    
+        this.tService.createTheme(this.data)
+          .subscribe(
+            res => {
+              console.log(res)
+              this.getAllThemes()
+              this.data = { bgColor: '#808B96' }
+              
+              Swal.fire({
+                icon: 'success',
+                title: 'Tema agregado correctamente!'
+              })
+    
+            }, error => {
+              console.log(error)
+              Swal.fire({            
+                icon: 'error',
+                title: 'Ha ocurrido un error.'
+              })
+          }
+        )      
+    }
+  }
+
+  deteleTheme(id: any) {
+    this.tService.deleteTheme(id)
+      .subscribe(
+        res => {
+          this.getAllThemes()
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminado!',
+            text: 'Tema eliminado correctamente!'
+          })
+      }, error => {
+        console.log(error)
+        Swal.fire({            
+          icon: 'error',
+          title: 'Ha ocurrido un error.'
+        })
+    }
+    )
+
   }
 
 }
