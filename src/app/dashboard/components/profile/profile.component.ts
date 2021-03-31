@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       text: "debe llenar ambos campos para guardar",
       icon: 'warning',
       showCancelButton: false,
-      confirmButtonColor: '#3085d6',     
+      confirmButtonColor: '#7AC0AB',     
       confirmButtonText: 'Aceptar'
       })     
     } else {
@@ -83,8 +83,8 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       text: "¿Confirma que desea cerrar sesión?",
       icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#7AC0AB',
+      cancelButtonColor: '#FF7952',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar'
     }).then(

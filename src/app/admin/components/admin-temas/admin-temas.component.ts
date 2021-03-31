@@ -51,14 +51,16 @@ export class AdminTemasComponent implements OnInit {
               
               Swal.fire({
                 icon: 'success',
-                title: 'Tema agregado correctamente!'
+                title: 'Tema agregado correctamente!',
+                confirmButtonColor: '#FF7952'
               })
     
             }, error => {
               console.log(error)
               Swal.fire({            
                 icon: 'error',
-                title: 'Ha ocurrido un error.'
+                title: 'Ha ocurrido un error.',
+                confirmButtonColor: '#FF7952'
               })
           }
         )      
@@ -71,8 +73,9 @@ export class AdminTemasComponent implements OnInit {
       icon: 'question',
       title: 'Eliminar',
       text: 'Seguro que desea eliminar?',
+      confirmButtonColor: '#FF7952',
       showCancelButton: true,
-      cancelButtonColor: '#FF0000'
+      cancelButtonColor: '#FF7952'
     }).then(
       res => {
         if (res.isConfirmed) {
@@ -84,13 +87,15 @@ export class AdminTemasComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title: 'Eliminado!',
-            text: 'Tema eliminado correctamente!'
+            text: 'Tema eliminado correctamente!',
+            confirmButtonColor: '#FF7952',
           })
       }, error => {
         console.log(error)
         Swal.fire({            
           icon: 'error',
-          title: 'Ha ocurrido un error.'
+          title: 'Ha ocurrido un error.',
+          confirmButtonColor: '#FF7952',
         })
     }
           )
@@ -112,6 +117,7 @@ export class AdminTemasComponent implements OnInit {
         icon: 'error',
         title: 'Error!',
         text: 'Debe completar todos los campos',
+        confirmButtonColor: '#FF7952',
       })
     } else {    
         this.tService.updateTheme(this.data, this.data._id)
@@ -123,14 +129,16 @@ export class AdminTemasComponent implements OnInit {
               
               Swal.fire({
                 icon: 'success',
-                title: 'Tema actualizado correctamente!'
+                title: 'Tema actualizado correctamente!',
+                confirmButtonColor: '#FF7952',
               })
     
             }, error => {
               console.log(error)
               Swal.fire({            
                 icon: 'error',
-                title: 'Ha ocurrido un error.'
+                title: 'Ha ocurrido un error.',
+                confirmButtonColor: '#FF7952',
               })
           }
         )      
