@@ -45,7 +45,12 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.userData).subscribe(
         res => {
           localStorage.setItem('token', res.token)
-          this.router.navigate(['/dashboard/home'])    
+          if (res.isAdmin) {
+            this.router.navigate(['/admin/home'])    
+          }
+          else {
+            this.router.navigate(['/dashboard/home'])    
+          }
         },
         error => {
           Swal.fire({

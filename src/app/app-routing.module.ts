@@ -1,3 +1,4 @@
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,21 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
+    ]
+  },
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: '/admin/home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
       }
     ]
   },
