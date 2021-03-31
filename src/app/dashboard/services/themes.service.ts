@@ -44,7 +44,7 @@ export class ThemesService {
   }
   
   deleteTheme(id: any) {
-    return this.http.post<any>(this.api + id, {
+    return this.http.delete<any>(this.api + id, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
       })

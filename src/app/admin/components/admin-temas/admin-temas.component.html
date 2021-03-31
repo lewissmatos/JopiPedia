@@ -12,7 +12,7 @@
                 <input type="text" [(ngModel)]="data.desc" name="desc" id="descipcion" class="form-control mb-2" placeholder="Descripcion" >
 
                 <div>
-                    <label class="label" for="color">COLOR (RGB)</label>
+                    <label class="label" for="color">COLOR</label>
                     <input type="color"  [(ngModel)]="data.bgColor" name="bgColor" id="color" class="form-control mb-2" style="width: 40%; height: 40px;"  placeholder="Color de fondo" >
 
                 </div>
@@ -38,7 +38,8 @@
         
         <div class="w-100 text-center">
             <hr>
-            <button (click)="createTheme()" class="btn btn-success w-50 mt-3" type="button">Guardar tema</button>
+            <button *ngIf="!toEdit" (click)="createTheme()" class="btn btn-success w-50 mt-3" type="button">Guardar tema</button>
+            <button *ngIf="toEdit" (click)="saveEdit()" class="btn btn-info w-50 mt-3" type="button">Guardar cambios</button>
 
         </div>
 
@@ -48,12 +49,12 @@
         <h3 class="mb-3">Temas</h3>
 
         <ol class="list-group list-group-numbered">
-                <li class="list-group-item" *ngFor="let theme of allThemes">
+                <li class="list-group-item animated fadeIn" *ngFor="let theme of allThemes; let i = index">
                     <b>
-                        {{theme.title | uppercase}}
+                       {{i + 1}}.  {{theme.title | uppercase}}
                     </b> 
                     <div class="float-right">
-                        <button class="btn btn-success">
+                        <button (click)="editTheme(theme)" class="btn btn-success">
                             <i class="fas fa-pen"></i>
                         </button>
                         <button (click)="deteleTheme(theme._id)" class="ml-2 btn btn-danger">
