@@ -16,9 +16,9 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   logOut() {
+    this.router.navigate(['auth/login'])
     localStorage.removeItem('token')
     $('#body').removeClass('dark')
     localStorage.removeItem('modo')
-    this.router.navigate(['auth/login'])
   }
 }
