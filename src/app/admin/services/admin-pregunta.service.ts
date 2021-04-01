@@ -18,13 +18,13 @@ export class AdminPreguntaService {
     })
   }
 
-  /* getPreguntaById(id: string) {
-    return this.http.get<any>(this.api + 'getthemebyid/' + id, {
+  getPreguntaByTemaId(id: string) {
+    return this.http.get<any>(this.api + 'getbytemaid/' + id, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
       })
     })
-  } */
+  }
 
   createPregunta(data: any) {
     return this.http.post<any>(this.api, data, {
