@@ -12,6 +12,7 @@ export class AdminPreguntasComponent implements OnInit {
 
   data: cardData = {}
   
+  moreQ= false
   allThemes: cardData[] = []
 
   questionData = {
@@ -20,7 +21,11 @@ export class AdminPreguntasComponent implements OnInit {
     ri1: '',
     ri2: '',
     ri3: '',
+    ri4: '',
+    ri5: '',
   }
+
+  
   
   constructor(private tService: ThemesService, private pService: AdminPreguntaService) {
     this.getAllThemes()
@@ -46,5 +51,9 @@ export class AdminPreguntasComponent implements OnInit {
           console.log(res.data)
         }
       )    
+  }
+
+  AddMoreQ() {
+    this.moreQ = !this.moreQ
   }
 }

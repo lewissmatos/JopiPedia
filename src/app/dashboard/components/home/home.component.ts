@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private themeService: ThemesService
-  ) { }
+  ) {    this.getAllThemes()
+  }
 
   ngOnInit(): void {
-    this.getAllThemes()
   }
   
 

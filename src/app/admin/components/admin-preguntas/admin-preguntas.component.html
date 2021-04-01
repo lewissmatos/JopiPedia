@@ -1,15 +1,28 @@
 <div class="container mt-3 animated fadeIn fast" >
 
-    <div class="row">
+    <div class="row pb-4">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
             <form action="" class="form-group" autocomplete="off">
-                <h3 class="mb-3 l">Agregar pregunta</h3>
+              <div class="row">
+                <div class="col-lg-8 col-md-6 col-sm-7 col-12">
+
+                  <h3 class="mb-3 l">Agregar pregunta</h3>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-5 col-12 ">
+                  <button       [ngClass]="{'btn-info': !moreQ, 'btn-danger': moreQ}"
+                            class="mt-2 float-right btn "
+                            (click)="AddMoreQ()"
+                    >{{!moreQ? 'Agregar preguntas': 'Quitar preguntas'}}
+                  </button>
+                </div>
+              </div>  
 
                 <label for="">SELECCIONE EL TEMA</label>
                 
                 <div class="dropdown mb-2 ">
-                    <select name="" id="" class="form-control"
-                      name="pais" [value]="allThemes[0]?.title"                      
+                    <select id="" class="form-control"
+                      name="themeSelected" [value]="allThemes[0]?.title"                      
                     >
                       <option #drop class="dropdown-item" *ngFor="let theme of allThemes"                        
                         >{{theme.title | uppercase}}
@@ -34,6 +47,19 @@
                     <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
                     <input type="text" [(ngModel)]="questionData.ri3" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     
+                    <div *ngIf="moreQ" class="animated fadeIn">
+
+                      <label class="label text-danger" for="respI2">RESPUESTA INCORRECTA</label>
+                      <input type="text" [(ngModel)]="questionData.ri4" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                      
+                      <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
+                      <input type="text" [(ngModel)]="questionData.ri5" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    </div>
+                    
+                    
+
+                      
+
                 </div>
 
 
@@ -75,6 +101,23 @@
                       </label>
                     </div>
                     
+                    <div *ngIf="moreQ" class="animated fadeIn">
+
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            {{questionData.ri4}}
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            {{questionData.ri5}}
+                        </label>
+                      </div>
+
+                    </div>
+
                 </div>                
 
 

@@ -10,6 +10,10 @@ import { ThemesService } from '../../services/themes.service';
 export class RecordsComponent implements OnInit {
 
   data: cardData[] = []
+  dataFiltered: cardData[] = []
+
+  obs = false
+
   constructor(private tService: ThemesService) {
     this.getAllThemes()
   }
@@ -27,4 +31,13 @@ export class RecordsComponent implements OnInit {
     )
   }
 
+  search = (title: string) => {
+    this.dataFiltered = this.data.filter((cd: cardData) => cd.title?.toLowerCase().includes(title.toLowerCase()))    
+    
+  
+    if (title.length > 0) {
+      this.obs = true
+    }
+
+  }
 }

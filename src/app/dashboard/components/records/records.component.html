@@ -22,7 +22,7 @@
                    >    
             <div class="search">
                 <i class="fa fa-fw fa-search"></i>
-                <input #title id="Buscar" type="text">
+                <input (keyup)="search(title.value.trim())" #title id="Buscar" type="text">
             </div>
     
         </div>
@@ -33,32 +33,63 @@
     <hr class="mb-3">
 
 
-      <div class="mt-4">
+      <div *ngIf="!obs" class="animtated fadeIn">
 
-        <div *ngFor="let title of data; let i = index">
+        <div class="mb-4" *ngFor="let title of data; let i = index">
           
           <h4 class="display-block">{{title.title | uppercase}}</h4>
           
           <table
           class="table table-bordered border-success">
-          <thead  style="background-color: rgba(248, 248, 248);">
+          <thead  [style.background-color]="title.bgColor">
+            <tr class="text-white">
+              <th scope="col">#</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">PUNTUACION</th>
+            </tr>
+          </thead>
+          <tbody class="animated fadeIn">
             <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">NOMBRE</th>
-                  <th scope="col">PUNTUACION</th>
-                </tr>
-              </thead>
-              <tbody class="animated fadeIn">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                </tr>                                  
-              </tbody>
-            </table>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+            </tr>                                  
+          </tbody>
+          </table>
       </div>
 
     </div>
+
+    <div *ngIf="obs" class="animtated fadeIn">
+
+      <div class="mb-4" *ngFor="let title of dataFiltered; let i = index">
+        
+        <h4 class="display-block">{{title.title | uppercase}}</h4>
+        
+        <table
+        class="table table-bordered border-success">
+        <thead  [style.background-color]="title.bgColor">
+          <tr class="text-white">
+            <th scope="col">#</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">PUNTUACION</th>
+          </tr>
+        </thead>
+        <tbody class="animated fadeIn">
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+          </tr>                                  
+        </tbody>
+        </table>
+    </div>
+
+  </div>
+
+  <div class="alert alert-danger animated fadeIn " role="alert" *ngIf="obs && dataFiltered.length === 0">
+    Su termino de bsuqueda no pertenece a ningun titulo! <i class="far fa-frown"></i>
+  </div>
         
 </div>
 

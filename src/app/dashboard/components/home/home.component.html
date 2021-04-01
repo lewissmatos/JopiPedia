@@ -32,7 +32,7 @@
 
     <hr class="mb-3">
     
-    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="!obs">
+    <div class="row animated fadeIn fast" style="margin-bottom: 70px;" *ngIf="!obs">
 
         <app-card 
         *ngFor="let cards of data"  [cardData]="cards" 
@@ -48,7 +48,7 @@
                 
     </div >
 
-    <div class="row animated fadeIn" style="margin-bottom: 70px;" *ngIf="dataFiltered.length > 0">
+    <div class="row animated fadeIn fast" style="margin-bottom: 70px;" *ngIf="dataFiltered.length > 0">
 
           
         <app-card 
@@ -65,7 +65,7 @@
 
     </div >
 
-    <div class="alert alert-danger animated fadeIn" role="alert" *ngIf="obs && dataFiltered.length === 0">
+    <div class="alert alert-danger animated fadeIn " role="alert" *ngIf="obs && dataFiltered.length === 0">
         Su termino de bsuqueda no pertenece a ningun titulo! <i class="far fa-frown"></i>
     </div>
 
