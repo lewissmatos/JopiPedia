@@ -3,20 +3,8 @@
     <div class="row pb-3">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
             <form action="" class="form-group" autocomplete="off">
-              <div class="row">
-                <div class="col-lg-8 col-md-6 col-sm-7 col-12">
-
-                  <h3 class="mb-3 l">Agregar pregunta</h3>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-5 col-12 ">
-                  <button       [ngClass]="{'btn-info': !moreQ, 'btn-danger': moreQ}"
-                            class="mt-2 float-right btn "
-                            (click)="AddMoreQ()"
-                    >{{!moreQ? 'Más respuestas': 'Menos respuestas'}}
-                  </button>
-                </div>
-              </div>  
+             
+                  <h3 class="mb-3 l">Agregar pregunta</h3>                              
 
                 <label for="">SELECCIONE EL TEMA</label>
                 
@@ -47,15 +35,7 @@
                     
                     <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
                     <input type="text" [(ngModel)]="questionDataFinal.respuestas[3].desc" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
-                    
-                    <div *ngIf="moreQ" class="animated fadeIn">
-
-                      <label class="label text-danger" for="respI2">RESPUESTA INCORRECTA</label>
-                      <input type="text" [(ngModel)]="questionDataFinal.respuestas[4].desc" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
-                      
-                      <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
-                      <input type="text" [(ngModel)]="questionDataFinal.respuestas[5].desc" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
-                    </div>
+                                        
                    </div>
             </form>
         </div>
@@ -95,22 +75,7 @@
                       </label>
                     </div>
                     
-                    <div *ngIf="moreQ" class="animated fadeIn">
-
-                      <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            {{questionData.ri4}}
-                        </label>
-                      </div>
-                      <div class="form-check mb-2">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            {{questionData.ri5}}
-                        </label>
-                      </div>
-
-                    </div>
+                   
 
                 </div>                
 
@@ -132,7 +97,7 @@
         <h3 class="mb-3">Temas</h3>
 
         <div *ngFor="let theme of allThemes" class="mb-3">
-          <button class="btn-block btn "[style.background-color]="theme.bgColor">{{theme.title | uppercase}}</button>
+          <button (click)="sendThemeId(theme)" class="btn-block btn "[style.background-color]="theme.bgColor">{{theme.title | uppercase}}</button>
         </div>
 
       </div>
@@ -140,18 +105,18 @@
       <div class="col-lg-8 col-md-9 col-sm-12 col-12">
 
         <div class="container mt-2 animated fadeIn fast mb-3">
-          <h3 class="mb-3">Preguntas</h3>
+          <h3 *ngIf="v" class="mb-3">Preguntas de {{themeId.title}}</h3>
   
           <ol class="list-group list-group-numbered">
-                  <li class="list-group-item animated fadeIn" *ngFor="let quest of questionDataFinal.desc; let i = index">
+                  <li class="list-group-item animated fadeIn" *ngFor="let q of allQData; let i = index">
                       <b>
-                         {{i + 1}}.  {{quest}}
+                         {{i + 1}}.  {{q.desc}}
                       </b> 
                       <div class="float-right">
                           <button  class="btn btn-success">
                               <i class="fas fa-pen"></i>
                           </button>
-                          <button  class="ml-2 btn btn-danger">
+                          <button (click)="deleteQuestion(q._id)" class="ml-2 btn btn-danger">
                               <i class="fas fa-trash"></i>
                           </button>
                       </div>

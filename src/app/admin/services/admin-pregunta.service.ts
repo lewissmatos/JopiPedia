@@ -18,7 +18,7 @@ export class AdminPreguntaService {
     })
   }
 
-  getPreguntaByTemaId(id: string) {
+  getPreguntaByTemaId(id: any) {
     return this.http.get<any>(this.api + 'getbytemaid/' + id, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
@@ -43,7 +43,7 @@ export class AdminPreguntaService {
   }
   
   deletePregunta(id: any) {
-    return this.http.post<any>(this.api + id, {
+    return this.http.delete<any>(this.api + id, {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
       })

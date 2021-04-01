@@ -33,13 +33,9 @@ export class AdminPreguntasComponent implements OnInit {
       { desc: '', correcta: true },
       { desc: '', correcta: false },
       { desc: '', correcta: false },
-      { desc: '', correcta: false },
-      { desc: '', correcta: false },
-      { desc: '', correcta: false}
+      { desc: '', correcta: false },     
     ]
   }
-
-  
   
   constructor(private tService: ThemesService, private pService: AdminPreguntaService) {
     this.getAllThemes()
@@ -59,16 +55,9 @@ export class AdminPreguntasComponent implements OnInit {
   }
 
   createQuestion() {
-    
-    
+      
     this.questionDataFinal = {...this.questionDataFinal, tema: this.tema}
     console.log(this.questionDataFinal)
-    
-    if (this.questionDataFinal.respuestas[4].desc == '' ) {
-       this.questionDataFinal.respuestas.splice(4,1)
-       this.questionDataFinal.respuestas.splice(4,1)
-      
-    }
     
     console.log(this.questionDataFinal)
 
@@ -80,17 +69,38 @@ export class AdminPreguntasComponent implements OnInit {
       )    
   }
 
-  AddMoreQ() {
-    this.moreQ = !this.moreQ
-  }
-
   changeTheme() {
     console.log(this.tema)
     this.tBgColor = this.allThemes.find(x => x._id == this.tema)?.bgColor
     console.log(this.tBgColor)
   }
-
-  getQuestionByTheme() {
-    //this.pService.g
+  
+  themeId: cardData = {}
+  v: boolean = false
+  sendThemeId(theme: any) {
+    this.v = true
+    this.themeId = theme
+    this.getQuestionByTheme()
   }
+
+  allQData: any = []
+  getQuestionByTheme() {
+    this.pService.getPreguntaByTemaId(this.themeId._id)
+      .subscribe(
+        res => {
+          this.allQData = res.data
+          console.log(this.allQData)
+      }, error => console.log(error)
+    )
+  }
+
+  deleteQuestion(idP: string) {
+    this.pService.deletePregunta(idP)
+      .subscribe(
+        res => {
+          this.getQuestionByTheme()
+      }
+    )
+  }
+
 }
