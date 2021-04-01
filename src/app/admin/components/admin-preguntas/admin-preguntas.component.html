@@ -1,1 +1,89 @@
-<p>admin-preguntas works!</p>
+<div class="container mt-3 animated fadeIn fast" >
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+            <form action="" class="form-group" autocomplete="off">
+                <h3 class="mb-3 l">Agregar pregunta</h3>
+
+                <label for="">SELECCIONE EL TEMA</label>
+                
+                <div class="dropdown mb-2 ">
+                    <select name="" id="" class="form-control"
+                      name="pais" [value]="allThemes[0]?.title"                      
+                    >
+                      <option #drop class="dropdown-item" *ngFor="let theme of allThemes"                        
+                        >{{theme.title | uppercase}}
+                      </option>
+                    </select>
+                  </div>
+
+                <div>
+
+                    <label class="label" for="question">PREGUNTA</label>
+                    <input type="text" [(ngModel)]="questionData.question" name="question" id="titulo" class="form-control mb-2" placeholder="Pregunta" >
+                    
+                    <label class="label text-success" for="respC">RESPUESTA CORRECTA</label>
+                    <input type="text" [(ngModel)]="questionData.rc" name="desc" id="respC" class="form-control mb-2" placeholder="Respuesta correcta" >
+                    
+                    <label class="label text-danger" for="respI1">RESPUESTA INCORRECTA</label>
+                    <input type="text" [(ngModel)]="questionData.ri1"  name="desc" id="respI1" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    
+                    <label class="label text-danger" for="respI2">RESPUESTA INCORRECTA</label>
+                    <input type="text" [(ngModel)]="questionData.ri2" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    
+                    <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
+                    <input type="text" [(ngModel)]="questionData.ri3" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    
+                </div>
+
+
+            </form>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+
+            <h3 class="mb-3 ">Preview del tema</h3>            
+
+            <div class="question-window mb-3 col-12 "
+                >
+                <h4 style="color: white;">{{questionData.question}}?</h4>
+
+                <div>
+                    
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        {{questionData.rc}}
+                      </label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                          {{questionData.ri1}}
+                      </label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                          {{questionData.ri2}}
+                      </label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                          {{questionData.ri3}}
+                      </label>
+                    </div>
+                    
+                </div>                
+
+
+                <i class="fas fa-question float-right"  style="color: white; font-size: 50px; position: absolute; bottom: 15px; right: 15px;">
+                </i>
+            </div>
+
+            <button class="btn btn-success btn-block" (click)="createQuestion(data)">Agregar pregunta</button>
+        </div>        
+
+    </div>
+</div>
