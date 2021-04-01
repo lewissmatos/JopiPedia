@@ -83,10 +83,9 @@ export class AdminPreguntasComponent implements OnInit {
   sendThemeId(theme: any) {
     this.v = true
     this.themeId = theme
+    this.charg = true
     this.getQuestionByTheme()
 
-    this.charg = true
-    setTimeout( () => this.charg = false, 1600)
   }
 
   allQData: any = []
@@ -95,8 +94,8 @@ export class AdminPreguntasComponent implements OnInit {
       .subscribe(
         res => {
           this.allQData = res.data
-          console.log(this.allQData)
-      }, error => console.log(error)
+          this.charg = false
+        }, error => console.log(error)
     )
   }
 
