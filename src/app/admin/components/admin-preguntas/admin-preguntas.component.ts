@@ -77,10 +77,16 @@ export class AdminPreguntasComponent implements OnInit {
   
   themeId: cardData = {}
   v: boolean = false
+
+  charg = false
+
   sendThemeId(theme: any) {
     this.v = true
     this.themeId = theme
     this.getQuestionByTheme()
+
+    this.charg = true
+    setTimeout( () => this.charg = false, 1600)
   }
 
   allQData: any = []
@@ -95,12 +101,21 @@ export class AdminPreguntasComponent implements OnInit {
   }
 
   deleteQuestion(idP: string) {
-    this.pService.deletePregunta(idP)
-      .subscribe(
-        res => {
-          this.getQuestionByTheme()
-      }
-    )
+    Swal.fire({
+      icon: 'question',
+      background: '#758080',                
+      title: 'Eliminar',
+      html: '<p>Seguro que desea eliminar?</p>',
+      showCancelButton: true,
+      cancelButtonColor: '#FF7952',
+      confirmButtonColor: '#7AC0AB',
+    }).then (res => {if (res.isConfirmed) {
+      this.pService.deletePregunta(idP)
+        .subscribe(
+          res => {          
+            this.getQuestionByTheme()
+        }, error => console.log(error)
+      )      
+    }})
   }
-
 }

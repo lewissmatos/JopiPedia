@@ -88,10 +88,10 @@
         </div >        
 
     </div>
-
+    
+    <h3>Gestión de preguntas</h3>
     <div class="row pb-4">
 
-      <h3>Gestión de preguntas</h3>
       <div class="col-lg-4 col-md-3 col-sm-12 col-12 mt-3">
 
         <h3 class="mb-3">Temas</h3>
@@ -105,10 +105,17 @@
       <div class="col-lg-8 col-md-9 col-sm-12 col-12">
 
         <div class="container mt-2 animated fadeIn fast mb-3">
-          <h3 *ngIf="v" class="mb-3">Preguntas de {{themeId.title}}</h3>
-  
+
+          
+          <h3 *ngIf="v" class="mb-3 animated fadeIn fast">Preguntas de {{themeId.title}}</h3>
+          
           <ol class="list-group list-group-numbered">
-                  <li class="list-group-item animated fadeIn" *ngFor="let q of allQData; let i = index">
+            
+            <div *ngIf="allQData.length == 0 && v" class="alert " [ngClass]="{'alert-danger': !charg, 'alert-success': charg}">
+              {{charg? 'Cargando...': 'No exiten preguntas en este tema'}}
+            </div>
+
+                  <li class="list-group-item animated fadeIn fast" *ngFor="let q of allQData; let i = index">
                       <b>
                          {{i + 1}}.  {{q.desc}}
                       </b> 
