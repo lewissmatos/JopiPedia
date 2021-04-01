@@ -1,6 +1,6 @@
 <div class="container mt-3 animated fadeIn fast" >
 
-    <div class="row pb-4">
+    <div class="row pb-3">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
             <form action="" class="form-group" autocomplete="off">
               <div class="row">
@@ -22,9 +22,10 @@
                 
                 <div class="dropdown mb-2 ">
                     <select id="" class="form-control"
-                      name="themeSelected" [value]="allThemes[0]?.title"                      
-                    >
-                      <option #drop class="dropdown-item" *ngFor="let theme of allThemes"                        
+                      name="themeSelected" [value]="allThemes[0]?.title" [(ngModel)]="tema"                     
+                      (change)="changeTheme()"
+                      >
+                      <option #drop class="dropdown-item"  [value]="theme._id" *ngFor="let theme of allThemes"                        
                         >{{theme.title | uppercase}}
                       </option>
                     </select>
@@ -33,46 +34,39 @@
                 <div>
 
                     <label class="label" for="question">PREGUNTA</label>
-                    <input type="text" [(ngModel)]="questionData.question" name="question" id="titulo" class="form-control mb-2" placeholder="Pregunta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.desc" name="question" id="titulo" class="form-control mb-2" placeholder="Pregunta" >
                     
                     <label class="label text-success" for="respC">RESPUESTA CORRECTA</label>
-                    <input type="text" [(ngModel)]="questionData.rc" name="desc" id="respC" class="form-control mb-2" placeholder="Respuesta correcta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[0].desc" name="desc" id="respC" class="form-control mb-2" placeholder="Respuesta correcta" >
                     
                     <label class="label text-danger" for="respI1">RESPUESTA INCORRECTA</label>
-                    <input type="text" [(ngModel)]="questionData.ri1"  name="desc" id="respI1" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[1].desc"  name="desc" id="respI1" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     
                     <label class="label text-danger" for="respI2">RESPUESTA INCORRECTA</label>
-                    <input type="text" [(ngModel)]="questionData.ri2" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[2].desc" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     
                     <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
-                    <input type="text" [(ngModel)]="questionData.ri3" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[3].desc" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     
                     <div *ngIf="moreQ" class="animated fadeIn">
 
                       <label class="label text-danger" for="respI2">RESPUESTA INCORRECTA</label>
-                      <input type="text" [(ngModel)]="questionData.ri4" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                      <input type="text" [(ngModel)]="questionDataFinal.respuestas[4].desc" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                       
                       <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
-                      <input type="text" [(ngModel)]="questionData.ri5" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                      <input type="text" [(ngModel)]="questionDataFinal.respuestas[5].desc" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     </div>
-                    
-                    
-
-                      
-
-                </div>
-
-
+                   </div>
             </form>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
 
-            <h3 class="mb-3 ">Preview del tema</h3>            
+            <h3 class="mb-3 ">Preview de la pregunta</h3>            
 
-            <div class="question-window mb-3 col-12 "
+            <div [style.border-color]="tBgColor" class="question-window mb-3 col-12 "
                 >
-                <h4 style="color: white;">{{questionData.question}}?</h4>
+                <h4 [style.color]="tBgColor">{{questionData.question}}?</h4>
 
                 <div>
                     
@@ -121,12 +115,55 @@
                 </div>                
 
 
-                <i class="fas fa-question float-right"  style="color: white; font-size: 50px; position: absolute; bottom: 15px; right: 15px;">
+                <i class="fas fa-question float-right" [style.color]="tBgColor" style="color: white; font-size: 50px; position: absolute; bottom: 15px; right: 15px;">
                 </i>
             </div>
 
-            <button class="btn btn-success btn-block" (click)="createQuestion(data)">Agregar pregunta</button>
+            <button class="btn btn-success btn-block" (click)="createQuestion()">Agregar pregunta</button>
         </div >        
+
+    </div>
+
+    <div class="row pb-4">
+
+      <h3>Gestión de preguntas</h3>
+      <div class="col-lg-4 col-md-3 col-sm-12 col-12 mt-3">
+
+        <h3 class="mb-3">Temas</h3>
+
+        <div *ngFor="let theme of allThemes" class="mb-3">
+          <button class="btn-block btn "[style.background-color]="theme.bgColor">{{theme.title | uppercase}}</button>
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 col-md-9 col-sm-12 col-12">
+
+        <div class="container mt-2 animated fadeIn fast mb-3">
+          <h3 class="mb-3">Preguntas</h3>
+  
+          <ol class="list-group list-group-numbered">
+                  <li class="list-group-item animated fadeIn" *ngFor="let quest of questionDataFinal.desc; let i = index">
+                      <b>
+                         {{i + 1}}.  {{quest}}
+                      </b> 
+                      <div class="float-right">
+                          <button  class="btn btn-success">
+                              <i class="fas fa-pen"></i>
+                          </button>
+                          <button  class="ml-2 btn btn-danger">
+                              <i class="fas fa-trash"></i>
+                          </button>
+                      </div>
+  
+                  </li>                
+             
+          </ol>
+      </div>
+
+      </div>
+      
+      
 
     </div>
 </div>
