@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+  
+  activatedH = false
+  activatedR = false
+  activatedP = false
 
   ngOnInit(): void {
+    this.activatedH = true
+  }  
+
+  goHome() {
+    this.router.navigate(['/dashboard/home'])
+    this.activatedH = true
+    this.activatedR = false
+    this.activatedP = false
   }
-  
-  
+
+  goRecords() {
+    this.router.navigate(['/dashboard/records'])
+    this.activatedR = true
+    this.activatedH = false
+    this.activatedP = false
+  }
+  goProfile() {
+    this.router.navigate(['/dashboard/profile'])
+    this.activatedP = true
+    this.activatedH = false
+    this.activatedR = false
+  }
 
 }

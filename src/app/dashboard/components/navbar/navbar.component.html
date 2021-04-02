@@ -1,5 +1,5 @@
 
-<nav class="navbar nav-bg p-4" style="width: 100%;">
+<nav class="navbar nav-bg p-4 w-100">
   
   <div class="container">
     <div class="w-100">
@@ -7,23 +7,14 @@
       <div 
       >
         <div class="row">
-          <div class="col-4 text-center" >
-            <p class="nav-items " routerLink="/dashboard/home" >
-              <i class="fas fa-home" ></i>
-              <!-- <span id="oo"  class="ml-2">Inicio</span> -->
-            </p>
+          <div class="col-4 text-center" (click)="goHome()" >        
+              <i [ngClass]="{'text-primary': activatedH}" class="fas fa-home nav-items" ></i>            
           </div>
-          <div class="col-4 text-center">
-            <p class="nav-items " routerLink="/dashboard/records">
-              <i class="far fa-clipboard"></i>
-<!--               <span id="oo" class="ml-2">Records</span>
- -->            </p>
+          <div class="col-4 text-center"  (click)="goRecords()">            
+              <i [ngClass]="{'text-primary': activatedR}" class="far fa-clipboard nav-items"></i>      
           </div>
-          <div class="col-4 text-center" >
-            <p class="nav-items " routerLink="/dashboard/profile">
-              <i class="fas fa-user"></i>
-<!--               <span id="oo" class="ml-2">Perfil</span>
- -->            </p>
+          <div class="col-4 text-center"  (click)="goProfile()">          
+              <i [ngClass]="{'text-primary': activatedP}" class="fas fa-user nav-items"></i>
           </div>
         </div>
         

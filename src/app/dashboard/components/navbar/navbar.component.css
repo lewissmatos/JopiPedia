@@ -1,22 +1,12 @@
 .nav-bg{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: black;
-    font-size: 18px;
 }
 
 .nav-items{
     color: black;
     cursor: pointer;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-.btn-profile{ 
-    font-size: 22px;
-    cursor: pointer;
-}
-
-
-.no-bold{
-    font-weight: normal;
-}
