@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   activatedH = false
   activatedR = false
   activatedP = false
+  activatedS = false
 
   ngOnInit(): void {
     this.activatedH = true
@@ -23,6 +24,8 @@ export class NavbarComponent implements OnInit {
     this.activatedH = true
     this.activatedR = false
     this.activatedP = false
+    this.activatedS = false
+
   }
 
   goRecords() {
@@ -30,12 +33,24 @@ export class NavbarComponent implements OnInit {
     this.activatedR = true
     this.activatedH = false
     this.activatedP = false
+    this.activatedS = false
+
+  }
+  goSearchPeople() {
+    this.router.navigate(['/dashboard/search-people'])
+    this.activatedS = true
+    this.activatedH = false
+    this.activatedP = false
+    this.activatedR = false
+
   }
   goProfile() {
     this.router.navigate(['/dashboard/profile'])
     this.activatedP = true
     this.activatedH = false
     this.activatedR = false
+    this.activatedS = false
+
   }
 
 }

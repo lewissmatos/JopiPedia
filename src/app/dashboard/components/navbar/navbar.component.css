@@ -1,12 +1,10 @@
 .nav-bg{
     background-color: rgb(255, 255, 255);
-    color: black;
 }
 
 .nav-items{
-    color: black;
+    color: rgb(37, 37, 37);
     cursor: pointer;
-    font-weight: bold;
     font-size: 25px;
 }
 

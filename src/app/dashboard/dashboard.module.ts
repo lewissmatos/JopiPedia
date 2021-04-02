@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RecordsComponent } from './components/records/records.component';
 import { TestComponent } from './components/test/test.component';
+import { SearchPeopleComponent } from './components/search-people/search-people.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TestComponent } from './components/test/test.component';
     CardComponent,
     ProfileComponent,
     RecordsComponent,
-    TestComponent,    
+    TestComponent,
+    SearchPeopleComponent,    
   ],
   imports: [
     CommonModule,
