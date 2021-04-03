@@ -56,6 +56,17 @@ export class TestComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  previousQ() {
+    this.i = this.i- 1
+    console.log(this.i)
+    this.getAllQuestionsByTheme()
+  }
+
+  nextQ() {
+    this.i =+ 1
+    console.log(this.i)
+    this.getAllQuestionsByTheme()
+  }
 
   getAllQuestionsByTheme() {
     this.pService.getPreguntaByTemaId(this.getLink())
@@ -67,15 +78,5 @@ export class TestComponent implements OnInit {
           console.log(this.currentResps)
         }
     )
-  }
-  
-  previousQ() {
-    this.i = this.i- 1
-    console.log(this.i)
-  }
-
-  nextQ() {
-    this.i =+ 1
-    console.log(this.i)
   }
 }
