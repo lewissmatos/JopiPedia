@@ -4,6 +4,8 @@ import { cardData } from '../../Models/cardData.model';
 import { ThemesService } from '../../services/themes.service';
 
 import Swal from 'sweetalert2'
+import { AdminPreguntaService } from 'src/app/admin/services/admin-pregunta.service';
+import { QuestionModel, Resp } from 'src/app/admin/Models/Question.model';
 
 @Component({
   selector: 'app-test',
@@ -18,9 +20,16 @@ export class TestComponent implements OnInit {
     title: '',
     desc: '',
   }
-  constructor(private router: ActivatedRoute, private tService: ThemesService) {
+  
+ 
+  constructor(private router: ActivatedRoute, private tService: ThemesService, private pService: AdminPreguntaService) {
     this.getThemeById()
+    this.getAllQuestionsByTheme()
   }
+
+  i = 0  
+  currentQuestion: QuestionModel[] = []
+  currentResps: Resp[] = []
 
   getLink() {
     return this.router.snapshot.params.id
@@ -48,4 +57,25 @@ export class TestComponent implements OnInit {
 
   }
 
+  getAllQuestionsByTheme() {
+    this.pService.getPreguntaByTemaId(this.getLink())
+      .subscribe(
+        res => {
+          this.currentQuestion = res.data
+          console.log(this.currentQuestion)
+          this.currentResps = this.currentQuestion[this.i].respuestas
+          console.log(this.currentResps)
+        }
+    )
+  }
+  
+  previousQ() {
+    this.i = this.i- 1
+    console.log(this.i)
+  }
+
+  nextQ() {
+    this.i =+ 1
+    console.log(this.i)
+  }
 }
