@@ -22,7 +22,11 @@ export class TestComponent implements OnInit {
   }
   
  
-  constructor(private router: ActivatedRoute, private tService: ThemesService, private pService: AdminPreguntaService) {
+  constructor(
+    private router: ActivatedRoute, 
+    private tService: ThemesService, 
+    private pService: AdminPreguntaService
+  ) {
     this.getThemeById()
     this.getAllQuestionsByTheme()
   }
@@ -63,7 +67,7 @@ export class TestComponent implements OnInit {
   }
 
   nextQ() {
-    this.i =+ 1
+    this.i = this.i + 1
     console.log(this.i)
     this.getAllQuestionsByTheme()
   }
