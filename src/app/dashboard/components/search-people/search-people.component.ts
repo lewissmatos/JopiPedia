@@ -1,3 +1,5 @@
+import { User } from './../../../auth/Models/user.model';
+import { UserServicesService } from './../../services/user-services.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPeopleComponent implements OnInit {
 
-  constructor() { }
+  allUsers: User[] = []
+
+  constructor(
+    private userService: UserServicesService
+  ) { }
 
   ngOnInit(): void {
+    this.getUsers()
   }
 
+  getUsers() {
+    this.userService.getAllUsers().subscribe(
+      res => {
+        this.allUsers = res.users.filter((x: any) => x.isAdmin === false)
+        console.log(this.allUsers)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
 
   search(userName: string) {
 

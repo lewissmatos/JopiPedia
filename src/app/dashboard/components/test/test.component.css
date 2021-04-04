@@ -17,4 +17,7 @@
     border-radius: 20px;
   }
 
-
+  .resBtn :hover{
+    background-color: chartreuse;
+    color: red;
+  }

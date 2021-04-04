@@ -33,4 +33,8 @@ export class UserServicesService {
     })
   }
 
+  getAllUsers() {    
+    return this.http.get<any>(this.api + '/getallusers')
+  }
+
 }
