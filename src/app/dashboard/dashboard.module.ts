@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { RecordsComponent } from './components/records/records.component';
 import { TestComponent } from './components/test/test.component';
 import { SearchPeopleComponent } from './components/search-people/search-people.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FooterNewComponent } from './components/footer-new/footer-new.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { SearchPeopleComponent } from './components/search-people/search-people.
     ProfileComponent,
     RecordsComponent,
     TestComponent,
-    SearchPeopleComponent,    
+    SearchPeopleComponent,
+    FooterComponent,
+    FooterNewComponent,    
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,8 @@ import { SearchPeopleComponent } from './components/search-people/search-people.
   ],
   exports: [
     NavbarComponent,
-    SidebarComponent
+    FooterComponent,
+    SidebarComponent,
   ]
 })
 export class DashboardModule { }
