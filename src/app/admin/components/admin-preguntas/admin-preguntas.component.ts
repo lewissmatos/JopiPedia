@@ -64,6 +64,12 @@ export class AdminPreguntasComponent implements OnInit {
     this.pService.createPregunta(this.questionDataFinal)
       .subscribe(
         res => {
+          Swal.fire({
+            icon: 'success',
+            background: '#758080',                
+            html: '<p>Pregunta agregada exitosamente!</p>',
+            confirmButtonColor: '#7AC0AB'
+          })
           console.log(res.data)
         }, error => console.log(error)
       )    
