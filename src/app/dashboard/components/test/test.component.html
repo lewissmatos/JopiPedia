@@ -63,12 +63,16 @@
 
             <div class="px-3">
 
-                <button class="animated fadeIn fast btn btn-block mb-4 resBtn p-2"
+                <div class="but">
+                    <button class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
                     *ngFor="let resp of currentResps; let p = index" [style.background-color]="currentTheme.bgColor"><b>{{p + 1}}. {{resp.desc}}</b>
                 </button>
-            
+                </div>
+                
                 <i class="fas fa-question float-right" [style.color]="currentTheme.bgColor" style=" font-size: 40px; position: absolute; bottom: 15px; right: 15px;">
                 </i>
+
+                <h1 [style.color]="currentTheme.bgColor" class="float-left" style="position: absolute; bottom: 1px; left: 15px;">#{{i + 1}}</h1>
             
             </div>
         </div>
