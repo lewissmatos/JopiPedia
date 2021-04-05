@@ -33,12 +33,17 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
   }
+
+  charg = true
   
+ 
   getUserInfo() {
+  
     this.userService.getUserInfo().subscribe(
       res => {
         this.currentUser = res.user
         this.editedUserData = { ...this.currentUser }
+        this.charg = false
       },
       error => console.log(error)
     )

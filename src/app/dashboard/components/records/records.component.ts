@@ -21,11 +21,13 @@ export class RecordsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  charg = true
+
   getAllThemes() {
     return this.tService.getAllThemes()
       .subscribe(
         res => {
-          console.log(res)
+          this.charg = false
           this.data = res.data
         }
     )

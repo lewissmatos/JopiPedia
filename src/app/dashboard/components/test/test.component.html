@@ -65,7 +65,8 @@
 
                 <div class="but">
                     <button class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
-                    *ngFor="let resp of currentResps; let p = index" [style.background-color]="currentTheme.bgColor"><b>{{p + 1}}. {{resp.desc}}</b>
+                    *ngFor="let resp of currentResps; let p = index" [style.background-color]="currentTheme.bgColor">
+                    <b class="float-left">{{p + 1}}.</b><b> {{resp.desc}}</b>
                 </button>
                 </div>
                 

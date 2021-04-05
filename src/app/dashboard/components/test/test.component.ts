@@ -32,6 +32,7 @@ export class TestComponent implements OnInit {
   }
 
   i = 0  
+
   currentQuestion: QuestionModel[] = []
   currentResps: Resp[] = []
 
@@ -62,16 +63,12 @@ export class TestComponent implements OnInit {
   }
   previousQ() {
     this.i = this.i- 1
-    console.log(this.i)
     this.currentResps = this.currentQuestion[this.i].respuestas
-    console.log(this.currentResps)
   }
 
   nextQ() {
     this.i = this.i + 1
-    console.log(this.i)
     this.currentResps = this.currentQuestion[this.i].respuestas
-    console.log(this.currentResps)
   }
 
   getAllQuestionsByTheme() {
@@ -79,7 +76,6 @@ export class TestComponent implements OnInit {
       .subscribe(
         res => {
           this.currentQuestion = res.data
-          console.log(this.currentQuestion)
           this.currentResps = this.currentQuestion[this.i].respuestas
         }
     )

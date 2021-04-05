@@ -36,10 +36,12 @@ export class HomeComponent implements OnInit {
 
   }
 
+  charg = true
   getAllThemes() {
     this.themeService.getAllThemes().subscribe(
       res => {
         this.data = res.data
+        this.charg = false
       },
       error => console.log(error)
     )
