@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     }
     else {
       this.isOtherProfile = true
-      this.getForeignPerfil(this.acRouter.snapshot.params.user)
+      this.getForeignPerfil(this.username)
     }
   }
 
