@@ -20,8 +20,8 @@
                     col-md-6
                     col-lg-4"                    
                    >    
-            <div class="search">
-              <input (keyup)="search(title.value.trim())" #title id="Buscar" type="text">
+            <div class="search"  style="color: rgb(27, 27, 27) !important;">
+              <input (keyup)="search(title.value.trim())" #title id="Buscar" placeholder="Buscar tema o usuario" type="text">
               <i class="fa fa-fw fa-search"></i>
             </div>
     
@@ -78,24 +78,36 @@
 
     <div *ngIf="obs" class="animtated fadeIn">
 
-      <div class="mb-4" *ngFor="let title of dataFiltered; let i = index">
-        
-        <h4 class="display-block">{{title.title | uppercase}}</h4>
+      <div class="mb-4" *ngFor="let scores of dataFiltered; let i = index">
+          
+        <h5 class="d-inline-block badge-title p-2 text-white" [style.background-color]="scores.tema.bgColor">{{scores.tema.title | uppercase}}</h5>
         
         <table
-        class="table table-bordered border-success">
-        <thead  [style.background-color]="title.bgColor">
+        class="table table-bordered border-success" style="margin-top: -10px;">
+        <thead  [style.background-color]="scores.tema.bgColor">
           <tr class="text-white">
             <th scope="col">#</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">PUNTUACION</th>
+            <th scope="col">USUARIO</th>
+            <th scope="col">PUNTOS</th>
+            <th scope="col">FECHA</th>
           </tr>
         </thead>
         <tbody class="animated fadeIn">
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
+          <tr *ngFor="let user of scores.scores; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td >
+              <b style="cursor: pointer;" [routerLink]="['/dashboard/profile', user.user.user]" >@{{user.user.user}}</b>
+            </td>
+            <td>
+              <b class="p-2 badge" [style.background-color]="scores.tema.bgColor" >
+                {{user.score}}
+              </b>
+            </td>
+            <td>
+              <b>
+                {{user.createdAt | date}}
+              </b>
+            </td>
           </tr>                                  
         </tbody>
         </table>
@@ -104,7 +116,7 @@
   </div>
 
   <div class="alert alert-danger animated fadeIn " role="alert" *ngIf="obs && dataFiltered.length === 0">
-    Su termino de bsuqueda no pertenece a ningun titulo! <i class="far fa-frown"></i>
+    Su termino de bsuqueda no pertenece a ningun titulo o nombre de usuario! <i class="far fa-frown"></i>
   </div>
         
 </div>

@@ -11,8 +11,7 @@ import { UserServicesService } from '../../services/user-services.service';
 })
 export class RecordsComponent implements OnInit {
 
-  data: cardData[] = []
-  dataFiltered: cardData[] = []
+  dataFiltered: any[] = []
 
   obs = false
 
@@ -21,7 +20,6 @@ export class RecordsComponent implements OnInit {
               private scoreService: ScoreService,
               private userService: UserServicesService
               ) {
-    this.getAllThemes()
     this.getHighestScores()
   }
 
@@ -29,34 +27,21 @@ export class RecordsComponent implements OnInit {
   }
 
   charg = true
-
-
-  getAllThemes() {
-    return this.tService.getAllThemes()
-      .subscribe(
-        res => {
-          this.charg = false
-          this.data = res.data
-        }
-    )
-  }
-
+  
   highestScores: any[] = []
   getHighestScores(){
     return this.scoreService.getHighestScores()
     .subscribe(
       res => {
+        this.charg = false
         console.log(res.data)
         this.highestScores = res.data
       }
     )
   }
 
-
   search = (title: string) => {
-    this.dataFiltered = this.data.filter((cd: cardData) => cd.title?.toLowerCase().includes(title.toLowerCase()))    
-    
-  
+    this.dataFiltered = this.highestScores.filter((arr: any) => arr.tema.title?.toLowerCase().includes(title.toLowerCase()) || arr.scores.find((x: any) => x.user.user.includes(title.toLowerCase())))     
     if (title.length > 0) {
       this.obs = true
     }
