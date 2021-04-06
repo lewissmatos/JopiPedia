@@ -112,9 +112,13 @@
               >
               <div class="ms-2 me-auto">
                 <div class="fw-bold"><b>{{scores.tema.title | uppercase}}</b></div>
-                <b class=" p-2 badge" [style.background-color]="scores.tema.bgColor">
-                  {{scores.score}}
-                </b>
+                Puntos: <b class=" p-1 px-2 badge mb-1" [style.background-color]="scores.tema.bgColor">
+                  {{scores.score}} 
+                </b> 
+                <br>
+                Fecha: <b class=" p-1 px-2 badge " [style.background-color]="scores.tema.bgColor">
+                  {{scores.createdAt | date}} 
+                </b> 
               </div>
             </li>       
           </ol>
