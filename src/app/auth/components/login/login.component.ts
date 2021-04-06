@@ -15,7 +15,7 @@ declare const $:any
 })
 export class LoginComponent implements OnInit {
 
-  formData!: FormGroup;
+  formData!: FormGroup
   userData!: User
 
   constructor(
