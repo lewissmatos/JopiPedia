@@ -20,7 +20,7 @@ export class SearchPeopleComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getAllUsers().subscribe(
+    this.userService.uuu.subscribe(
       res => {
         this.allUsers = res.users.filter((x: any) => x.isAdmin === false)
       },
@@ -31,7 +31,7 @@ export class SearchPeopleComponent implements OnInit {
   }
 
   obs = false
-  
+
   search(userName: string) {
     this.usersFiltered = this.allUsers.filter((x:any) => x.user?.toLowerCase().includes(userName.toLowerCase()))
     if (userName.length > 0) {
