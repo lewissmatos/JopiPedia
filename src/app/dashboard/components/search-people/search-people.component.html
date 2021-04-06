@@ -18,7 +18,7 @@
                    >
             <div class="search" style="color: rgb(27, 27, 27) !important;">
                 <input #userName type="text"  placeholder="Buscar usuario">
-                <i (click)="search(userName.value.trim())" class="fa fa-fw fa-search"></i>
+                <i style="cursor: pointer;" (click)="search(userName.value.trim())" class="fa fa-fw fa-search"></i>
             </div>
 
         </div>
@@ -27,7 +27,6 @@
 
     <div class="mt-2">
         <h4>Usuarios</h4>
-
             <ul *ngIf="!obs" class="list-group animated fadeIn fast">
                 <li *ngFor="let user of allUsers" class="list-group-item d-flex justify-content-between align-items-center">
                     <b>@{{user.user}}</b>
