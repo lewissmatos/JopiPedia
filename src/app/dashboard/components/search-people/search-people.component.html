@@ -18,7 +18,7 @@
                     col-lg-4"                    
                    >
             <div class="search" style="color: rgb(27, 27, 27) !important;">
-                <input (keyup)="search(userName.value.trim())" #userName autocomplete="off" type="text"  placeholder="Buscar usuario">
+                <input (keyup)="search(userName.value.trim())" value="" #userName type="text"  placeholder="Buscar usuario">
                 <i (click)="search(userName.value.trim())" class="fa fa-fw fa-search"></i>
             </div>
 
@@ -42,6 +42,11 @@
               <button class="btn btn-primary" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
             </li>
         </ul>
+
+        <div class="alert alert-danger animated fadeIn " role="alert" *ngIf="obs && usersFiltered.length === 0">
+            Su termino de bsuqueda no pertenece a ningun nombre de usuario! <i class="far fa-frown"></i>
+          </div>
+
     </div>
   
 </div>
