@@ -15,9 +15,7 @@ export class RecordsComponent implements OnInit {
 
   
   constructor(
-              private tService: ThemesService, 
               private scoreService: ScoreService,
-              private userService: UserServicesService
               ) {
                 this.getHighestScores()
   }
@@ -28,6 +26,7 @@ export class RecordsComponent implements OnInit {
   charg = true
   
   highestScores: any[] = []
+
   getHighestScores(){
     return this.scoreService.getHighestScores()
     .subscribe(
