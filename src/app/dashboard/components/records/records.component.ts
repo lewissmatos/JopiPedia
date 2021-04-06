@@ -35,7 +35,7 @@ export class RecordsComponent implements OnInit {
     )
   }
 
-  highestScores = []
+  highestScores: any[] = []
   getHighestScores(){
     return this.scoreService.getHighestScores()
     .subscribe(

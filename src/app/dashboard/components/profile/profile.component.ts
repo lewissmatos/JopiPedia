@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     }
   }
 
-  userLoggedScores = []
+  userLoggedScores: any[] = []
   getScoreUserLogged(){
     this.scoreService.getScoreUserLogged()
     .subscribe(
