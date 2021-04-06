@@ -26,6 +26,10 @@ export class ScoreService {
     })
   }
 
+  getScoresByUsername(username: any) {
+    return this.http.get<any>(this.API + '/scorebyusername/' + username)
+  }
+
   getHighestScores() {
     return this.http.get<any>(this.API + '/highestscores')
   }
