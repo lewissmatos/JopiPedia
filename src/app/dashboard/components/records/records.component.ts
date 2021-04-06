@@ -15,8 +15,9 @@ export class RecordsComponent implements OnInit {
 
   obs = false
 
-  constructor(private tService: ThemesService, scoresService: ScoreService) {
+  constructor(private tService: ThemesService, private scoreService: ScoreService) {
     this.getAllThemes()
+    this.getHighestScores()
   }
 
   ngOnInit(): void {
@@ -34,6 +35,16 @@ export class RecordsComponent implements OnInit {
     )
   }
 
+  highestScores = []
+  getHighestScores(){
+    return this.scoreService.getHighestScores()
+    .subscribe(
+      res => {
+        console.log(res.data)
+        this.highestScores = res.data
+      }
+    )
+  }
 
 
   search = (title: string) => {

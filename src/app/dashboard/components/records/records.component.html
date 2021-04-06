@@ -39,13 +39,13 @@
 
       <div *ngIf="!obs" class="animtated fadeIn fast">
 
-        <div class="mb-4" *ngFor="let title of data; let i = index">
+        <div class="mb-4" *ngFor="let scores of highestScores; let i = index">
           
-          <h4 class="display-block">{{title.title | uppercase}}</h4>
+          <h4 class="d-inline-block badge-title p-2 text-white" [style.background-color]="scores.tema.bgColor">{{scores.tema.title | uppercase}}</h4>
           
           <table
-          class="table table-bordered border-success">
-          <thead  [style.background-color]="title.bgColor">
+          class="table table-bordered border-success" style="margin-top: -10px;">
+          <thead  [style.background-color]="scores.tema.bgColor">
             <tr class="text-white">
               <th scope="col">#</th>
               <th scope="col">USUARIO</th>
@@ -53,10 +53,16 @@
             </tr>
           </thead>
           <tbody class="animated fadeIn">
-            <tr>
-              <th scope="row">1</th>
-              <td>ELJOPI</td>
-              <td>00</td>
+            <tr *ngFor="let user of scores.scores; let i = index">
+              <th scope="row">{{i + 1}}</th>
+              <td >
+                <b>@{{user.user.user}}</b>
+              </td>
+              <td>
+                <b class=" p-2 badge" [style.background-color]="scores.tema.bgColor" >
+                  {{user.score}}
+                </b>
+              </td>
             </tr>                                  
           </tbody>
           </table>
