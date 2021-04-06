@@ -86,9 +86,10 @@
                         col-md-10
                         col-sm-8
                         col-8">
-
-                        <input class="form-control w-50" [(ngModel)]="editedUserData.name" placeholder="Nombre" type="text" >
-                        <input class="form-control w-50 mt-2" [(ngModel)]="editedUserData.lName" placeholder="Apellido" type="text">
+                        <label for="name">NOMBRE</label>
+                        <input id="name" class="form-control w-50 mb-2" [(ngModel)]="editedUserData.name" placeholder="Nombre" type="text" >
+                        <label for="lName">APELLIDO</label>
+                        <input id="lName" class="form-control w-50" [(ngModel)]="editedUserData.lName" placeholder="Apellido" type="text">
                         
             </div>
             
