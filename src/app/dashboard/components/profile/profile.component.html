@@ -103,7 +103,7 @@
 
       <div class="col-12 col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
         <div class="mt-3">
-          <h3>{{isOtherProfile? 'Sus puntuaciones': 'Mis puntuaciones'}}</h3>
+          <h3>{{isOtherProfile? 'Sus records': 'Mis records'}}</h3>
           <div class="mt-4" style="margin-bottom: 40px;">
 
             <ol class="list-group list-group-numbered ">
@@ -112,7 +112,9 @@
               >
               <div class="ms-2 me-auto">
                 <div class="fw-bold"><b>{{scores.tema.title | uppercase}}</b></div>
-                {{scores.score}}
+                <b class=" p-2 badge" [style.background-color]="scores.tema.bgColor">
+                  {{scores.score}}
+                </b>
               </div>
             </li>       
           </ol>

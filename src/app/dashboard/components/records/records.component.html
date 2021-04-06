@@ -49,7 +49,8 @@
             <tr class="text-white">
               <th scope="col">#</th>
               <th scope="col">USUARIO</th>
-              <th scope="col">PUNTUACION</th>
+              <th scope="col">PUNTOS</th>
+              <th scope="col">FECHA</th>
             </tr>
           </thead>
           <tbody class="animated fadeIn">
@@ -59,8 +60,13 @@
                 <b style="cursor: pointer;" [routerLink]="['/dashboard/profile', user.user.user]" >@{{user.user.user}}</b>
               </td>
               <td>
-                <b class=" p-2 badge" [style.background-color]="scores.tema.bgColor" >
+                <b class="p-2 badge" [style.background-color]="scores.tema.bgColor" >
                   {{user.score}}
+                </b>
+              </td>
+              <td>
+                <b>
+                  24/03/2021
                 </b>
               </td>
             </tr>                                  
