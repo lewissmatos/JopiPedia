@@ -18,7 +18,7 @@
                     col-lg-4"                    
                    >
             <div class="search" style="color: rgb(27, 27, 27) !important;">
-                <input (keyup)="search(userName.value.trim())" #userName  id="Buscar" type="text"  placeholder="Buscar usuario">
+                <input (keyup)="search(userName.value.trim())" #userName autocomplete="off" type="text"  placeholder="Buscar usuario">
                 <i (click)="search(userName.value.trim())" class="fa fa-fw fa-search"></i>
             </div>
 
@@ -29,12 +29,12 @@
     <div class="mt-2">
         <h4>Usuarios</h4>
 
-        <ul *ngIf="!obs" class="list-group animated fadeIn fast">
-            <li *ngFor="let user of allUsers" class="list-group-item d-flex justify-content-between align-items-center">
-                <b>@{{user.user}}</b>
-                <button class="btn btn-primary" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
-            </li>
-        </ul>
+            <ul *ngIf="!obs" class="list-group animated fadeIn fast">
+                <li *ngFor="let user of allUsers" class="list-group-item d-flex justify-content-between align-items-center">
+                    <b>@{{user.user}}</b>
+                    <button class="btn btn-primary" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
+                </li>
+            </ul>
             
         <ul *ngIf="obs" class="list-group animated fadeIn fast">
             <li *ngFor="let user of usersFiltered" class="list-group-item d-flex justify-content-between align-items-center">
