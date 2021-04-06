@@ -13,19 +13,18 @@ export class RecordsComponent implements OnInit {
 
   dataFiltered: any[] = []
 
-  obs = false
-
+  
   constructor(
               private tService: ThemesService, 
               private scoreService: ScoreService,
               private userService: UserServicesService
               ) {
-    this.getHighestScores()
+                this.getHighestScores()
   }
 
   ngOnInit(): void {
   }
-
+  
   charg = true
   
   highestScores: any[] = []
@@ -37,9 +36,10 @@ export class RecordsComponent implements OnInit {
         console.log(res.data)
         this.highestScores = res.data
       }
-    )
-  }
-
+      )
+    }
+    
+  obs = false
   search = (title: string) => {
     this.dataFiltered = this.highestScores.filter((arr: any) => arr.tema.title?.toLowerCase().includes(title.toLowerCase()) || arr.scores.find((x: any) => x.user.user.includes(title.toLowerCase())))     
     if (title.length > 0) {

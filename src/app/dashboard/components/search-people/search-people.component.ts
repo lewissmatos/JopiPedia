@@ -10,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class SearchPeopleComponent implements OnInit {
 
   allUsers: User[] = []
-
+  usersFiltered: User[] = []
+  
   constructor(
     private userService: UserServicesService
   ) { }
@@ -31,7 +32,11 @@ export class SearchPeopleComponent implements OnInit {
     )
   }
 
+  obs = false
   search(userName: string) {
-
+    this.usersFiltered = this.allUsers.filter((x:any) => x.user?.toLowerCase().includes(userName.toLowerCase()))
+    if (userName.length > 0) {
+      this.obs = true
+    }
   }
 }
