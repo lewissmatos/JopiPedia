@@ -10,7 +10,7 @@
 }
 
 .jpBg{
-    background-color: rgb(241, 241, 241);
+    background-color: rgba(241, 241, 241, 0.6);
     border-radius: 20px;
     padding-top: 10px ;
     padding-bottom: 10px ;
