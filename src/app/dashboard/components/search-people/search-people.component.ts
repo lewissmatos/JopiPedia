@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPeopleComponent implements OnInit {
 
-  allUsers: User[] = []
-  usersFiltered: User[] = []
+  allUsers: any[] = []
+  usersFiltered: any[] = []
   
   constructor(
     private userService: UserServicesService
