@@ -41,7 +41,6 @@ export class UserServicesService {
     })
   }
 
-  uuu = this.getAllUsers()
   getAllUsers() {    
     return this.http.get<any>(this.api + '/getallusers')
   }
