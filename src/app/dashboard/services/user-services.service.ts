@@ -25,6 +25,14 @@ export class UserServicesService {
     })
   }
 
+  getForeignPerfil(username: any) {
+    return this.http.get<any>(this.api + '/' + username, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
+  }
+  
   editUserInfo(data: User) {    
     return this.http.put<any>(this.api, data, {
       headers: new HttpHeaders({    

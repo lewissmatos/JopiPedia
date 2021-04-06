@@ -27,6 +27,6 @@
     </div>
 
     <ul>
-        <li *ngFor="let user of allUsers"><a href="#">@{{user.user}}</a> - {{user.name}}</li>
+        <li *ngFor="let user of allUsers"><a [routerLink]="['/dashboard/profile', user.user]">@{{user.user}}</a> - {{user.name}}</li>
     </ul>
 </div>

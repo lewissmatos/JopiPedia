@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/auth/Models/user.model';
 import Swal from 'sweetalert2'
 import { UserServicesService } from '../../services/user-services.service';
@@ -16,29 +16,39 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   currentUser: User = { name: '', lName: '' }
   editedUserData: User = {  name: '', lName: '' }
   toEdit = false
+  isOtherProfile: boolean = false
+  userNotFound: boolean = false
+  username: string = ''
 
   themes: cardData[]=[]
 
   constructor(
-              private tService: ThemesService,
-              private router: Router,
-              private userService: UserServicesService)
-  {
-    
-    this.getUserInfo()
+    private tService: ThemesService,
+    private router: Router,
+    private userService: UserServicesService,
+    private acRouter: ActivatedRoute
+  ) {
     this.getAllThemes()
   }
+
   ngAfterViewInit(): void {
+    this.username = this.acRouter.snapshot.params.user
+    if (typeof this.acRouter.snapshot.params.user == 'undefined') {
+      this.isOtherProfile = false
+      this.getUserInfo()
+    }
+    else {
+      this.isOtherProfile = true
+      this.getForeignPerfil(this.acRouter.snapshot.params.user)
+    }
   }
 
   ngOnInit(): void {
   }
 
   charg = true
-  
  
   getUserInfo() {
-  
     this.userService.getUserInfo().subscribe(
       res => {
         this.currentUser = res.user
@@ -46,6 +56,23 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         this.charg = false
       },
       error => console.log(error)
+    )
+  }
+
+  getForeignPerfil(username: any) {
+    this.userService.getForeignPerfil(username).subscribe(
+      res => {
+        this.currentUser = res.data
+        this.charg = false
+      },
+      error => {
+        console.log(error)
+        if (error.error.msg == 'usuario no encontrado') {
+          this.userNotFound = true
+          console.log('user not found')
+          this.charg = false
+        }
+      }
     )
   }
     

@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'records', component: RecordsComponent, canActivate: [AuthGuard] },
   { path: 'search-people', component: SearchPeopleComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:user', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'test/:id', component: TestComponent, canActivate: [AuthGuard] },
 ];
 
