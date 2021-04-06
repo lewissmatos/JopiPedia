@@ -1,5 +1,5 @@
 .footer-body{
-    height: 260px;
+    height: 360px;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 20px;
@@ -8,4 +8,11 @@
 
 .f-links {
     font-weight: bold;
+}
+
+.jpBg{
+    background-color: rgba(241, 241, 241, 0.6);
+    border-radius: 20px;
+    padding-top: 10px ;
+    padding-bottom: 10px ;
 }

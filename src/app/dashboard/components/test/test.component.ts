@@ -40,11 +40,14 @@ export class TestComponent implements OnInit {
     return this.router.snapshot.params.id
   }
 
+  btnColor:any = ''
+
   getThemeById() {
     return this.tService.getThemeById(this.getLink())    
       .subscribe(
         res => {
           this.currentTheme = res.data
+          this.btnColor = this.currentTheme.bgColor
         },
         error => {
           Swal.fire({
@@ -70,7 +73,7 @@ export class TestComponent implements OnInit {
     this.i = this.i + 1
     this.currentResps = this.currentQuestion[this.i].respuestas
   }
-
+  
   getAllQuestionsByTheme() {
     this.pService.getPreguntaByTemaId(this.getLink())
       .subscribe(
@@ -80,4 +83,6 @@ export class TestComponent implements OnInit {
         }
     )
   }
+  
+
 }
