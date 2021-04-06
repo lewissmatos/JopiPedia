@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import { UserServicesService } from '../../services/user-services.service';
 import { ThemesService } from '../../services/themes.service';
 import { cardData } from '../../Models/cardData.model';
+import { ScoreService } from '../../services/score.service';
 
 @Component({
   selector: 'app-profile',
@@ -26,7 +27,8 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     private tService: ThemesService,
     private router: Router,
     private userService: UserServicesService,
-    private acRouter: ActivatedRoute
+    private acRouter: ActivatedRoute,
+    private scoreService: ScoreService
   ) {
     this.getAllThemes()
   }
@@ -36,6 +38,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     if (typeof this.acRouter.snapshot.params.user == 'undefined') {
       this.isOtherProfile = false
       this.getUserInfo()
+      this.getScoreUserLogged()
     }
     else {
       this.isOtherProfile = true
@@ -43,6 +46,17 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     }
   }
 
+  userLoggedScores = []
+  getScoreUserLogged(){
+    this.scoreService.getScoreUserLogged()
+    .subscribe(
+      res => {
+        console.log(res)
+        this.userLoggedScores = res.data
+      }
+    )  
+  }
+  
   ngOnInit(): void {
   }
 

@@ -108,11 +108,11 @@
 
             <ol class="list-group list-group-numbered ">
               <li class="list-group-item d-flex justify-content-between align-items-start"
-              *ngFor="let theme of themes"
+              *ngFor="let scores of userLoggedScores"
               >
               <div class="ms-2 me-auto">
-                <div class="fw-bold"><b>{{theme.title | uppercase}}</b></div>
-                00
+                <div class="fw-bold"><b>{{scores.tema.title | uppercase}}</b></div>
+                {{scores.score}}
               </div>
             </li>       
           </ol>

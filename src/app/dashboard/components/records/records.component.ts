@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { cardData } from '../../Models/cardData.model';
+import { ScoreService } from '../../services/score.service';
 import { ThemesService } from '../../services/themes.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class RecordsComponent implements OnInit {
 
   obs = false
 
-  constructor(private tService: ThemesService) {
+  constructor(private tService: ThemesService, scoresService: ScoreService) {
     this.getAllThemes()
   }
 
@@ -32,6 +33,8 @@ export class RecordsComponent implements OnInit {
         }
     )
   }
+
+
 
   search = (title: string) => {
     this.dataFiltered = this.data.filter((cd: cardData) => cd.title?.toLowerCase().includes(title.toLowerCase()))    

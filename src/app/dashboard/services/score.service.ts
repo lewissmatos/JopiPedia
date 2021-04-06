@@ -19,7 +19,7 @@ export class ScoreService {
   }
 
   getScoreUserLogged() {
-    return this.http.get<any>(this.API + '/scoreuserlogged', {
+    return this.http.get<any>(this.API + '/scoresuserlogged', {
       headers: new HttpHeaders({    
         'Authorization': localStorage.getItem('token') + ''
       })
