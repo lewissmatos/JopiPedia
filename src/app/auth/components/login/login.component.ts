@@ -23,13 +23,10 @@ export class LoginComponent implements OnInit {
     private fBuilder: FormBuilder,
     private authService: AuthService
   ) {
-    
     this.createForm()
   }
-
   ngOnInit(): void {
   }
-  
   createForm() {
     this.formData = this.fBuilder.group({
       user: [''],
@@ -41,9 +38,7 @@ export class LoginComponent implements OnInit {
 
   logIn() {
       this.dis = true
-
       this.userData = this.formData.value     
-
       this.authService.login(this.userData).subscribe(
         res => {
           localStorage.setItem('token', res.token)
@@ -65,11 +60,8 @@ export class LoginComponent implements OnInit {
             text: error.error.msg,
             confirmButtonColor: '#7AC0AB'
           })
-
           this.dis = false
         }
       )
-    
-  }  
-  
+  }   
 }
