@@ -1,4 +1,3 @@
-import { User } from './../../../auth/Models/user.model';
 import { UserServicesService } from './../../services/user-services.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -24,7 +23,6 @@ export class SearchPeopleComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       res => {
         this.allUsers = res.users.filter((x: any) => x.isAdmin === false)
-        console.log(this.allUsers)
       },
       error => {
         console.log(error)
@@ -33,6 +31,7 @@ export class SearchPeopleComponent implements OnInit {
   }
 
   obs = false
+  
   search(userName: string) {
     this.usersFiltered = this.allUsers.filter((x:any) => x.user?.toLowerCase().includes(userName.toLowerCase()))
     if (userName.length > 0) {
