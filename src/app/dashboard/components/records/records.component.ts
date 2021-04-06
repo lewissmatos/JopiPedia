@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { cardData } from '../../Models/cardData.model';
 import { ScoreService } from '../../services/score.service';
 import { ThemesService } from '../../services/themes.service';
+import { UserServicesService } from '../../services/user-services.service';
 
 @Component({
   selector: 'app-records',
@@ -15,7 +16,11 @@ export class RecordsComponent implements OnInit {
 
   obs = false
 
-  constructor(private tService: ThemesService, private scoreService: ScoreService) {
+  constructor(
+              private tService: ThemesService, 
+              private scoreService: ScoreService,
+              private userService: UserServicesService
+              ) {
     this.getAllThemes()
     this.getHighestScores()
   }
@@ -24,6 +29,7 @@ export class RecordsComponent implements OnInit {
   }
 
   charg = true
+
 
   getAllThemes() {
     return this.tService.getAllThemes()
