@@ -43,6 +43,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     else {
       this.isOtherProfile = true
       this.getForeignPerfil(this.username)
+      this.getScoresByUsername(this.username)
     }
   }
 
@@ -70,6 +71,18 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         this.charg = false
       },
       error => console.log(error)
+    )
+  }
+
+  getScoresByUsername(username: any) {
+    this.scoreService.getScoresByUsername(username).subscribe(
+      res => {
+        console.log(res)
+        this.userLoggedScores = res.data
+      },
+      error => {
+        console.log(error)
+      }
     )
   }
 
