@@ -32,9 +32,9 @@ export class SearchPeopleComponent implements OnInit {
 
   obs = false
   
-  search(userName: string = '') {
-    this.usersFiltered = this.allUsers.filter((x:any) => x.user!.toLowerCase().includes(userName.toLowerCase()))
-    if (userName.length > 0) {
+  search(uN: string = '') {
+    this.usersFiltered = this.allUsers.filter((x:any) => x.user!.toLowerCase().includes(uN.toLowerCase()))
+    if (uN.length > 0) {
       this.obs = true
     }
   }

@@ -193,6 +193,9 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     )
   }
 
+
+  //FAN FUNCTION AREA
+  
   addFans(username: any) {
     this.userService.addFans(username).subscribe(
       res => {
