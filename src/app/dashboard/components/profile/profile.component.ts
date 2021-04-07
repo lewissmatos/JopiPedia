@@ -89,6 +89,13 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     )
   }
 
+  changeProfile(username: any) {
+    this.username = username
+    this.isOtherProfile = true
+    this.getForeignPerfil(this.username)
+    this.getScoresByUsername(this.username)
+  }
+
   getScoresByUsername(username: any) {
     this.scoreService.getScoresByUsername(username).subscribe(
       res => {

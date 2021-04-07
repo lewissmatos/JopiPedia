@@ -158,8 +158,7 @@
             <ul class="list-group animated fadeIn fast">
               <li *ngFor="let user of currentUser.fans" class="list-group-item d-flex justify-content-between align-items-center">
                   <b> <h6>@{{user.user}}</h6></b>
-                  <div></div>
-                  <h5>{{user.name }}</h5>
+                  <button class="btn btn-info" (click)="changeProfile(user.user)" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
               </li>
           </ul>
 
