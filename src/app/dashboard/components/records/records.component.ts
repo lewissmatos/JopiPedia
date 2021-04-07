@@ -40,7 +40,7 @@ export class RecordsComponent implements OnInit {
     
   obs = false
   search = (title: string) => {
-    this.dataFiltered = this.highestScores.filter((arr: any) => arr.tema.title?.toLowerCase().includes(title.toLowerCase()) || arr.scores.find((x: any) => x.user.user.includes(title.toLowerCase())))     
+    this.dataFiltered = this.highestScores.filter((x: any) => x.tema.title?.toLowerCase().includes(title.toLowerCase()))     
     if (title.length > 0) {
       this.obs = true
     }
