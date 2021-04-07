@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         }
         else {
           this.currentUser = res.user
-          if (this.currentUser.foto == '') {
+          if (this.currentUser.foto == '' || this.currentUser.foto == undefined) {
             this.foto = '../../../../assets/user-profile.png'
           }
           else {
@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
           this.foto = '../../../../assets/user-profile.png'
         }
         else {
-          console.log('tiene foto')
+          this.foto = this.currentUser.foto
         }
       },
       error => {
