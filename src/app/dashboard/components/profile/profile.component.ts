@@ -254,7 +254,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     this.fileSelect = (<HTMLInputElement>document.getElementById('formFile')).files || ''
     if (this.fileSelect.length > 0) {
       let newFileSelect = this.fileSelect[0]
-      
       let fileReader = new FileReader()
       
       let self = this
