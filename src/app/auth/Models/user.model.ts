@@ -7,5 +7,6 @@ export interface User{
   email?: string
   pass?: string
   rPass?: string
+  foto?: string
   fans?: _User[]
 }

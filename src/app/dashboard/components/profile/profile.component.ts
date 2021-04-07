@@ -81,8 +81,15 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         }
         else {
           this.currentUser = res.user
+          if (this.currentUser.foto == '') {
+            this.foto = '../../../../assets/user-profile.png'
+          }
+          else {
+            this.foto = this.currentUser.foto
+          }
           this.editedUserData = { ...this.currentUser }
           this.charg = false
+          console.log(this.currentUser)
         }
       },
       error => console.log(error)
@@ -127,6 +134,12 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         this.currentUser = res.data
         this.charg = false
         this.getUserInfo()
+        if (this.currentUser.foto == '' || this.currentUser.foto == undefined) {
+          this.foto = '../../../../assets/user-profile.png'
+        }
+        else {
+          console.log('tiene foto')
+        }
       },
       error => {
         console.log(error)
@@ -142,6 +155,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   edit() {
     if (this.toEdit) {
       this.editedUserData = { ...this.currentUser }
+      this.foto = '../../../../assets/user-profile.png'
     }
     this.toEdit = !this.toEdit
   }
@@ -162,11 +176,14 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       delete(this.editedUserData.email)
       delete(this.editedUserData._id)
       delete (this.editedUserData.user)
-      this.userService.editUserInfo(this.editedUserData).
-      subscribe(res => {        
-        this.currentUser = res.data
-        this.toEdit = false
-      }, error => console.log(error)
+
+      this.editedUserData = {...this.editUserInfo, foto: this.foto}
+
+      this.userService.editUserInfo(this.editedUserData)
+        .subscribe(res => {        
+          this.currentUser = res.data
+          this.toEdit = false
+        }, error => console.log(error)
       )
     }
     
@@ -224,4 +241,23 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       }
     )
   }
+
+  fileSelect: any = ''
+  foto: any = '../../../../assets/user-profile.png'
+  encodeImage(e: any) {
+    this.fileSelect = (<HTMLInputElement>document.getElementById('formFile')).files || ''
+    if (this.fileSelect.length > 0) {
+      let newFileSelect = this.fileSelect[0]
+      
+      let fileReader = new FileReader()
+      
+      let self = this
+      fileReader.onload = function(FileLoadEvent) {
+        self.foto = FileLoadEvent.target?.result
+        console.log(FileLoadEvent.target?.result)
+      }
+      fileReader.readAsDataURL(newFileSelect)
+    }
+  }
+
 }

@@ -64,8 +64,13 @@
                         col-md-2
                         col-sm-4
                         col-4">
-                <img width="90%" src="../../../../assets/user-profile.png" >
-                <input class="btn btn-primary animated fadeIn mt-2 btn-block" placeholder="Foto" style="color: white !important;" *ngIf="toEdit">
+                <img width="90%" [src]="foto" >
+
+                <label *ngIf="toEdit" class="custom-file-upload mt-3">
+                  <input (change)="encodeImage($event)" type="file" id="formFile"/>
+                  Foto
+                </label>
+                <!-- <input type="file" class="btn btn-primary animated fadeIn mt-2 btn-block" placeholder="Foto" style="color: white !important;" *ngIf="toEdit"> -->
             </div>
 
             <div *ngIf="!toEdit" class="
