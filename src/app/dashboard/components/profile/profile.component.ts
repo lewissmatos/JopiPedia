@@ -196,7 +196,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   addFans(username: any) {
     this.userService.addFans(username).subscribe(
       res => {
-        console.log(res)
         this.getForeignPerfil(this.username)
       },
       error => {
@@ -208,7 +207,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   deleteFans(username: any) {
     this.userService.deleteFans(username).subscribe(
       res => {
-        console.log(res)
         this.getForeignPerfil(this.username)
       },
       error => {

@@ -28,7 +28,7 @@
                     <button (click)="edit()"
                      style="float: right;" 
                      class=" mr-2 btn animated fadeIn fast"
-                     [ngClass]="{'btn-primary' : !toEdit, 'btn-danger': toEdit}"
+                     [ngClass]="{'btn-info' : !toEdit, 'btn-danger': toEdit}"
                      >
                         {{toEdit? 'Cancelar': 'Editar'}}
                         <i *ngIf="!toEdit" class="ml-2 fas fa-pen"></i>
