@@ -155,7 +155,12 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   edit() {
     if (this.toEdit) {
       this.editedUserData = { ...this.currentUser }
-      this.foto = '../../../../assets/user-profile.png'
+      if (this.currentUser.foto == '' || this.currentUser.foto == undefined){
+        this.foto = '../../../../assets/user-profile.png'
+      }
+      else {
+        this.foto = this.currentUser.foto
+      }
     }
     this.toEdit = !this.toEdit
   }

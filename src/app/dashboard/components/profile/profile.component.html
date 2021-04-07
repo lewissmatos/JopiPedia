@@ -64,7 +64,10 @@
                         col-md-2
                         col-sm-4
                         col-4">
-                <img width="90%" [src]="foto" >
+                <div  class="px-3" style=" background-color: whitesmoke; width: 140px; height: 140px; overflow: hidden; border-radius: 50%;">
+
+                  <img class="img-fluid" [src]="foto" >
+                </div>
 
                 <label *ngIf="toEdit" class="custom-file-upload mt-3">
                   <input (change)="encodeImage($event)" type="file" id="formFile"/>
