@@ -11,7 +11,7 @@ export class SearchPeopleComponent implements OnInit {
   allUsers: any[] = []
   usersFiltered: any[] = []
 
-  foto: any = '../../../../assets/user-profile.png'
+  fotito: any = '../../../../assets/user-profile.png'
   
   constructor(
     private userService: UserServicesService

@@ -265,4 +265,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     }
   }
 
+  fotito: any = '../../../../assets/user-profile.png'
+
 }
