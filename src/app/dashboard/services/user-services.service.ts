@@ -45,4 +45,20 @@ export class UserServicesService {
     return this.http.get<any>(this.api + '/getallusers')
   }
 
+  addFans(username: any) {
+    return this.http.put<any>(this.api + '/addfans/' + username, {}, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
+  }
+
+  deleteFans(username: any) {
+    return this.http.put<any>(this.api + '/deletefans/' + username, {}, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
+  }
+
 }

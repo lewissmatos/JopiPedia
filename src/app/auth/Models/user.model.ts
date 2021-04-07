@@ -1,3 +1,4 @@
+import { User as _User } from 'src/app/auth/Models/user.model';
 export interface User{
   _id?: string
   name?: string
@@ -6,4 +7,5 @@ export interface User{
   email?: string
   pass?: string
   rPass?: string
+  fans?: _User[]
 }

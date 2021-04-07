@@ -15,11 +15,13 @@ import { ScoreService } from '../../services/score.service';
 export class ProfileComponent implements OnInit, AfterViewInit{
 
   currentUser: User = { name: '', lName: '' }
+  userLogged: User = { name: '', lName: '' }
   editedUserData: User = {  name: '', lName: '' }
   toEdit = false
   isOtherProfile: boolean = false
   userNotFound: boolean = false
   username: string = ''
+  isFans: boolean = false
 
   themes: cardData[]=[]
 
@@ -35,6 +37,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(): void {
+    this.isFans = false
     this.username = this.acRouter.snapshot.params.user
     if (typeof this.acRouter.snapshot.params.user == 'undefined') {
       this.isOtherProfile = false
@@ -67,9 +70,20 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   getUserInfo() {
     this.userService.getUserInfo().subscribe(
       res => {
-        this.currentUser = res.user
-        this.editedUserData = { ...this.currentUser }
-        this.charg = false
+        if (this.isOtherProfile) {
+          this.userLogged = res.user
+          if (this.currentUser.fans?.find(x => x.user == this.userLogged.user)) {
+            this.isFans = true
+          }
+          else {
+            this.isFans = false
+          }
+        }
+        else {
+          this.currentUser = res.user
+          this.editedUserData = { ...this.currentUser }
+          this.charg = false
+        }
       },
       error => console.log(error)
     )
@@ -105,6 +119,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       res => {
         this.currentUser = res.data
         this.charg = false
+        this.getUserInfo()
       },
       error => {
         console.log(error)
@@ -175,6 +190,30 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         res => {
           this.themes = res.data
         }
+    )
+  }
+
+  addFans(username: any) {
+    this.userService.addFans(username).subscribe(
+      res => {
+        console.log(res)
+        this.getForeignPerfil(this.username)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
+  deleteFans(username: any) {
+    this.userService.deleteFans(username).subscribe(
+      res => {
+        console.log(res)
+        this.getForeignPerfil(this.username)
+      },
+      error => {
+        console.log(error)
+      }
     )
   }
 }
