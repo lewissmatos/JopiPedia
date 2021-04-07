@@ -242,6 +242,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     )
   }
 
+  //PICTURE AREA
   fileSelect: any = ''
   foto: any = '../../../../assets/user-profile.png'
   encodeImage(e: any) {
