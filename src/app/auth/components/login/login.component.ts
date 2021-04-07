@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
   createForm() {
     this.formData = this.fBuilder.group({
-      user: [''],
+      email: [''],
       pass: [''],
     })
   }
