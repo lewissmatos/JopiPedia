@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     private scoreService: ScoreService
   ) {
     this.getAllThemes()
+    this.getUsers()
   }
 
   ngAfterViewInit(): void {
@@ -79,6 +80,19 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       res => {
         console.log(res)
         this.userLoggedScores = res.data
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
+  allUsers:any[]=[]
+  l = this.allUsers.length
+  getUsers() {
+    this.userService.getAllUsers().subscribe(
+      res => {
+        this.allUsers = res.users.filter((x: any) => x.isAdmin === false)
       },
       error => {
         console.log(error)
