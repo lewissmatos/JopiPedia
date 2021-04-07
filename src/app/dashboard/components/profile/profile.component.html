@@ -146,7 +146,7 @@
       <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
           <h3>{{isOtherProfile? 'Sus fanaticos': 'Mis fanaticos'}}</h3>
          
-          <div *ngIf="userLoggedScores.allUsers == 0" class="alert alert-info" role="alert">
+          <div *ngIf="userLoggedScores.length == 0" class="alert alert-info" role="alert">
             Este usuario no tiene ningun fanatico.
           </div>
          
