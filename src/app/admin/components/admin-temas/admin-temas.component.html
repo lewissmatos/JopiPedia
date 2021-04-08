@@ -26,7 +26,7 @@
             <div class="animated fadeIn fast card-container" style="background-color: #808B96;" 
                 [style.background-color]="data.bgColor">
                 <div class="card-body">
-                    <b><h4 class="card-title">{{data.title | uppercase}}</h4></b>
+                    <b><h5 class="card-title">{{data.title | uppercase}}</h5></b>
                     <p class="card-desc-multi">{{data.desc}}</p>
                 </div>
             </div>
@@ -36,8 +36,14 @@
         
         <div class="w-100 text-center">
             <hr>
-            <button *ngIf="!toEdit" (click)="createTheme()" class="btn btn-success w-50 mt-3 animated fadeIn fast" type="button">Guardar tema</button>
-            <button *ngIf="toEdit" (click)="saveEdit()" class="btn btn-info w-50 mt-3 animated fadeIn fast" type="button">Guardar cambios</button>
+            <button *ngIf="!toEdit" (click)="createTheme()" class="btn btn-success w-50 mt-3 animated fadeIn fast" type="button">
+                <i *ngIf="saveC" class="fas fa-sync fa-spin"></i>    
+                {{!saveC? 'Guardar tema': 'Guardando...'}}
+            </button>
+            <button *ngIf="toEdit" (click)="saveEdit()" class="btn btn-info w-50 mt-3 animated fadeIn fast" type="button">
+                <i *ngIf="saveC" class="fas fa-sync fa-spin"></i>    
+                {{!saveC? 'Guardar cambios': 'Guardando...'}}
+            </button>
 
         </div>
 

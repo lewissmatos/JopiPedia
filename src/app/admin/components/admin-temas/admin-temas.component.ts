@@ -17,6 +17,8 @@ export class AdminTemasComponent implements OnInit {
 
   toEdit = false
 
+  saveC = false
+
   constructor(private tService: ThemesService) {
     this.getAllThemes()
   }
@@ -35,6 +37,7 @@ export class AdminTemasComponent implements OnInit {
   }
 
   createTheme() {
+    this.saveC = true
     if (this.data.title == null || this.data.desc == null ) {
       Swal.fire({
         background: '#758080',                
@@ -47,7 +50,7 @@ export class AdminTemasComponent implements OnInit {
         this.tService.createTheme(this.data)
           .subscribe(
             res => {
-              console.log(res)
+              this.saveC = false
               this.getAllThemes()
               this.data = { bgColor: '#808B96' }              
               Swal.fire({
@@ -121,6 +124,7 @@ export class AdminTemasComponent implements OnInit {
   }
 
   saveEdit() {
+    this.saveC = true
     if (this.data.title == null || this.data.desc == null ) {
       Swal.fire({
         background: '#758080',                
@@ -133,6 +137,7 @@ export class AdminTemasComponent implements OnInit {
         this.tService.updateTheme(this.data, this.data._id)
           .subscribe(
             res => {
+              this.saveC = false
               this.getAllThemes()
               this.data = { bgColor: '#808B96' }
               this.toEdit = false
