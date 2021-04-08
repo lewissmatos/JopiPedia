@@ -186,17 +186,18 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       delete (this.editedUserData.user)
 
       this.editedUserData = {...this.editUserInfo, foto: this.foto}
-
+      
+      console.log('a ver')
       this.userService.editUserInfo(this.editedUserData)
         .subscribe(res => {   
-           
+          console.log('que pasa')
           Swal.fire({
             icon: 'info',
             title: 'Guardado.',
             text: 'Guardado exitosamente!'
           })    
           this.editingInfo = false
-          this.currentUser = res.data
+          // this.currentUser = res.data
           this.toEdit = false
         }, error => console.log(error)
       )
@@ -278,4 +279,13 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   fotito: any = '../../../../assets/user-profile.png'
 
+
+  seePic(){
+    Swal.fire({
+      title: 'Ver foto',
+      html:`<div> <img width="140px" height="140px" src="${this.foto}" > </div>`,
+      confirmButtonText: 'Volver',
+      confirmButtonColor: '#17a2b8'
+    })
+  }
 }

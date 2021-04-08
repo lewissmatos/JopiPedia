@@ -32,9 +32,8 @@ export class RecordsComponent implements OnInit {
     .subscribe(
       res => {
         this.charg = false
-        console.log(res.data)
         this.highestScores = res.data
-      }
+      }, error => console.log(error)
       )
     }
     

@@ -48,6 +48,11 @@
         
     <hr class="mb-3">
 
+    <div *ngIf="charg" class="alert alert-success" role="alert">
+        Cargando... 
+        <i class=" ml-1 fas fa-sync fa-spin"></i>
+    </div>
+
     <div class="row p-2" style="color: white !important;" >
 
         <div [style.border-color]="currentTheme.bgColor" class="question-window mb-3 

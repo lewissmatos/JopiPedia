@@ -13,6 +13,7 @@ export class SearchPeopleComponent implements OnInit {
 
   fotito: any = '../../../../assets/user-profile.png'
   
+  charg = true
   constructor(
     private userService: UserServicesService
   ) { }
@@ -24,6 +25,7 @@ export class SearchPeopleComponent implements OnInit {
   getUsers() {
     this.userService.getAllUsers().subscribe(
       res => {
+        this.charg = false
         this.allUsers = res.users.filter((x: any) => x.isAdmin === false)
       },
       error => {

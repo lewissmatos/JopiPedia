@@ -58,7 +58,7 @@
         <div *ngIf="charg" class="alert alert-success" role="alert">
           Cargando... 
           <i class=" ml-1 fas fa-sync fa-spin"></i>
-      </div>
+        </div>
 
         <div class="row animated fadeIn fast mt-4">
         
@@ -69,7 +69,7 @@
                         col-4">
                 <div class="foto" style=" background-color: whitesmoke; width: 140px; height: 140px; overflow: hidden; border-radius: 50%;">
 
-                  <img class="img-fluid" [src]="foto" >
+                  <img (click)="seePic()" class="img-fluid" [src]="foto" >
                 </div>
 
                 <label *ngIf="toEdit" class="custom-file-upload mt-3">
@@ -102,10 +102,9 @@
 
                         <button *ngIf="isOtherProfile && isFans" (click)="deleteFans(username)" class="btn btn-warning mt-2">
                           <i class="fas fa-star mr-1"></i>
-                          Fanatico
+                          Eres fanatico
                         </button>
             </div>
-
             <div *ngIf="toEdit" class="
                         animated fadeIn
                         col-lg-10

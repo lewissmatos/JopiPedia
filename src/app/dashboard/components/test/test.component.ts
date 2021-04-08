@@ -21,7 +21,7 @@ export class TestComponent implements OnInit {
     desc: '',
   }
   
- 
+ charg = true
   constructor(
     private router: ActivatedRoute, 
     private tService: ThemesService, 
@@ -46,10 +46,12 @@ export class TestComponent implements OnInit {
     return this.tService.getThemeById(this.getLink())    
       .subscribe(
         res => {
+          this.charg = false
           this.currentTheme = res.data
           this.btnColor = this.currentTheme.bgColor
         },
         error => {
+          console.log(error)
           Swal.fire({
             title: 'ERROR',
             text: "ha ocurrido un error al cargar el test",
