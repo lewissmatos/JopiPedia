@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   userNotFound: boolean = false
   username: string = ''
   isFans: boolean = false
+  charg: boolean = false
 
   themes: cardData[]=[]
 
@@ -66,18 +67,20 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
   }
 
-  charg = true
- 
+  
   getUserInfo() {
+    this.charg = true
     this.userService.getUserInfo().subscribe(
       res => {
         if (this.isOtherProfile) {
           this.userLogged = res.user
           if (this.currentUser.fans?.find(x => x.user == this.userLogged.user)) {
             this.isFans = true
+            this.charg = false
           }
           else {
             this.isFans = false
+            this.charg = false
           }
         }
         else {
