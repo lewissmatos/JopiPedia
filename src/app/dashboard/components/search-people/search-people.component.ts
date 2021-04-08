@@ -1,6 +1,7 @@
 import { UserServicesService } from './../../services/user-services.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/auth/Models/user.model';
 
 @Component({
   selector: 'app-search-people',
@@ -13,7 +14,13 @@ export class SearchPeopleComponent implements OnInit {
   usersFiltered: any[] = []
 
   fotito: any = '../../../../assets/user-profile.png'
-  userLogged = ''
+
+  currentUser: User = { name: '', lName: '' }
+  userLogged: User = { name: '', lName: '' }
+  isOtherProfile: boolean = false
+  userNotFound: boolean = false
+  username: string = ''
+
 
   charg = true
   constructor(
@@ -23,6 +30,7 @@ export class SearchPeopleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers()
+    this.getUserInfo()
   }
 
 
@@ -38,7 +46,32 @@ export class SearchPeopleComponent implements OnInit {
     )
   }
 
-  
+
+  getUserInfo() {
+    this.userService.getUserInfo().subscribe(
+      res => {
+        if (this.isOtherProfile) {
+          this.userLogged = res.user          
+        }
+        else {
+          this.currentUser = res.user          
+          console.log(this.currentUser)
+        }
+      },
+      error => console.log(error)
+    )
+  }
+
+
+  visit(username: any) {
+    if (this.currentUser.user == username) {
+      this.router.navigate(['/dashboard/profile'])
+    }else
+    this.username = username
+    this.isOtherProfile = true
+    console.log(this.currentUser.user)
+    console.log(username)
+  }
 
   obs = false
   

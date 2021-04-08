@@ -49,14 +49,25 @@
                            <h6 style="display: inline-block;" class="ml-3">@{{user.user}}</h6>
                        </div>
                    </div>
-                    <button class="btn btn-info" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
+                    <button class="btn btn-info" (click)="visit(user.user)" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
                 </li>
             </ul>
             
         <ul *ngIf="obs" class="list-group animated fadeIn fast">
             <li *ngFor="let user of usersFiltered" class="list-group-item d-flex justify-content-between align-items-center">
-              <b>@{{user.user}}</b>
-              <button class="btn btn-info" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
+                <div class="row">
+                    <div class="col-2">
+
+                        <div style="display: inline-block; background-color: whitesmoke; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                            <img class="img-fluid" src="{{user.foto == '' || user.foto == undefined? fotito: user.foto}}" >
+                        </div>
+                    </div>
+
+                    <div class="col-9 offset-1 mt-3">
+                        <h6 style="display: inline-block;" class="ml-3">@{{user.user}}</h6>
+                    </div>
+                </div>
+              <button class="btn btn-info" (click)="visit(user.user)" [routerLink]="['/dashboard/profile', user.user]" >Visitar</button>
             </li>
         </ul>
 

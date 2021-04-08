@@ -56,7 +56,7 @@
             <tr *ngFor="let user of scores.scores; let i = index">
               <th scope="row">{{i + 1}}</th>
               <td >
-                <b style="cursor: pointer;" [routerLink]="['/dashboard/profile', user.user.user]" >@{{user.user.user}}</b>
+                <b style="cursor: pointer;" (click)="visit(user.user.user)" [routerLink]="['/dashboard/profile', user.user.user]" >@{{user.user.user}}</b>
               </td>
               <td>
                 <b class="p-2 badge" [style.background-color]="scores.tema.bgColor" >
