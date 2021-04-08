@@ -97,6 +97,7 @@ export class TestComponent implements OnInit {
   getHighestUser(){
     this.scoreService.getHighestScores().subscribe(
       res => {
+        this.championLoad = false
         this.allhighestScores = res.data
         this.sameTheme = this.allhighestScores.find((x:any)=> x.tema.title === this.currentTheme.title)
         this.user = this.sameTheme.scores[0].user
@@ -106,6 +107,19 @@ export class TestComponent implements OnInit {
       }
     )
   }
+
+  correctQuestion: any
+
+  selectedQuestion(resp: any){
+    console.log(resp)
+    if (resp.correcta) {
+      this.correctQuestion = true
+    }else{
+      this.correctQuestion = false
+    }
+  }
+
+  championLoad = true
 
   getUserInfo() {
     this.userService.getUserInfo().subscribe(

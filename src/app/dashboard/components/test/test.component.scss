@@ -26,3 +26,18 @@
 .but  :hover {
   transform: scale(1.012);
 }
+
+.correct{
+  background-color: rgba(0, 131, 11, 0.5) !important;
+}
+.incorrect{
+  background-color: rgba(231, 23, 23, 0.5) !important;
+}
+.tCorrect{
+  color:  rgb(0, 131, 11) !important;
+  font-size: 26px;
+}
+.tIncorrect{
+  color:  rgb(231, 23, 23) !important;
+  font-size: 26px;
+}
