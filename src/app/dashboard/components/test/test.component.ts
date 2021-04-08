@@ -91,7 +91,7 @@ export class TestComponent implements OnInit {
   allhighestScores = []
   
   sameTheme: any = {}
-  user = {}
+  user: User = {}
   score = {}
 
   getHighestUser(){
