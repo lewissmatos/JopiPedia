@@ -282,8 +282,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   seePic(){
     Swal.fire({
-      title: 'Ver foto',
-      html:`<div> <img width="140px" height="140px" src="${this.foto}" > </div>`,
+      html:`<h4>Avatar de @${this.currentUser.user} </h4> <div class="mt-2" > <img width="200px" height="200px" src="${this.foto}" > </div>`,
       confirmButtonText: 'Volver',
       confirmButtonColor: '#17a2b8'
     })
