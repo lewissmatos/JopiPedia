@@ -6,6 +6,7 @@ import { UserServicesService } from '../../services/user-services.service';
 import { ThemesService } from '../../services/themes.service';
 import { cardData } from '../../Models/cardData.model';
 import { ScoreService } from '../../services/score.service';
+import { SummaryResolver } from '@angular/compiler';
 
 @Component({
   selector: 'app-profile',
@@ -165,8 +166,10 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     this.toEdit = !this.toEdit
   }
   
+  editingInfo = false
+  
   editUserInfo() {
-
+    this.editingInfo = true
     if (this.editedUserData.name?.length === 0 || this.editedUserData.lName?.length === 0 ) {
       Swal.fire({
       title: 'Editar información',
@@ -185,11 +188,19 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       this.editedUserData = {...this.editUserInfo, foto: this.foto}
 
       this.userService.editUserInfo(this.editedUserData)
-        .subscribe(res => {        
+        .subscribe(res => {   
+           
+          Swal.fire({
+            icon: 'info',
+            title: 'Guardado.',
+            text: 'Guardado exitosamente!'
+          })    
+          this.editingInfo = false
           this.currentUser = res.data
           this.toEdit = false
         }, error => console.log(error)
       )
+
     }
     
   }

@@ -29,6 +29,7 @@
                      style="float: right;" 
                      class=" mr-2 btn animated fadeIn fast"
                      [ngClass]="{'btn-info' : !toEdit, 'btn-danger': toEdit}"
+                     [disabled]="editingInfo"
                      >
                         {{toEdit? 'Cancelar': 'Editar'}}
                         <i *ngIf="!toEdit" class="ml-2 fas fa-pen"></i>
@@ -36,10 +37,12 @@
 
                     <button *ngIf="toEdit" (click)="editUserInfo()"
                      style="float: right;" class="btn btn-success mr-2 animated fadeIn fast"
-                     
+                     [disabled]="editingInfo"
                      >
-                        Guardar
-                        <i class="ml-2 fas fa-save"></i>
+                        {{ editingInfo? 'Guardando...': 'Guardar'}}
+                        <i 
+                        [ngClass]="{'fa-save': !editingInfo, 'fa-sync fa-spin': editingInfo}"
+                        class="ml-2 fas fa-save"></i>
                     </button>
                     
                     
