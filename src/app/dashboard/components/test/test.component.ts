@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { cardData } from '../../Models/cardData.model';
 import { ThemesService } from '../../services/themes.service';
 
 import Swal from 'sweetalert2'
 import { AdminPreguntaService } from 'src/app/admin/services/admin-pregunta.service';
 import { QuestionModel, Resp } from 'src/app/admin/Models/Question.model';
+import { ScoreService } from '../../services/score.service';
+import { UserServicesService } from '../../services/user-services.service';
+import { User } from 'src/app/auth/Models/user.model';
 
 @Component({
   selector: 'app-test',
@@ -20,15 +23,31 @@ export class TestComponent implements OnInit {
     title: '',
     desc: '',
   }
+
+  allUsers: any[] = []
+  usersFiltered: any[] = []
+
+  fotito: any = '../../../../assets/user-profile.png'
+
+  currentUser: User = { name: '', lName: '' }
+  userLogged: User = { name: '', lName: '' }
+  isOtherProfile: boolean = false
+  userNotFound: boolean = false
+  username: string = ''
   
  charg = true
   constructor(
-    private router: ActivatedRoute, 
+    private activatedRouter: ActivatedRoute, 
+    private router: Router, 
     private tService: ThemesService, 
-    private pService: AdminPreguntaService
+    private pService: AdminPreguntaService,
+    private scoreService: ScoreService,
+    private userService: UserServicesService
   ) {
     this.getThemeById()
     this.getAllQuestionsByTheme()
+    //this.getHighestUser()
+    this.getUserInfo()
   }
 
   i = 0  
@@ -37,7 +56,11 @@ export class TestComponent implements OnInit {
   currentResps: Resp[] = []
 
   getLink() {
-    return this.router.snapshot.params.id
+    return this.activatedRouter.snapshot.params.id
+  }
+  
+  ngOnInit(): void {
+
   }
 
   btnColor:any = ''
@@ -48,6 +71,7 @@ export class TestComponent implements OnInit {
         res => {
           this.charg = false
           this.currentTheme = res.data
+          this.getHighestUser()
           this.btnColor = this.currentTheme.bgColor
         },
         error => {
@@ -63,9 +87,52 @@ export class TestComponent implements OnInit {
         }
       )
   }
-  ngOnInit(): void {
 
+  allhighestScores = []
+  
+  sameTheme: any = {}
+  user = {}
+  score = {}
+
+  getHighestUser(){
+    this.scoreService.getHighestScores().subscribe(
+      res => {
+        this.allhighestScores = res.data
+        this.sameTheme = this.allhighestScores.find((x:any)=> x.tema.title === this.currentTheme.title)
+        this.user = this.sameTheme.scores[0].user
+        this.score = this.sameTheme.scores[0].score
+        console.log(this.score)
+        console.log(this.sameTheme)
+      }
+    )
   }
+
+  getUserInfo() {
+    this.userService.getUserInfo().subscribe(
+      res => {
+        if (this.isOtherProfile) {
+          this.userLogged = res.user          
+        }
+        else {
+          this.currentUser = res.user          
+          console.log(this.currentUser)
+        }
+      },
+      error => console.log(error)
+    )
+  }
+
+
+  visit(username: any) {
+    if (this.currentUser.user == username) {
+      this.router.navigate(['/dashboard/profile'])
+    }else
+    this.username = username
+    this.isOtherProfile = true
+    console.log(this.currentUser.user)
+    console.log(username)
+  }
+
   previousQ() {
     this.i = this.i- 1
     this.currentResps = this.currentQuestion[this.i].respuestas
@@ -85,6 +152,7 @@ export class TestComponent implements OnInit {
         }
     )
   }
+  
   
 
 }

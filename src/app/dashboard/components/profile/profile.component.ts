@@ -181,7 +181,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       text: "debe llenar ambos campos para guardar",
       icon: 'warning',
       showCancelButton: false,
-      confirmButtonColor: '#7AC0AB',     
+      confirmButtonColor: '#17a2b8',     
       confirmButtonText: 'Aceptar'
       })     
     } else {
@@ -228,7 +228,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       text: "¿Confirma que desea cerrar sesión?",
       icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#7AC0AB',
+      confirmButtonColor: '#17a2b8',
       cancelButtonColor: '#FF7952',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar'
@@ -297,7 +297,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   seePic(){
     Swal.fire({
-      html:`<h4>Avatar de @${this.currentUser.user} </h4> <div class="mt-2" > <img width="240px" height="240px" src="${this.foto}" > </div>`,
+      html:`<h4>Avatar de @${this.currentUser.user} </h4> <div class="mt-2" > <img width="300px" height="300px" src="${this.foto}" > </div>`,
       confirmButtonText: 'Volver',
       confirmButtonColor: '#17a2b8'
     })
