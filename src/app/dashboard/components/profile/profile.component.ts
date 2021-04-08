@@ -184,13 +184,14 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       delete(this.editedUserData.email)
       delete(this.editedUserData._id)
       delete (this.editedUserData.user)
+      delete (this.editedUserData.fans)
+      delete (this.editedUserData.isAdmin)
 
-      this.editedUserData = {...this.editUserInfo, foto: this.foto}
+      this.editedUserData.foto = this.foto
+      console.log(this.editedUserData)
       
-      console.log('a ver')
       this.userService.editUserInfo(this.editedUserData)
         .subscribe(res => {   
-          console.log('que pasa')
           Swal.fire({
             icon: 'info',
             title: 'Guardado.',
@@ -199,7 +200,17 @@ export class ProfileComponent implements OnInit, AfterViewInit{
           this.editingInfo = false
           // this.currentUser = res.data
           this.toEdit = false
-        }, error => console.log(error)
+          console.log(res)
+          this.getUserInfo()
+        }, error => {
+          console.log(error)
+          this.editingInfo = false
+          Swal.fire({
+            icon: 'error',
+            title: 'Error.',
+            text: 'Ha ocurrido un error'
+          })  
+        }
       )
 
     }
@@ -271,7 +282,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
       let self = this
       fileReader.onload = function(FileLoadEvent) {
         self.foto = FileLoadEvent.target?.result
-        console.log(FileLoadEvent.target?.result)
       }
       fileReader.readAsDataURL(newFileSelect)
     }

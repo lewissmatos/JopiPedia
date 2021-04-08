@@ -9,4 +9,5 @@ export interface User{
   rPass?: string
   foto?: string
   fans?: _User[]
+  isAdmin?: boolean
 }
