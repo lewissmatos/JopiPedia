@@ -98,10 +98,15 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   }
 
   changeProfile(username: any) {
+    if (this.userLogged.user == username) {
+      this.router.navigate(['/dashboard/profile'])
+      
+    }else
     this.username = username
     this.isOtherProfile = true
     this.getForeignPerfil(this.username)
     this.getScoresByUsername(this.username)
+
   }
 
   getScoresByUsername(username: any) {
@@ -292,7 +297,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
 
   seePic(){
     Swal.fire({
-      html:`<h4>Avatar de @${this.currentUser.user} </h4> <div class="mt-2" > <img width="200px" height="200px" src="${this.foto}" > </div>`,
+      html:`<h4>Avatar de @${this.currentUser.user} </h4> <div class="mt-2" > <img width="240px" height="240px" src="${this.foto}" > </div>`,
       confirmButtonText: 'Volver',
       confirmButtonColor: '#17a2b8'
     })

@@ -1,5 +1,6 @@
 import { UserServicesService } from './../../services/user-services.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-people',
@@ -12,15 +13,18 @@ export class SearchPeopleComponent implements OnInit {
   usersFiltered: any[] = []
 
   fotito: any = '../../../../assets/user-profile.png'
-  
+  userLogged = ''
+
   charg = true
   constructor(
-    private userService: UserServicesService
+    private userService: UserServicesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getUsers()
   }
+
 
   getUsers() {
     this.userService.getAllUsers().subscribe(
@@ -33,6 +37,8 @@ export class SearchPeopleComponent implements OnInit {
       }
     )
   }
+
+  
 
   obs = false
   
