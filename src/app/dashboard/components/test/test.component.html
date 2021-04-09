@@ -71,28 +71,31 @@
                 <div class="but">
                     <button (click)="selectedQuestion(resp)"
                     class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
-                    [ngClass]="{'incorrect': !correctQuestion, 'correct': correctQuestion}"
+                    [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}"
+                    [disabled]="clicked"
+                    [class.no-drop]="clicked"
                     *ngFor="let resp of currentResps; let p = index" [style.background-color]="btnColor">
                     <b class="float-left">{{p + 1}}.</b>
                     <b> {{resp.desc}}
-                         <i class="float-right mt-1 fas " [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': !correctQuestion}"></i>
+                         <i *ngIf="clicked" class="float-right mt-1 fas " [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
                     </b>
                 </button>
                 </div>
                 
-                <div class="row mt-5">
-                    <div class="col-2 mt-5">
+                <div class="row">
+                    <div class="col-3 mt-1">
                         
-                        <h3 [style.color]="currentTheme.bgColor" class="float-left" style="position: absolute; bottom: 1px; left: 15px;">#{{i + 1}}</h3>
+                        <h4 class="text-left" [style.color]="currentTheme.bgColor"  style="position: absolute; bottom: 1px; left: 15px;">#{{i + 1}}</h4>
                     </div>
-                    <div class="col-8 text-center mt-2">
+                    <div class="col-6 text-center mt-2">
 
-                        <b><h5 [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': !correctQuestion}" >{{correctQuestion? 'Elección correctaa!' : 'Elección incorrectaa!'}}</h5></b>
+                        <b><h5 *ngIf="clicked" [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >{{correctQuestion? 'Elección correctaa!' : 'Elección incorrectaa!'}}</h5></b>
                     </div>
-                    <div class="col-2 mt-5">
+                    <div class="col-3 mt-1">
 
-                        <i class="fas fa-question float-right" [style.color]="currentTheme.bgColor" style=" font-size: 26px; position: absolute; bottom: 15px; right: 15px;">
-                        </i>
+                        <h4 class="text-right" [style.color]="currentTheme.bgColor">
+                        {{time}}
+                        </h4>
                     </div>
                 </div>
             </div>

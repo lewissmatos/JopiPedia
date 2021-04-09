@@ -57,7 +57,6 @@ export class RecordsComponent implements OnInit {
         }
         else {
           this.currentUser = res.user          
-          console.log(this.currentUser)
         }
       },
       error => console.log(error)
@@ -71,8 +70,6 @@ export class RecordsComponent implements OnInit {
     }else
     this.username = username
     this.isOtherProfile = true
-    console.log(this.currentUser.user)
-    console.log(username)
   }
     
   obs = false
@@ -81,6 +78,5 @@ export class RecordsComponent implements OnInit {
     if (title.length > 0) {
       this.obs = true
     }
-
   }
 }

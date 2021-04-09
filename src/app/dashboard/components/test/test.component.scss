@@ -15,14 +15,17 @@
     border-radius: 20px;
   }
 
+.no-drop{
+  cursor: no-drop !important;
+}
 
   .shadow{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    
   }
 
   
-.but  :hover {
+.but :hover {
   transform: scale(1.012);
 }
 
@@ -34,9 +37,7 @@
 }
 .tCorrect{
   color:  rgb(0, 131, 11) !important;
-  font-size: 26px;
 }
 .tIncorrect{
   color:  rgb(231, 23, 23) !important;
-  font-size: 26px;
 }

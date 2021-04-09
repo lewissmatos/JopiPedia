@@ -60,7 +60,6 @@ export class TestComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
   }
 
   btnColor:any = ''
@@ -88,6 +87,8 @@ export class TestComponent implements OnInit {
       )
   }
 
+  time: number = 0
+
   allhighestScores = []
   
   sameTheme: any = {}
@@ -108,14 +109,21 @@ export class TestComponent implements OnInit {
     )
   }
 
+  clicked= false
+
   correctQuestion: any
+  incorrectQuestion: any
 
   selectedQuestion(resp: any){
-    console.log(resp)
-    if (resp.correcta) {
+    this.clicked = true
+
+    console.log(resp.correcta)
+
+    if (resp.correcta === true) {
       this.correctQuestion = true
-    }else{
-      this.correctQuestion = false
+    }
+    else if(resp.correcta === false){
+      this.incorrectQuestion = true
     }
   }
 
@@ -129,7 +137,6 @@ export class TestComponent implements OnInit {
         }
         else {
           this.currentUser = res.user          
-          console.log(this.currentUser)
         }
       },
       error => console.log(error)
@@ -143,8 +150,7 @@ export class TestComponent implements OnInit {
     }else
     this.username = username
     this.isOtherProfile = true
-    console.log(this.currentUser.user)
-    console.log(username)
+    
   }
 
   previousQ() {
@@ -167,6 +173,4 @@ export class TestComponent implements OnInit {
     )
   }
   
-  
-
 }

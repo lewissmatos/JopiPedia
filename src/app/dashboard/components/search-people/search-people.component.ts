@@ -55,7 +55,6 @@ export class SearchPeopleComponent implements OnInit {
         }
         else {
           this.currentUser = res.user          
-          console.log(this.currentUser)
         }
       },
       error => console.log(error)
@@ -69,8 +68,6 @@ export class SearchPeopleComponent implements OnInit {
     }else
     this.username = username
     this.isOtherProfile = true
-    console.log(this.currentUser.user)
-    console.log(username)
   }
 
   obs = false
@@ -82,5 +79,4 @@ export class SearchPeopleComponent implements OnInit {
     }
   }
 
-  
 }
