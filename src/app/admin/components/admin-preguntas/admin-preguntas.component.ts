@@ -54,8 +54,10 @@ export class AdminPreguntasComponent implements OnInit {
     )
   }
 
+  loading= false
+
   createQuestion() {
-      
+    this.loading = true
     this.questionDataFinal = {...this.questionDataFinal, tema: this.tema}
     console.log(this.questionDataFinal)
     
@@ -64,6 +66,7 @@ export class AdminPreguntasComponent implements OnInit {
     this.pService.createPregunta(this.questionDataFinal)
       .subscribe(
         res => {
+          this.loading = false
           Swal.fire({
             icon: 'success',
             background: '#758080',                
