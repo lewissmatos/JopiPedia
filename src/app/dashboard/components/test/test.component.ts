@@ -181,6 +181,7 @@ export class TestComponent implements OnInit {
   nextQ() {
     this.i = this.i + 1
     this.currentResps = this.currentQuestion[this.i].respuestas
+    this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
     this.clicked = false
     this.correctQuestion = false
     this.incorrectQuestion = false
@@ -191,7 +192,9 @@ export class TestComponent implements OnInit {
       .subscribe(
         res => {
           this.currentQuestion = res.data
+          this.currentQuestion = this.currentQuestion.sort((a, b) => 0.5 - Math.random())
           this.currentResps = this.currentQuestion[this.i].respuestas
+          this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
         }
     )
   }
