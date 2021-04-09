@@ -24,11 +24,6 @@ export class TestComponent implements OnInit {
     desc: '',
   }
 
-  @ViewChild('res1', { static: false }) res1: ElementRef
-  @ViewChild('res2', { static: false }) res2: ElementRef
-  @ViewChild('res3', { static: false }) res3: ElementRef
-  @ViewChild('res4', { static: false }) res4: ElementRef
-
   allUsers: any[] = []
   usersFiltered: any[] = []
 

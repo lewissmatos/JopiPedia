@@ -27,7 +27,9 @@
                     
                     <button (click)="previousQ()"
                     [style.background-color]='currentTheme.bgColor'
-                     class=" btn "
+                    class=" btn "
+                    [class.no-drop]="i == 0"
+                    [disabled]="i == 0"
                      >                        
                      <i style="color: white;" class="fas fa-chevron-left "></i>
                     </button>
@@ -69,7 +71,12 @@
                 <h3  class="animated fadeIn mb-4" [style.color]="currentTheme.bgColor">{{currentQuestion[i].desc}}?</h3>
 
             <div class="px-3">
-                <div class="but">
+
+                <div *ngIf="clicked" class="animated fadeIn text-center">
+                    <h2 class="text-success">{{correctQuestion? 'HAS ACERTADO': 'TE HAS EQUIVOCADO'}}</h2>
+                    <i style="font-size: 200px; color: blueviolet;" [ngStyle]="{'color: red !impportant;': incorrectQuestion, 'color: green !important': correctQuestion}" class="mt-2 fas" [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
+                </div>
+                <div *ngIf="!clicked" class="but">
                     <button (click)="selectedQuestion(resp, p + 1)"
                     [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}"
                     class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
