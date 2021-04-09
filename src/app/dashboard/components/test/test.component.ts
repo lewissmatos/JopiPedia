@@ -207,10 +207,9 @@ export class TestComponent implements OnInit {
     if (this.i == 19) {
       this.finish = true
     }
-    if (this.i == 20) {
+    if (this.i === 20) {
       this.themeFinished()
     }
-
   }
   
   pregProvisional: QuestionModel[] = []

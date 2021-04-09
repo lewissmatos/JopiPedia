@@ -36,11 +36,22 @@
 
                     <button (click)="nextQ()"
                     [style.background-color]='currentTheme.bgColor'
-                      class="btn  ml-2 "   
+                      class="btn  ml-2 " 
+                      *ngIf="!finish"  
                       [class.no-drop]="!clicked"
                       [disabled]="!clicked"
                      >                        
-                     {{!finish? 'Siguiente': 'Finalizar'}}
+                    Siguiente
+                     <i style="color: white;" class="fas fa-chevron-right ml-1"></i>
+                    </button>
+                    <button (click)="themeFinished()"
+                    [style.background-color]='currentTheme.bgColor'
+                      class="btn  ml-2 "   
+                      *ngIf="finish"  
+                      [class.no-drop]="!clicked"
+                      [disabled]="!clicked"
+                     >                        
+                     Finalizar
                      <i style="color: white;" class="fas fa-chevron-right ml-1"></i>
                     </button>
                     

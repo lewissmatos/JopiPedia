@@ -93,7 +93,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
           }
           this.editedUserData = { ...this.currentUser }
           this.charg = false
-          console.log(this.currentUser)
         }
       },
       error => console.log(error)
