@@ -187,12 +187,18 @@ export class TestComponent implements OnInit {
     this.incorrectQuestion = false
   }
   
+  pregProvisional: QuestionModel[] = []
   getAllQuestionsByTheme() {
     this.pService.getPreguntaByTemaId(this.getLink())
       .subscribe(
-        res => {
-          this.currentQuestion = res.data
-          this.currentQuestion = this.currentQuestion.sort((a, b) => 0.5 - Math.random())
+        async (res) => {
+          this.pregProvisional = res.data
+          this.pregProvisional = await Promise.all(this.pregProvisional.sort((a, b) => 0.5 - Math.random()))
+          console.log(this.pregProvisional)
+          for (let i = 0; i < 20; i++) {
+            this.currentQuestion.push(this.pregProvisional[i])
+          }
+
           this.currentResps = this.currentQuestion[this.i].respuestas
           this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
         }
