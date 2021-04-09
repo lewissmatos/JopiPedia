@@ -118,10 +118,11 @@ export class TestComponent implements OnInit {
 
 
   qv : any
+
   selectedQuestion(resp: any, index: any){
     this.clicked = true
    
-    this.qv = resp.correcta
+    this.qv = resp
     
     if (resp.correcta === true) {
       this.correctQuestion = true
@@ -190,10 +191,10 @@ export class TestComponent implements OnInit {
     this.correctQuestion = false
     this.incorrectQuestion = false
 
-    if (this.i == 19) {
+    if (this.i == 18) {
       this.finish = true
     }
-    if (this.i == 20) {
+    if (this.i == 19) {
       this.themeFinished()
     }
 

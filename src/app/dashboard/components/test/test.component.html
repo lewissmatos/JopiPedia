@@ -74,8 +74,13 @@
             <div class="px-3">
 
                 <div *ngIf="clicked" class="animated fadeIn text-center">
-                    <h2 [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >{{correctQuestion? 'HAS ACERTADO': 'TE HAS EQUIVOCADO'}}</h2>
-                    <b [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >
+<!--                     <h2 [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >{{correctQuestion? 'HAS ACERTADO': 'TE HAS EQUIVOCADO'}}</h2> -->
+                        
+                        <div class="alert" role="alert" [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}">
+                            Respuesta seleccionada: <b>{{qv.desc}}</b>
+                        </div>
+
+                        <b [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >
                         <i style="font-size: 140px;" [ngStyle]="{'color: red !impportant;': incorrectQuestion, 'color: green !important': correctQuestion}" class="mt-2 fas" [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
                     </b>
                 </div>
