@@ -93,13 +93,13 @@ export class TestComponent implements OnInit {
   
  
 
-      allhighestScores = []
+    allhighestScores = []
+    
+    sameTheme: any = {}
+    user: User = {}
+    score = {}
       
-      sameTheme: any = {}
-      user: User = {}
-      score = {}
-      
-      getHighestUser(){
+    getHighestUser(){
     this.scoreService.getHighestScores().subscribe(
       res => {
         this.championLoad = false
@@ -165,9 +165,22 @@ export class TestComponent implements OnInit {
     this.currentResps = this.currentQuestion[this.i].respuestas
   } */
 
+  
+  saveScore(){
+    let scoreObject = {
+      tema: this.currentTheme._id,
+      score: this.points
+    }
+    this.scoreService.createScore(scoreObject).subscribe(
+      res => {
+        console.log(res)
+      },error => console.log(error)
+    )
+  }
 
   themeFinished(){
-          
+    this.saveScore()
+
     Swal.fire({
       icon: 'success',
       title: 'Tema finalizado',
@@ -191,10 +204,10 @@ export class TestComponent implements OnInit {
     this.correctQuestion = false
     this.incorrectQuestion = false
 
-    if (this.i == 18) {
+    if (this.i == 19) {
       this.finish = true
     }
-    if (this.i == 19) {
+    if (this.i == 20) {
       this.themeFinished()
     }
 
