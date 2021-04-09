@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { cardData } from '../../Models/cardData.model';
 import { ThemesService } from '../../services/themes.service';
@@ -23,6 +23,11 @@ export class TestComponent implements OnInit {
     title: '',
     desc: '',
   }
+
+  @ViewChild('res1', { static: false }) res1: ElementRef
+  @ViewChild('res2', { static: false }) res2: ElementRef
+  @ViewChild('res3', { static: false }) res3: ElementRef
+  @ViewChild('res4', { static: false }) res4: ElementRef
 
   allUsers: any[] = []
   usersFiltered: any[] = []
@@ -50,8 +55,7 @@ export class TestComponent implements OnInit {
     this.getUserInfo()
   }
 
-  i = 0  
-
+  
   currentQuestion: QuestionModel[] = []
   currentResps: Resp[] = []
 
@@ -61,7 +65,7 @@ export class TestComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
+  
   btnColor:any = ''
 
   getThemeById() {
@@ -84,18 +88,36 @@ export class TestComponent implements OnInit {
             confirmButtonText: 'Aceptar'
           })
         }
-      )
+        )
   }
+      
+      points: number = 0
+      
+      i = 0  
 
-  time: number = 0
+      themeFinished(){
+        if (this.i > 20) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Tema finalizado',
+            html: `<p>Haz finalizado este tema.</p> <h5>Tu puntuación es: ${this.points}</h5>`,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Ir al inicio'
+          }).then(x=>{
+            if (x.isConfirmed) {
+              this.router.navigate(['/dashboard/home'])
+            }
+          })
+        }
+      }
 
-  allhighestScores = []
-  
-  sameTheme: any = {}
-  user: User = {}
-  score = {}
-
-  getHighestUser(){
+      allhighestScores = []
+      
+      sameTheme: any = {}
+      user: User = {}
+      score = {}
+      
+      getHighestUser(){
     this.scoreService.getHighestScores().subscribe(
       res => {
         this.championLoad = false
@@ -103,8 +125,6 @@ export class TestComponent implements OnInit {
         this.sameTheme = this.allhighestScores.find((x:any)=> x.tema.title === this.currentTheme.title)
         this.user = this.sameTheme.scores[0].user
         this.score = this.sameTheme.scores[0].score
-        console.log(this.score)
-        console.log(this.sameTheme)
       }
     )
   }
@@ -114,11 +134,12 @@ export class TestComponent implements OnInit {
   correctQuestion: any
   incorrectQuestion: any
 
-  selectedQuestion(resp: any){
+
+  selectedQuestion(resp: any, index: any){
     this.clicked = true
-
     console.log(resp.correcta)
-
+    console.log(index)
+    
     if (resp.correcta === true) {
       this.correctQuestion = true
     }
@@ -143,7 +164,6 @@ export class TestComponent implements OnInit {
     )
   }
 
-
   visit(username: any) {
     if (this.currentUser.user == username) {
       this.router.navigate(['/dashboard/profile'])
@@ -161,6 +181,9 @@ export class TestComponent implements OnInit {
   nextQ() {
     this.i = this.i + 1
     this.currentResps = this.currentQuestion[this.i].respuestas
+    this.clicked = false
+    this.correctQuestion = false
+    this.incorrectQuestion = false
   }
   
   getAllQuestionsByTheme() {

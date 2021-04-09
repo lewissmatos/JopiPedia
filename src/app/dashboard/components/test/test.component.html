@@ -34,7 +34,9 @@
 
                     <button (click)="nextQ()"
                     [style.background-color]='currentTheme.bgColor'
-                      class="btn  ml-2 "                     
+                      class="btn  ml-2 "   
+                      [class.no-drop]="!clicked"
+                      [disabled]="!clicked"
                      >                        
                      <i style="color: white;" class="fas fa-chevron-right "></i>
                     </button>
@@ -67,11 +69,10 @@
                 <h3  class="animated fadeIn mb-4" [style.color]="currentTheme.bgColor">{{currentQuestion[i].desc}}?</h3>
 
             <div class="px-3">
-
                 <div class="but">
-                    <button (click)="selectedQuestion(resp)"
-                    class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
+                    <button (click)="selectedQuestion(resp, p + 1)"
                     [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}"
+                    class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
                     [disabled]="clicked"
                     [class.no-drop]="clicked"
                     *ngFor="let resp of currentResps; let p = index" [style.background-color]="btnColor">
@@ -85,7 +86,9 @@
                 <div class="row">
                     <div class="col-3 mt-1">
                         
-                        <h4 class="text-left" [style.color]="currentTheme.bgColor"  style="position: absolute; bottom: 1px; left: 15px;">#{{i + 1}}</h4>
+                        <h5 class="text-left" [style.color]="currentTheme.bgColor" >
+                            #{{i + 1}}/20
+                        </h5>
                     </div>
                     <div class="col-6 text-center mt-2">
 
@@ -93,9 +96,9 @@
                     </div>
                     <div class="col-3 mt-1">
 
-                        <h4 class="text-right" [style.color]="currentTheme.bgColor">
-                        {{time}}
-                        </h4>
+                        <h5 class="text-right" [style.color]="currentTheme.bgColor" > 
+                        {{points}}
+                        </h5>
                     </div>
                 </div>
             </div>
