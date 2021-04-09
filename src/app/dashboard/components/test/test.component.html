@@ -25,14 +25,14 @@
     
                 <div class=" animated fadeIn but" style="float: right;">
                     
-                    <button (click)="previousQ()"
+                    <!-- <button (click)="previousQ()"
                     [style.background-color]='currentTheme.bgColor'
                     class=" btn "
                     [class.no-drop]="i == 0"
                     [disabled]="i == 0"
                      >                        
                      <i style="color: white;" class="fas fa-chevron-left "></i>
-                    </button>
+                    </button> -->
 
                     <button (click)="nextQ()"
                     [style.background-color]='currentTheme.bgColor'
@@ -40,7 +40,8 @@
                       [class.no-drop]="!clicked"
                       [disabled]="!clicked"
                      >                        
-                     <i style="color: white;" class="fas fa-chevron-right "></i>
+                     Siguiente
+                     <i style="color: white;" class="fas fa-chevron-right ml-1"></i>
                     </button>
                     
                     
@@ -74,7 +75,9 @@
 
                 <div *ngIf="clicked" class="animated fadeIn text-center">
                     <h2 class="text-success">{{correctQuestion? 'HAS ACERTADO': 'TE HAS EQUIVOCADO'}}</h2>
-                    <i style="font-size: 200px; color: blueviolet;" [ngStyle]="{'color: red !impportant;': incorrectQuestion, 'color: green !important': correctQuestion}" class="mt-2 fas" [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
+                    <b [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >
+                        <i style="font-size: 140px;" [ngStyle]="{'color: red !impportant;': incorrectQuestion, 'color: green !important': correctQuestion}" class="mt-2 fas" [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
+                    </b>
                 </div>
                 <div *ngIf="!clicked" class="but">
                     <button (click)="selectedQuestion(resp, p + 1)"

@@ -130,13 +130,16 @@ export class TestComponent implements OnInit {
   incorrectQuestion: any
 
 
+  qv : any
   selectedQuestion(resp: any, index: any){
     this.clicked = true
     console.log(resp.correcta)
     console.log(index)
+    this.qv = resp.correcta
     
     if (resp.correcta === true) {
       this.correctQuestion = true
+      this.points += 1
     }
     else if(resp.correcta === false){
       this.incorrectQuestion = true
@@ -168,10 +171,12 @@ export class TestComponent implements OnInit {
     
   }
 
-  previousQ() {
+  /* previousQ() {
+    this.clicked = true
+    this.correctQuestion = this.qv
     this.i = this.i- 1
     this.currentResps = this.currentQuestion[this.i].respuestas
-  }
+  } */
 
   nextQ() {
     this.i = this.i + 1
