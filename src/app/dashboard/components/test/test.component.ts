@@ -62,6 +62,8 @@ export class TestComponent implements OnInit {
   }
   
   btnColor:any = ''
+  i = 0  
+  finish = false
 
   getThemeById() {
     return this.tService.getThemeById(this.getLink())    
@@ -86,25 +88,10 @@ export class TestComponent implements OnInit {
         )
   }
       
-      points: number = 0
-      
-      i = 0  
-
-      themeFinished(){
-        if (this.i > 20) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Tema finalizado',
-            html: `<p>Haz finalizado este tema.</p> <h5>Tu puntuación es: ${this.points}</h5>`,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Ir al inicio'
-          }).then(x=>{
-            if (x.isConfirmed) {
-              this.router.navigate(['/dashboard/home'])
-            }
-          })
-        }
-      }
+  points: number = 0
+  
+  
+ 
 
       allhighestScores = []
       
@@ -133,13 +120,12 @@ export class TestComponent implements OnInit {
   qv : any
   selectedQuestion(resp: any, index: any){
     this.clicked = true
-    console.log(resp.correcta)
-    console.log(index)
+   
     this.qv = resp.correcta
     
     if (resp.correcta === true) {
       this.correctQuestion = true
-      this.points += 1
+      this.points += 5
     }
     else if(resp.correcta === false){
       this.incorrectQuestion = true
@@ -178,13 +164,39 @@ export class TestComponent implements OnInit {
     this.currentResps = this.currentQuestion[this.i].respuestas
   } */
 
+
+  themeFinished(){
+          
+    Swal.fire({
+      icon: 'success',
+      title: 'Tema finalizado',
+      html: `<p>Haz finalizado este tema.</p> <h5 class="text-success">Tu puntuación es: ${this.points}</h5>`,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Ir al inicio'
+    }).then(x=>{
+      if (x.isConfirmed) {
+        this.router.navigate(['/dashboard/home'])
+      }
+    })
+    
+  }
+
   nextQ() {
     this.i = this.i + 1
+    console.log(this.i)
     this.currentResps = this.currentQuestion[this.i].respuestas
     this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
     this.clicked = false
     this.correctQuestion = false
     this.incorrectQuestion = false
+
+    if (this.i == 19) {
+      this.finish = true
+    }
+    if (this.i == 20) {
+      this.themeFinished()
+    }
+
   }
   
   pregProvisional: QuestionModel[] = []
