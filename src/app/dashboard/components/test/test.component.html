@@ -23,20 +23,20 @@
                         
                        >
     
-                <div class=" animated fadeIn" style="float: right;">
+                <div class=" animated fadeIn but" style="float: right;">
                     
                     <button (click)="previousQ()"
                     [style.background-color]='currentTheme.bgColor'
                      class=" btn "
                      >                        
-                     <i style="color: white;" class="fas fa-chevron-left"></i>
+                     <i style="color: white;" class="fas fa-chevron-left "></i>
                     </button>
 
                     <button (click)="nextQ()"
                     [style.background-color]='currentTheme.bgColor'
                       class="btn  ml-2 "                     
                      >                        
-                     <i style="color: white;" class="fas fa-chevron-right"></i>
+                     <i style="color: white;" class="fas fa-chevron-right "></i>
                     </button>
                     
                     
@@ -131,8 +131,8 @@
                     </div>
 
                     <div class="col-6 mt-2">
-                        <h6 style="display: inline-block;" class="ml-3">@{{user.user}}</h6>
-                        <b class="p-2 badge ml-2" [style.boder-color]="btnColor" style="border: 1px solid;" [style.color]="btnColor" >
+                        <h6 style="display: inline-block;" class="ml-1">@{{user.user}}</h6>
+                        <b class="p-1 badge ml-1" [style.boder-color]="btnColor" style="border: 1px solid;" [style.color]="btnColor" >
                             Puntos: {{score}}
                         </b>
                     </div>
