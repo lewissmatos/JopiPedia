@@ -85,7 +85,7 @@ export class RegisterComponent implements OnInit {
         icon: 'error',
         title: 'Registro invdalid',
         text: 'Debes llenar todos los campos',
-        confirmButtonColor: '#7AC0AB'
+        confirmButtonColor: '#17a2b8'
       })
       
       this.dis = false
@@ -106,7 +106,7 @@ export class RegisterComponent implements OnInit {
             icon: 'error',
             title: 'Llene todos los campos correctamente',
             text: error.error.msg,
-            confirmButtonColor: '#7AC0AB'
+            confirmButtonColor: '#17a2b8'
           })
           this.dis = false
         }

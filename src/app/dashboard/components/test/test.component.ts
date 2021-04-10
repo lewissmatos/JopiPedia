@@ -81,7 +81,7 @@ export class TestComponent implements OnInit {
             text: "ha ocurrido un error al cargar el test",
             icon: 'error',
             showCancelButton: false,
-            confirmButtonColor: '#3085d6',     
+            confirmButtonColor: '#17a2b8',     
             confirmButtonText: 'Aceptar'
           })
         }
@@ -185,7 +185,7 @@ export class TestComponent implements OnInit {
       icon: 'success',
       title: 'Tema finalizado',
       html: `<p>Haz finalizado este tema.</p> <h5 class="text-success">Tu puntuación es: ${this.points}</h5>`,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#17a2b8',
       confirmButtonText: 'Ir al inicio'
     }).then(x=>{
       if (x.isConfirmed) {

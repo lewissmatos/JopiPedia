@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
             icon: 'error',
             title: 'Error de inicio de sesión',
             text: error.error.msg,
-            confirmButtonColor: '#7AC0AB'
+            confirmButtonColor: '#17a2b8'
           })
           this.dis = false
         }
