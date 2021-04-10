@@ -48,10 +48,7 @@ export class RegisterComponent implements OnInit {
 
     return (pass === rPass) ? false : true
   }
-
-  
  
-  
   v = Validators
   createForm() {
     this.formData = this.fBuilder.group({

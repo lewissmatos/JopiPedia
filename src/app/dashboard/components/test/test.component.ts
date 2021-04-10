@@ -216,7 +216,6 @@ export class TestComponent implements OnInit {
         async (res) => {
           this.pregProvisional = res.data
           this.pregProvisional = await Promise.all(this.pregProvisional.sort((a, b) => 0.5 - Math.random()))
-          console.log(this.pregProvisional)
           for (let i = 0; i < 20; i++) {
             this.currentQuestion.push(this.pregProvisional[i])
           }
