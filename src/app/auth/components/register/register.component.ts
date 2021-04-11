@@ -95,6 +95,8 @@ export class RegisterComponent implements OnInit {
 
       this.userData = this.formData.value
       console.log(this.userData)
+      this.userData = {...this.userData, user: this.userData.user?.split(' ')[0]}
+      this.userData = {...this.userData, user: this.userData.user?.toLowerCase()}
 
       this.authService.register(this.userData).subscribe(
         res => {
