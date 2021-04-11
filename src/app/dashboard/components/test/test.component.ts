@@ -169,14 +169,6 @@ export class TestComponent implements OnInit {
     
   }
 
-  /* previousQ() {
-    this.clicked = true
-    this.correctQuestion = this.qv
-    this.i = this.i- 1
-    this.currentResps = this.currentQuestion[this.i].respuestas
-  } */
-
-  
   saveScore(){
     let scoreObject = {
       tema: this.currentTheme._id,

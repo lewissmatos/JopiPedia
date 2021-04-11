@@ -25,21 +25,22 @@
                     <input type="text" [(ngModel)]="questionDataFinal.desc" name="question" id="titulo" class="form-control mb-2" placeholder="Pregunta" >
                     
                     <label class="label text-success" for="respC">RESPUESTA CORRECTA</label>
-                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[0].desc" name="desc" id="respC" class="form-control mb-2" placeholder="Respuesta correcta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[0].desc" name="desc0" id="respC" class="form-control mb-2" placeholder="Respuesta correcta" >
                     
                     <label class="label text-danger" for="respI1">RESPUESTA INCORRECTA</label>
-                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[1].desc"  name="desc" id="respI1" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[1].desc"  name="desc1" id="respI1" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     
                     <label class="label text-danger" for="respI2">RESPUESTA INCORRECTA</label>
-                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[2].desc" name="desc" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[2].desc" name="desc2" id="respI2" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                     
                     <label class="label text-danger" for="respI3">RESPUESTA INCORRECTA</label>
-                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[3].desc" name="desc" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
+                    <input type="text" [(ngModel)]="questionDataFinal.respuestas[3].desc" name="desc3" id="respI3" class="form-control mb-2" placeholder="Respuesta incorrecta" >
                                         
                    </div>
             </form>
 
-            <button class="btn btn-success btn-block" (click)="createQuestion()">{{loading? 'Agregando...': 'Agregar pregunta'}}</button>
+            <button *ngIf="!editQ" class="btn btn-success btn-block" (click)="createQuestion()">{{loading? 'Agregando...': 'Agregar pregunta'}}</button>
+            <button *ngIf="editQ" class="btn btn-success btn-block" (click)="updateQuestion()">{{loadEdit? 'Editando...': 'Guardar Edición'}}</button>
 
         </div>
 

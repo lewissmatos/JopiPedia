@@ -14,6 +14,7 @@ export class AdminPreguntasComponent implements OnInit {
   data: cardData = {}
   tema: any
   tBgColor: any
+  editQ: boolean = false
   
   moreQ= false
   allThemes: cardData[] = []
@@ -55,6 +56,7 @@ export class AdminPreguntasComponent implements OnInit {
   }
 
   loading= false
+  loadEdit= false
 
   createQuestion() {
     this.loading = true
@@ -79,10 +81,38 @@ export class AdminPreguntasComponent implements OnInit {
   }
 
   edit(q: any){
-
-    console.log(q)
+    this.editQ = true
+    this.questionDataFinal = q
+    this.tema = q.tema._id
   }
   
+  updateQuestion() {
+    this.loadEdit = true
+    this.pService.updatePregunta(this.questionDataFinal, this.questionDataFinal._id).subscribe(
+      res => {
+        this.loadEdit = false
+        this.editQ = false
+        this.questionDataFinal = {
+          respuestas: [
+            { desc: '', correcta: true },
+            { desc: '', correcta: false },
+            { desc: '', correcta: false },
+            { desc: '', correcta: false },     
+          ]
+        }
+        Swal.fire({
+          icon: 'success',
+          background: '#758080',                
+          html: '<p>Pregunta editada exitosamente!</p>',
+          confirmButtonColor: '#7AC0AB'
+        })
+      },
+      error => {
+        this.loadEdit = false
+        console.log(error)
+      }
+    )
+  }
 
   changeTheme() {
     console.log(this.tema)
