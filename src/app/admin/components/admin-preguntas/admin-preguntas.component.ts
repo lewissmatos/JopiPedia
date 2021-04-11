@@ -84,6 +84,7 @@ export class AdminPreguntasComponent implements OnInit {
     this.editQ = true
     this.questionDataFinal = q
     this.tema = q.tema._id
+    this.tBgColor = q.tema.bgColor
   }
   
   updateQuestion() {

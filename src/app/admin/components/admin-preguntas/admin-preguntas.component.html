@@ -45,50 +45,41 @@
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+          <h3 class="mb-3 l">Agregar pregunta</h3>                              
 
-            <!-- <h3 class="mb-3 ">Preview de la pregunta</h3>            
+          <div  [style.border-color]="tBgColor" class="question-window ">
+  
+            <h3 class="mb-3" [style.color]="tBgColor">  {{questionDataFinal.desc}}</h3>
+            <div  class="but">
+             
+              <button [style.background-color]="tBgColor"
+                class="animated fadeIn fast btn btn-block mb-4 shadow p-2">
+                <b class="float-left">1.</b>
+                <b>{{questionDataFinal.respuestas[0].desc}}</b>
+              </button>
 
-            <div [style.border-color]="tBgColor" class="question-window mb-3 col-12 "
-                >
-                <h4 [style.color]="tBgColor">{{questionData.question}}?</h4>
+              <button [style.background-color]="tBgColor"
+                class="animated fadeIn fast btn btn-block mb-4 shadow p-2">
+                <b class="float-left">2.</b>
+                <b>{{questionDataFinal.respuestas[1].desc}}</b>
+              </button>
 
-                <div>
-                    
-                    <div class="form-check mb-2">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        {{questionData.rc}}
-                      </label>
-                    </div>
-                    <div class="form-check mb-2">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">
-                          {{questionData.ri1}}
-                      </label>
-                    </div>
-                    <div class="form-check mb-2">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">
-                          {{questionData.ri2}}
-                      </label>
-                    </div>
-                    <div class="form-check mb-2">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">
-                          {{questionData.ri3}}
-                      </label>
-                    </div>
-                    
-                   
+              <button [style.background-color]="tBgColor"
+                class="animated fadeIn fast btn btn-block mb-4 shadow p-2">
+                <b class="float-left">3.</b>
+                <b>{{questionDataFinal.respuestas[2].desc}}</b>
+              </button>
 
-                </div>                
-
-
-                <i class="fas fa-question float-right" [style.color]="tBgColor" style="color: white; font-size: 50px; position: absolute; bottom: 15px; right: 15px;">
-                </i>
-            </div> -->
-
-        </div >        
+              <button [style.background-color]="tBgColor"
+                class="animated fadeIn fast btn btn-block mb-4 shadow p-2">
+                <b class="float-left">4.</b>
+                <b>{{questionDataFinal.respuestas[3].desc}}</b>
+              </button>
+  
+            </div>
+  
+          </div >        
+        </div>
 
     </div>
     
