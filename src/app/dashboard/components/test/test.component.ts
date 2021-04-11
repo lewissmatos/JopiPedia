@@ -100,7 +100,7 @@ export class TestComponent implements OnInit {
     score = {}
       
     noChamp = false
-    getHighestUser(){
+  getHighestUser(){
     this.scoreService.getHighestScores().subscribe(
       res => {
         this.championLoad = false
@@ -241,6 +241,7 @@ export class TestComponent implements OnInit {
     }
   }
   
+  cantBePlayed = false
   pregProvisional: QuestionModel[] = []
   getAllQuestionsByTheme() {
     this.pService.getPreguntaByTemaId(this.getLink())
@@ -252,6 +253,9 @@ export class TestComponent implements OnInit {
             this.currentQuestion.push(this.pregProvisional[i])
           }
 
+          if (this.currentQuestion[19] == undefined) {
+            this.cantBePlayed = true
+          }
           this.currentResps = this.currentQuestion[this.i].respuestas
           this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
         }

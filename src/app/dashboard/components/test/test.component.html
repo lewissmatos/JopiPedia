@@ -62,8 +62,6 @@
 
     <div class="row p-2" style="color: white !important;" >
 
-        
-
         <div [style.border-color]="currentTheme.bgColor" class="question-window mb-2
         
                     col-lg-7
@@ -72,68 +70,79 @@
                     col-12
                     "
                 >
-            <div *ngIf="playing" >
-    
+            <div *ngIf="cantBePlayed" class="text-center p-3">
 
-                <h3  class="animated fadeIn mb-4" [style.color]="currentTheme.bgColor">{{currentQuestion[i].desc}}</h3>
+                <div  class="alert alert-warning">
+                    <h6>Lo sentimos, este tema aún no está disponible!</h6>
+                </div>    
+                <i class="fas fa-frown text-warning" style="font-size: 200px;"></i>
+            </div>
+            <div *ngIf="!cantBePlayed" >
 
-                <div class="px-3">
-
-                    <div *ngIf="clicked" class="animated fadeIn text-center">
-                            
-                            <div class="alert" role="alert" [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}">
-                                Respuesta seleccionada: <b>{{qv.desc}}</b>
-                            </div>
-
-                            <b [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >
-                            <i style="font-size: 140px;" [ngStyle]="{'color: red !impportant;': incorrectQuestion, 'color: green !important': correctQuestion}" class="mt-2 fas" [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
-                        </b>
-                    </div>
-                    <div *ngIf="!clicked" class="but">
-                        <button (click)="selectedQuestion(resp, p + 1)"
-                        [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}"
-                        class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
-                        [disabled]="clicked"
-                        [class.no-drop]="clicked"
-                        *ngFor="let resp of currentResps; let p = index" [style.background-color]="btnColor">
-                        <b class="float-left">{{p + 1}}.</b>
-                        <b> {{resp.desc}}
-                            <i *ngIf="clicked" class="float-right mt-1 fas " [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
-                        </b>
-                    </button>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-3 mt-1">
-                            
-                            <h5 class="text-left" [style.color]="currentTheme.bgColor" >
-                                #{{i + 1}}/<b>20</b>
-                            </h5>
-                        </div>
-                        <div class="col-6 text-center mt-2">
-
-                            <b><h5 *ngIf="clicked" [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >{{correctQuestion? 'Elección correctaa!' : 'Elección incorrectaa!'}}</h5></b>
-                        </div>
-                        <div class="col-3 mt-1">
-
-                            <h5 class="text-right" [style.color]="currentTheme.bgColor" > 
-                            {{points}}/<b>{{fails}}</b>
-                            </h5>
-                        </div>
-                    </div>
+                <div *ngIf="!playing" class="mt-3 mb-3 w-100 text-center">
+            
+                    <h4 [style.color]="currentTheme.bgColor">
+                        Pulse el botón para jugar
+                    </h4>
+        
+                    <i  class="fas fa-play-circle mt-3" (click)="play()" style="font-size: 180px; cursor: pointer;" [style.color]="currentTheme.bgColor"></i>
+                
                 </div>
 
-                
-            </div>
+                <div *ngIf="playing" >
+        
 
-            <div *ngIf="!playing" class="mt-3 mb-3 w-100 text-center">
-            
-                <h4 [style.color]="currentTheme.bgColor">
-                    Pulse el botón para jugar
-                </h4>
-    
-                <i  class="fas fa-play-circle mt-3" (click)="play()" style="font-size: 180px; cursor: pointer;" [style.color]="currentTheme.bgColor"></i>
-            
+                    <h3  class="animated fadeIn mb-4" [style.color]="currentTheme.bgColor">{{currentQuestion[i].desc}}</h3>
+
+                    <div class="px-3">
+
+                        <div *ngIf="clicked" class="animated fadeIn text-center">
+                                
+                                <div class="alert" role="alert" [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}">
+                                    Respuesta seleccionada: <b>{{qv.desc}}</b>
+                                </div>
+
+                                <b [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >
+                                <i style="font-size: 140px;" [ngStyle]="{'color: red !impportant;': incorrectQuestion, 'color: green !important': correctQuestion}" class="mt-2 fas" [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
+                            </b>
+                        </div>
+                        <div *ngIf="!clicked" class="but">
+                            <button (click)="selectedQuestion(resp, p + 1)"
+                            [ngClass]="{'incorrect': incorrectQuestion, 'correct': correctQuestion}"
+                            class="animated fadeIn fast btn btn-block mb-4 shadow p-2"
+                            [disabled]="clicked"
+                            [class.no-drop]="clicked"
+                            *ngFor="let resp of currentResps; let p = index" [style.background-color]="btnColor">
+                            <b class="float-left">{{p + 1}}.</b>
+                            <b> {{resp.desc}}
+                                <i *ngIf="clicked" class="float-right mt-1 fas " [ngClass]="{'fa-check-circle': correctQuestion, 'fa-times-circle': incorrectQuestion}"></i>
+                            </b>
+                        </button>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-3 mt-1">
+                                
+                                <h5 class="text-left" [style.color]="currentTheme.bgColor" >
+                                    #{{i + 1}}/<b>20</b>
+                                </h5>
+                            </div>
+                            <div class="col-6 text-center mt-2">
+
+                                <b><h5 *ngIf="clicked" [ngClass]="{'tCorrect': correctQuestion, 'tIncorrect': incorrectQuestion}" >{{correctQuestion? 'Elección correctaa!' : 'Elección incorrectaa!'}}</h5></b>
+                            </div>
+                            <div class="col-3 mt-1">
+
+                                <h5 class="text-right" [style.color]="currentTheme.bgColor" > 
+                                {{points}}/<b>{{fails}}</b>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
             </div>
 
         </div>
