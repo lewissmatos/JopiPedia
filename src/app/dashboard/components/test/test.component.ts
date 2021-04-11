@@ -48,6 +48,7 @@ export class TestComponent implements OnInit {
     this.getAllQuestionsByTheme()
     //this.getHighestUser()
     this.getUserInfo()
+    this.getScoreUserLogged()
   }
 
   
@@ -92,9 +93,6 @@ export class TestComponent implements OnInit {
   points: number = 0
   fails: number = 100
   
-  
- 
-
     allhighestScores = []
     
     sameTheme: any = {}
@@ -109,14 +107,10 @@ export class TestComponent implements OnInit {
         this.allhighestScores = res.data
         this.sameTheme = this.allhighestScores.find((x:any)=> x.tema.title === this.currentTheme.title)
                 
-        console.log(this.sameTheme)
-
         if (this.sameTheme == undefined) {
           this.noChamp = true
         }
         
-        console.log(this.noChamp)
-
         this.user = this.sameTheme.scores[0].user
         this.score = this.sameTheme.scores[0].score
       }
@@ -147,7 +141,7 @@ export class TestComponent implements OnInit {
   }
 
   playing = false
-  
+
   play(){
     this.playing = true
   }
@@ -189,18 +183,46 @@ export class TestComponent implements OnInit {
     )
   }
 
+  scoreUserLogged = {score: 0}
+  
+  getScoreUserLogged(){
+    this.scoreService.getScoreUserLogged().subscribe(
+      res => {
+        console.log(res)
+        this.scoreUserLogged = res.data.find((x:any) => x.tema.title == this.currentTheme.title)
+      }
+    )
+  }
+
+  swalClass = ''
+  finishMsg = ''
+  emoji= ''
   themeFinished(){
     this.saveScore()
-
+    if ( this.points < this.scoreUserLogged.score) {
+      this.finishMsg = 'Lo sentimos, tu nuevo récord es menor al anterior'
+      this.swalClass = 'text-danger'
+      this.emoji = 'fas fa-sad-tear'
+    }else if (this.points === this.scoreUserLogged.score) {
+      this.finishMsg = 'Has obtenido la misma puntuación'
+      this.swalClass = 'text-info'
+      this.emoji = 'fas fa-grin-beam'
+    }
+    else {
+      this.finishMsg = 'Felicidades, tu nuevo récord es mayor al anterior'
+      this.swalClass = 'text-success'
+      this.emoji = 'fas fa-laugh-beam'
+      }
+    
     Swal.fire({
       icon: 'success',
       title: 'Tema finalizado',
-      html: `<p>Haz finalizado este tema.</p> <h5 class="text-success">Tu puntuación es: ${this.points}</h5>`,
+      html: `<p>Haz finalizado este tema.</p> <h5 class="${this.swalClass}">Tu nueva puntuación es: ${this.points}</h5> <p class="${this.swalClass}">${this.finishMsg} </p> <p class="${this.swalClass}" style="font-size: 40px" ><i class="${ this.swalClass , this.emoji}"></i> </p> `,
       confirmButtonColor: '#17a2b8',
-      confirmButtonText: 'Ir al inicio'
+      confirmButtonText: 'Ir a los récords'
     }).then(x=>{
       if (x.isConfirmed) {
-        this.router.navigate(['/dashboard/home'])
+        this.router.navigate(['/dashboard/records'])
       }
     })
     
