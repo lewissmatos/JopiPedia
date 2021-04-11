@@ -195,6 +195,14 @@ export class ProfileComponent implements OnInit, AfterViewInit{
         }, 
         error => {
           console.log(error)
+          this.editingInfo = false 
+          Swal.fire({
+            icon: 'error',
+            title: 'Error.',
+            text: 'Ha ocurrido un error',
+            confirmButtonColor: '#17a2b8',     
+            confirmButtonText: 'Aceptar'
+          })
         }
       )
     }
@@ -226,7 +234,9 @@ export class ProfileComponent implements OnInit, AfterViewInit{
           Swal.fire({
             icon: 'info',
             title: 'Guardado.',
-            text: 'Guardado exitosamente!'
+            text: 'Guardado exitosamente!',
+            confirmButtonColor: '#17a2b8',     
+            confirmButtonText: 'Aceptar'
           })    
           this.editingInfo = false
           // this.currentUser = res.data
