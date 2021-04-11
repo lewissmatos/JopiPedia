@@ -203,12 +203,11 @@ export class TestComponent implements OnInit {
       this.finishMsg = 'Lo sentimos, tu nuevo récord es menor al anterior'
       this.swalClass = 'text-danger'
       this.emoji = 'fas fa-sad-tear'
-    }else if (this.points === this.scoreUserLogged.score) {
+    }else if (this.points == this.scoreUserLogged.score) {
       this.finishMsg = 'Has obtenido la misma puntuación'
       this.swalClass = 'text-info'
       this.emoji = 'fas fa-grin-beam'
-    }
-    else {
+    }else if (this.points > this.scoreUserLogged.score){
       this.finishMsg = 'Felicidades, tu nuevo récord es mayor al anterior'
       this.swalClass = 'text-success'
       this.emoji = 'fas fa-laugh-beam'
