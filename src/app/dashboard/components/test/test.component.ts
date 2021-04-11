@@ -146,6 +146,12 @@ export class TestComponent implements OnInit {
     }
   }
 
+  playing = false
+  
+  play(){
+    this.playing = true
+  }
+
   championLoad = true
 
   getUserInfo() {
