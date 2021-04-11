@@ -140,7 +140,14 @@
                     <i class=" ml-1 fas fa-sync fa-spin"></i>
                 </div>
 
-                <div *ngIf="!championLoad" class="row mt-3">
+                <div *ngIf="noChamp" class="alert alert-warning" role="alert">
+                    Este tema no tiene ningún campeón!
+                    <i class=""></i>
+                </div>
+
+               
+
+                <div *ngIf="!championLoad && !noChamp" class="row mt-3">
                     <div class="col-2">
 
                         <div style="display: inline-block; background-color: whitesmoke; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">

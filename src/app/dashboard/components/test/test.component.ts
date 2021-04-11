@@ -72,6 +72,7 @@ export class TestComponent implements OnInit {
           this.charg = false
           this.currentTheme = res.data
           this.getHighestUser()
+          
           this.btnColor = this.currentTheme.bgColor
         },
         error => {
@@ -99,12 +100,22 @@ export class TestComponent implements OnInit {
     user: User = {}
     score = {}
       
+    noChamp = false
     getHighestUser(){
     this.scoreService.getHighestScores().subscribe(
       res => {
         this.championLoad = false
         this.allhighestScores = res.data
         this.sameTheme = this.allhighestScores.find((x:any)=> x.tema.title === this.currentTheme.title)
+                
+        console.log(this.sameTheme)
+
+        if (this.sameTheme == undefined) {
+          this.noChamp = true
+        }
+        
+        console.log(this.noChamp)
+
         this.user = this.sameTheme.scores[0].user
         this.score = this.sameTheme.scores[0].score
       }

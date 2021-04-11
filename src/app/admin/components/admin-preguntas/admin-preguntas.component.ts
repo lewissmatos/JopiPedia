@@ -78,6 +78,12 @@ export class AdminPreguntasComponent implements OnInit {
       )    
   }
 
+  edit(q: any){
+
+    console.log(q)
+  }
+  
+
   changeTheme() {
     console.log(this.tema)
     this.tBgColor = this.allThemes.find(x => x._id == this.tema)?.bgColor
