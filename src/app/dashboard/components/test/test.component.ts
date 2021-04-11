@@ -90,6 +90,7 @@ export class TestComponent implements OnInit {
   }
       
   points: number = 0
+  fails: number = 100
   
   
  
@@ -141,6 +142,7 @@ export class TestComponent implements OnInit {
     }
     else if(resp.correcta === false){
       this.incorrectQuestion = true
+      this.fails = this.fails - 5
     }
   }
 
