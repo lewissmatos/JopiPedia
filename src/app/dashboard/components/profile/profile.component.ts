@@ -1,3 +1,4 @@
+import { PhotoService } from './../../services/photo.service';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/auth/Models/user.model';
@@ -32,7 +33,8 @@ export class ProfileComponent implements OnInit, AfterViewInit{
     private router: Router,
     private userService: UserServicesService,
     private acRouter: ActivatedRoute,
-    private scoreService: ScoreService
+    private scoreService: ScoreService,
+    private photoService: PhotoService
   ) {
     this.getAllThemes()
     this.getUsers()
@@ -175,6 +177,28 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   
   editingInfo = false
   
+  uploadPhoto() {
+    if (this.file.name == undefined) {
+      this.editUserInfo()
+    }
+    else {
+      const data = new FormData()
+      data.append('file', this.file)
+      data.append('upload_preset', 'yxgruubw')
+      data.append('cloud_name', 'drjkf0hig')
+
+      this.photoService.uploadPhoto(data).subscribe(
+        res => {
+          this.foto = res.secure_url
+          this.editUserInfo()
+        }, 
+        error => {
+          console.log(error)
+        }
+      )
+    }
+  }
+
   editUserInfo() {
     this.editingInfo = true
     if (this.editedUserData.name?.length === 0 || this.editedUserData.lName?.length === 0 ) {
@@ -278,12 +302,14 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   }
 
   //PICTURE AREA
+  file: any = {}
   fileSelect: any = ''
   foto: any = '../../../../assets/user-profile.png'
   encodeImage(e: any) {
     this.fileSelect = (<HTMLInputElement>document.getElementById('formFile')).files || ''
     if (this.fileSelect.length > 0) {
       let newFileSelect = this.fileSelect[0]
+      this.file = newFileSelect
       let fileReader = new FileReader()
       
       let self = this
