@@ -75,6 +75,15 @@ export class AdminPreguntasComponent implements OnInit {
             html: '<p>Pregunta agregada exitosamente!</p>',
             confirmButtonColor: '#7AC0AB'
           })
+          
+          this.questionDataFinal = {
+            respuestas: [
+              { desc: '', correcta: true },
+              { desc: '', correcta: false },
+              { desc: '', correcta: false },
+              { desc: '', correcta: false },     
+            ]
+          }
           console.log(res.data)
         }, error => console.log(error)
       )    

@@ -178,6 +178,7 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   editingInfo = false
   
   uploadPhoto() {
+    this.editingInfo = true
     if (this.file.name == undefined) {
       this.editUserInfo()
     }
@@ -200,7 +201,6 @@ export class ProfileComponent implements OnInit, AfterViewInit{
   }
 
   editUserInfo() {
-    this.editingInfo = true
     if (this.editedUserData.name?.length === 0 || this.editedUserData.lName?.length === 0 ) {
       Swal.fire({
       title: 'Editar información',
