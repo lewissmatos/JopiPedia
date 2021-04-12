@@ -85,8 +85,11 @@
                         Pulse el botón para jugar
                     </h4>
         
-                    <i  class="fas fa-play-circle mt-3" (click)="play()" style="font-size: 180px; cursor: pointer;" [style.color]="currentTheme.bgColor"></i>
+                    <i  class="fas fa-play-circle mt-3 but" (click)="play()" style="font-size: 180px; cursor: pointer;" [style.color]="currentTheme.bgColor"></i>
                 
+                    <h5 [style.color]="currentTheme.bgColor" class="mt-3">
+                        Su puntuación actual es: <b>{{scoreUserLogged.score}}</b>
+                    </h5>
                 </div>
 
                 <div *ngIf="playing" >

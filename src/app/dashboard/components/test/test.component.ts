@@ -62,11 +62,12 @@ export class TestComponent implements OnInit, CanComponentLeave {
   }
 
   canLeave() {
-    let salir: boolean = false
+    
     if (!this.finished) {
       return Swal.fire({
         title: 'Abandonar test',
-        text: "¿Confirma que desea cerrar sesión?",
+        html: `<h6>¿Seguro que quiere salir?</h6>
+        <h5> su nueva puntuaión será: <h3 class="text-danger">${this.points}</h3></h5>`,
         icon: 'info',
         showCancelButton: true,
         confirmButtonColor: '#17a2b8',
