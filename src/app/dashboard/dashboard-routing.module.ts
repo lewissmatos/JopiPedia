@@ -1,3 +1,4 @@
+import { UnsavedrecordGuard } from './guards/unsavedrecord.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'search-people', component: SearchPeopleComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profile/:user', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'test/:id', component: TestComponent, canActivate: [AuthGuard] },
+  { path: 'test/:id', component: TestComponent, canActivate: [AuthGuard], canDeactivate: [UnsavedrecordGuard] },
 ];
 
 @NgModule({

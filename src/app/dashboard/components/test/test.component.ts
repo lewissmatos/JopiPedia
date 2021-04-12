@@ -9,13 +9,14 @@ import { QuestionModel, Resp } from 'src/app/admin/Models/Question.model';
 import { ScoreService } from '../../services/score.service';
 import { UserServicesService } from '../../services/user-services.service';
 import { User } from 'src/app/auth/Models/user.model';
+import { CanComponentLeave } from '../../guards/unsavedrecord.guard';
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
-export class TestComponent implements OnInit {
+export class TestComponent implements OnInit, CanComponentLeave {
 
   currentTheme: cardData = {
     _id: '',
@@ -33,6 +34,7 @@ export class TestComponent implements OnInit {
   userLogged: User = { name: '', lName: '' }
   isOtherProfile: boolean = false
   userNotFound: boolean = false
+  finished: boolean = true
   username: string = ''
   
  charg = true
@@ -57,6 +59,31 @@ export class TestComponent implements OnInit {
 
   getLink() {
     return this.activatedRouter.snapshot.params.id
+  }
+
+  canLeave() {
+    let salir: boolean = false
+    if (!this.finished) {
+      return Swal.fire({
+        title: 'Abandonar test',
+        text: "¿Confirma que desea cerrar sesión?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#17a2b8',
+        cancelButtonColor: '#FF7952',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Aceptar'
+      }).then(res => {
+        if (res.isConfirmed) {
+          this.saveScore()
+          return res.isConfirmed
+        }
+        else {
+          return false
+        }
+      })
+    }
+    return true
   }
   
   ngOnInit(): void {
@@ -143,6 +170,7 @@ export class TestComponent implements OnInit {
   playing = false
 
   play(){
+    this.finished = false
     this.playing = true
   }
 
@@ -221,6 +249,7 @@ export class TestComponent implements OnInit {
       confirmButtonText: 'Ir a los récords'
     }).then(x=>{
       if (x.isConfirmed) {
+        this.finished = true
         this.router.navigate(['/dashboard/records'])
       }
     })
