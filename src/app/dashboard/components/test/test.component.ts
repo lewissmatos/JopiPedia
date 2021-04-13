@@ -26,6 +26,8 @@ export class TestComponent implements OnInit, CanComponentLeave {
     desc: '',
   }
 
+      
+
   allUsers: any[] = []
   usersFiltered: any[] = []
 
@@ -325,11 +327,9 @@ export class TestComponent implements OnInit, CanComponentLeave {
         }
         else { 
           this.count = this.restrcitedTheme.count
+          
           this.timeRestriction = + this.restrcitedTheme.createdAt.substring(11, 13) - 4
 
-          console.log(this.currentHouer)
-          console.log(this.timeRestriction)
-          
           let dif = this.currentHouer - this.timeRestriction 
 
           if (dif < 0) {
