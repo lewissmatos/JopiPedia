@@ -10,6 +10,7 @@ import { ScoreService } from '../../services/score.service';
 import { UserServicesService } from '../../services/user-services.service';
 import { User } from 'src/app/auth/Models/user.model';
 import { CanComponentLeave } from '../../guards/unsavedrecord.guard';
+import { RestrictionService } from '../../services/restriction.service';
 
 @Component({
   selector: 'app-test',
@@ -44,13 +45,15 @@ export class TestComponent implements OnInit, CanComponentLeave {
     private tService: ThemesService, 
     private pService: AdminPreguntaService,
     private scoreService: ScoreService,
-    private userService: UserServicesService
+    private userService: UserServicesService,
+    private restrictionService: RestrictionService
   ) {
     this.getThemeById()
     this.getAllQuestionsByTheme()
     //this.getHighestUser()
     this.getUserInfo()
     this.getScoreUserLogged()
+    this.getUserLoggedRestriction()
   }
 
   
@@ -173,6 +176,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
   play(){
     this.finished = false
     this.playing = true
+    this.createRestriccion()
   }
 
   championLoad = true
@@ -224,7 +228,8 @@ export class TestComponent implements OnInit, CanComponentLeave {
   }
 
 
-  chances = 0 
+  chances = 3
+  restricted = false
 
   swalClass = ''
   finishMsg = ''
@@ -293,6 +298,41 @@ export class TestComponent implements OnInit, CanComponentLeave {
           this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
         }
     )
+  }
+
+  //RESTRICTION AREA
+
+  count = 0
+  restrcitedTheme:any = {}
+  timeRestriction : any
+  getUserLoggedRestriction(){
+    this.restrictionService.getUserLoggedRestrictions()
+    .subscribe(
+      res => {        
+        console.log(res.data)
+        this.restrcitedTheme = res.data.find((x:any)=> x.tema.title == this.currentTheme.title)
+        
+        if (this.restrcitedTheme === undefined) {
+          this.restricted = false
+        }
+        else { 
+          this.count = this.restrcitedTheme.count
+          
+          this.chances = this.chances - this.count          
+          if (this.restrcitedTheme.restriccion == true) {
+            this.restricted = true
+          }
+          else {
+            this.restricted = false
+          }
+        }
+      }
+    )
+  }
+
+  createRestriccion(){
+    this.restrictionService.createRestriction({ tema: this.currentTheme._id})
+    .subscribe( res => console.log(res),  error => console.log(error))
   }
   
 }

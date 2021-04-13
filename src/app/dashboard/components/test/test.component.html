@@ -82,14 +82,16 @@
                 <div *ngIf="!playing" class="mt-3 mb-3 w-100 text-center">
             
                     <h3 [style.color]="currentTheme.bgColor">
-                        Pulse el botón para jugar
+                        {{restricted? 'Este tema esta restringido para usted': 'Pulse el botón para jugar'}}
                     </h3>
                     
                     <h5 [style.color]="currentTheme.bgColor">
-                        Oportunidades restantes: <b>{{chances}}/3</b>
+                        Oportunidades restantes: <b [class.text-danger]="chances == 0">{{chances}}/3</b>
                     </h5>
         
-                    <i  class="fas fa-play-circle mt-3 but" (click)="play()" style="font-size: 180px; cursor: pointer;" [style.color]="currentTheme.bgColor"></i>
+                    <i *ngIf="!restricted" class="mt-3 fas fa-play-circle " (click)="play()" style="font-size: 180px; cursor: pointer;" [style.color]="currentTheme.bgColor"></i>
+                    
+                    <i *ngIf="restricted"  class="mt-3 fas fa-ban" style="font-size: 180px;" [style.color]="currentTheme.bgColor"></i>
                 
                     <h5 [style.color]="currentTheme.bgColor" class="mt-3">
                         Su puntuación actual es: <b>{{scoreUserLogged.score}}</b>
