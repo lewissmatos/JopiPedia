@@ -14,7 +14,6 @@ import { UserServicesService } from '../../services/user-services.service';
 export class RecordsComponent implements OnInit {
 
   dataFiltered: any[] = []
-
   
   currentUser: User = { name: '', lName: '' }
   userLogged: User = { name: '', lName: '' }

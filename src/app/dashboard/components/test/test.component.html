@@ -11,7 +11,7 @@
                         col-lg-8
             ">
     
-                <h2 class="mt-1">{{currentTheme.title | uppercase }}</h2>
+            <h3 class="mt-1">{{currentTheme.title | uppercase }}</h3>
             </div>
     
             <div class=" w-100 mt-2 
@@ -176,20 +176,20 @@
                
 
                 <div *ngIf="!championLoad && !noChamp" class="row mt-3">
-                    <div class="col-2">
+                    <div class="col-lg-2 col-2">
 
                         <div style="display: inline-block; background-color: whitesmoke; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
                             <img class="img-fluid" src="{{user.foto == '' || user.foto == undefined? fotito: user.foto}}" >
                         </div>
                     </div>
 
-                    <div class="col-6 mt-2">
+                    <div class="col-lg-6 col-6 mt-2">
                         <h6 style="display: inline-block;" class="ml-1">@{{user.user}}</h6>
                         <b class="p-1 badge ml-1" [style.boder-color]="btnColor" style="border: 1px solid;" [style.color]="btnColor" >
                             Puntos: {{score}}
                         </b>
                     </div>
-                    <div class="col-2">
+                    <div class="col-lg-4 col-2">
                         <button class="btn" (click)="visit(user.user)" [routerLink]="['/dashboard/profile', user.user]" [style.background-color]="btnColor">Visitar</button>
                     </div>
                 </div>

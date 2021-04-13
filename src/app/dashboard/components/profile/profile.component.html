@@ -1,6 +1,8 @@
 <div *ngIf="!userNotFound" class="animated fadeIn ">
     <div>
 
+     
+
         <div class="row">
             <div class="
                         mt-1
@@ -54,13 +56,12 @@
        
         <hr class="mb-2">
 
-
         <div *ngIf="charg" class="alert alert-success" role="alert">
           Cargando... 
           <i class=" ml-1 fas fa-sync fa-spin"></i>
         </div>
 
-        <div class="row animated fadeIn fast mt-4">
+        <div *ngIf="!charg" class="row animated fadeIn fast mt-4">
         
             <div class=" 
                         col-lg-2
