@@ -55,9 +55,9 @@
           <tbody class="animated fadeIn">
             <tr *ngFor="let user of scores.scores; let i = index">
               <th class="text-center" scope="row"><h6 class="text-center bgGray" *ngIf="i + 1 > 3"> <b>{{i + 1}}</b></h6>
-                <img *ngIf="i + 1 ==1" src="{{i + 1 == 1? 'https://img.icons8.com/color/48/000000/first-place-ribbon.png': null}}" />
-                <img *ngIf="i + 1 ==2" src="{{i + 1 == 2? 'https://img.icons8.com/color/48/000000/second-place-ribbon.png': null}}" />
-                <img *ngIf="i + 1 ==3" src="{{i + 1 == 3? 'https://img.icons8.com/color/48/000000/third-place-ribbon.png': null}}" />
+                <img *ngIf="i + 1 ==1" src="{{i + 1 == 1? '../assets/first-place.png': null}}" />
+                <img *ngIf="i + 1 ==2" src="{{i + 1 == 2? '../assets/second-place.png': null}}" />
+                <img *ngIf="i + 1 ==3" src="{{i + 1 == 3? '../assets/third-place.png': null}}" />
               </th>
               <td >
                 <b style="cursor: pointer;" (click)="visit(user.user.user)" [routerLink]="['/dashboard/profile', user.user.user]" 
