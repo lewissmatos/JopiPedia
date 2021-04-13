@@ -141,9 +141,11 @@ export class TestComponent implements OnInit, CanComponentLeave {
         if (this.sameTheme == undefined) {
           this.noChamp = true
         }
+        else {
+          this.user = this.sameTheme.scores[0].user
+          this.score = this.sameTheme.scores[0].score
+        }
         
-        this.user = this.sameTheme.scores[0].user
-        this.score = this.sameTheme.scores[0].score
       }
     )
   }
@@ -217,13 +219,17 @@ export class TestComponent implements OnInit, CanComponentLeave {
     )
   }
 
-  scoreUserLogged = {score: 0}
+  scoreUserLogged: any = {score: 0}
   
   getScoreUserLogged(){
     this.scoreService.getScoreUserLogged().subscribe(
       res => {
-        console.log(res)
         this.scoreUserLogged = res.data.find((x:any) => x.tema.title == this.currentTheme.title)
+
+        if (!this.scoreUserLogged) {
+          this.scoreUserLogged = {}
+          this.scoreUserLogged.score = 0
+        }
       }
     )
   }
