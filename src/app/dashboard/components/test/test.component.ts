@@ -223,6 +223,9 @@ export class TestComponent implements OnInit, CanComponentLeave {
     )
   }
 
+
+  chances = 0 
+
   swalClass = ''
   finishMsg = ''
   emoji= ''
