@@ -11,7 +11,6 @@ import { UserServicesService } from '../../services/user-services.service';
 import { User } from 'src/app/auth/Models/user.model';
 import { CanComponentLeave } from '../../guards/unsavedrecord.guard';
 import { RestrictionService } from '../../services/restriction.service';
-import { Console } from 'node:console';
 
 @Component({
   selector: 'app-test',
