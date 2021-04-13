@@ -11,6 +11,7 @@ import { UserServicesService } from '../../services/user-services.service';
 import { User } from 'src/app/auth/Models/user.model';
 import { CanComponentLeave } from '../../guards/unsavedrecord.guard';
 import { RestrictionService } from '../../services/restriction.service';
+import { Console } from 'node:console';
 
 @Component({
   selector: 'app-test',
@@ -205,6 +206,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
   }
 
   saveScore(){
+    console.log('guardado')
     let scoreObject = {
       tema: this.currentTheme._id,
       score: this.points
@@ -236,6 +238,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
   emoji= ''
   themeFinished(){
     this.saveScore()
+
     if ( this.points < this.scoreUserLogged.score) {
       this.finishMsg = 'Lo sentimos, tu nuevo récord es menor al anterior'
       this.swalClass = 'text-danger'
@@ -245,6 +248,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
       this.swalClass = 'text-info'
       this.emoji = 'fas fa-grin-beam'
     }else if (this.points > this.scoreUserLogged.score){
+      console.log('mayor')
       this.finishMsg = 'Felicidades, tu nuevo récord es mayor al anterior'
       this.swalClass = 'text-success'
       this.emoji = 'fas fa-laugh-beam'
@@ -305,6 +309,11 @@ export class TestComponent implements OnInit, CanComponentLeave {
   count = 0
   restrcitedTheme:any = {}
   timeRestriction : any
+  actualTime = new Date()
+  currentHouer = this.actualTime.getHours()
+
+  formule : any 
+
   getUserLoggedRestriction(){
     this.restrictionService.getUserLoggedRestrictions()
     .subscribe(
@@ -317,7 +326,17 @@ export class TestComponent implements OnInit, CanComponentLeave {
         }
         else { 
           this.count = this.restrcitedTheme.count
+          this.timeRestriction = + this.restrcitedTheme.createdAt.substring(11, 13) - 4
+
+          console.log(this.currentHouer)
+          console.log(this.timeRestriction)
           
+          let dif = this.currentHouer - this.timeRestriction 
+
+          if (dif < 0) {
+            dif = dif * -1
+          }
+          this.formule = 12 - dif
           this.chances = this.chances - this.count          
           if (this.restrcitedTheme.restriccion == true) {
             this.restricted = true
@@ -326,6 +345,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
             this.restricted = false
           }
         }
+        console.log(this.restricted)
       }
     )
   }
