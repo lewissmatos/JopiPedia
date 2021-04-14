@@ -5,24 +5,28 @@
         <div class="row">
             <div class="
                         mt-1
-                        col-4
+                        col-6
                         col-sm-4
                         col-md-6
-                        col-lg-8
+                        col-lg-10
             ">
     
             <h3 class="mt-1">{{currentTheme.title | uppercase }}</h3>
             </div>
     
-            <div class=" w-100 mt-2 
+            <div class=" w-100 mt-1
 
-                        col-8
+                        col-6
                         col-sm-8
                         col-md-6
-                        col-lg-4"                        
-                       >
-    
+                        col-lg-2"                        
+                       >                
+
                 <div class=" animated fadeIn but" style="float: right;">
+
+                    <h3 class="d-inline-block mr-3" [style.color]="currentTheme.bgColor">
+                        {{questionTime}}
+                    </h3>
 
                     <button (click)="nextQ()"
                     [style.background-color]='currentTheme.bgColor'
@@ -41,8 +45,7 @@
                       *ngIf="finish"  
                       [class.no-drop]="!clicked"
                       [disabled]="!clicked"
-                     >                        
-            
+                     >                                    
                      <i style="color: white;" class="fas fa-check ml-1"></i>
                     </button>
                     

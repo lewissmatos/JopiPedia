@@ -177,10 +177,73 @@ export class TestComponent implements OnInit, CanComponentLeave {
 
   playing = false
 
-  play(){
+  questionTime : any
+    
+  timeOut() {
+   this.questionTime = setTimeout(() => {
+     
+     if (this.i < 20) {
+       this.nextQ()
+     }
+      else
+       this.themeFinished()
+     
+    }, 120000)
+  }
+
+  play() {
+    this.timeOut()
     this.finished = false
     this.playing = true
     this.createRestriccion()
+  }
+
+  nextQ() {
+    this.i = this.i + 1
+    this.timeOut()
+    console.log('iterador: ' + this.i)
+    this.currentResps = this.currentQuestion[this.i].respuestas
+    this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
+    this.clicked = false
+    this.correctQuestion = false
+    this.incorrectQuestion = false
+
+    if (this.i == 19) {
+      this.finish = true
+    }
+  }
+
+  themeFinished(){
+    this.saveScore()
+
+    if ( this.points < this.scoreUserLogged.score) {
+      this.finishMsg = 'Lo sentimos, tu nuevo récord es menor al anterior'
+      this.swalClass = 'text-danger'
+      this.emoji = 'fas fa-sad-tear'
+    }else if (this.points == this.scoreUserLogged.score) {
+      this.finishMsg = 'Has obtenido la misma puntuación'
+      this.swalClass = 'text-info'
+      this.emoji = 'fas fa-grin-beam'
+    }else if (this.points > this.scoreUserLogged.score){
+      console.log('mayor')
+      this.finishMsg = 'Felicidades, tu nuevo récord es mayor al anterior'
+      this.swalClass = 'text-success'
+      this.emoji = 'fas fa-laugh-beam'
+      }
+    
+    Swal.fire({
+      icon: 'success',
+      title: 'Tema finalizado',
+      html: `<p>Haz finalizado este tema.</p> <h5 class="${this.swalClass}">Tu nueva puntuación es: ${this.points}</h5> <p class="${this.swalClass}">${this.finishMsg} </p> <p class="${this.swalClass}" style="font-size: 40px" ><i class="${ this.swalClass , this.emoji}"></i> </p> `,
+      confirmButtonColor: '#17a2b8',
+      confirmButtonText: 'Ir a los récords'
+    }).then(x=>{
+      if (x.isConfirmed) {
+        this.finished = true
+        this.router.navigate(['/dashboard/records'])
+      }
+    })
+    
   }
 
   championLoad = true
@@ -242,53 +305,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
 
   swalClass = ''
   finishMsg = ''
-  emoji= ''
-  themeFinished(){
-    this.saveScore()
-
-    if ( this.points < this.scoreUserLogged.score) {
-      this.finishMsg = 'Lo sentimos, tu nuevo récord es menor al anterior'
-      this.swalClass = 'text-danger'
-      this.emoji = 'fas fa-sad-tear'
-    }else if (this.points == this.scoreUserLogged.score) {
-      this.finishMsg = 'Has obtenido la misma puntuación'
-      this.swalClass = 'text-info'
-      this.emoji = 'fas fa-grin-beam'
-    }else if (this.points > this.scoreUserLogged.score){
-      console.log('mayor')
-      this.finishMsg = 'Felicidades, tu nuevo récord es mayor al anterior'
-      this.swalClass = 'text-success'
-      this.emoji = 'fas fa-laugh-beam'
-      }
-    
-    Swal.fire({
-      icon: 'success',
-      title: 'Tema finalizado',
-      html: `<p>Haz finalizado este tema.</p> <h5 class="${this.swalClass}">Tu nueva puntuación es: ${this.points}</h5> <p class="${this.swalClass}">${this.finishMsg} </p> <p class="${this.swalClass}" style="font-size: 40px" ><i class="${ this.swalClass , this.emoji}"></i> </p> `,
-      confirmButtonColor: '#17a2b8',
-      confirmButtonText: 'Ir a los récords'
-    }).then(x=>{
-      if (x.isConfirmed) {
-        this.finished = true
-        this.router.navigate(['/dashboard/records'])
-      }
-    })
-    
-  }
-
-  nextQ() {
-    this.i = this.i + 1
-    console.log(this.i)
-    this.currentResps = this.currentQuestion[this.i].respuestas
-    this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
-    this.clicked = false
-    this.correctQuestion = false
-    this.incorrectQuestion = false
-
-    if (this.i == 19) {
-      this.finish = true
-    }
-  }
+  emoji = ''  
   
   cantBePlayed = false
   pregProvisional: QuestionModel[] = []
