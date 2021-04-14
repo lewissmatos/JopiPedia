@@ -40,6 +40,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
   finished: boolean = true
   username: string = ''
   
+  
  charg = true
   constructor(
     private activatedRouter: ActivatedRoute, 
@@ -56,6 +57,28 @@ export class TestComponent implements OnInit, CanComponentLeave {
     this.getUserInfo()
     this.getScoreUserLogged()
     this.getUserLoggedRestriction()
+  }
+
+  idInterval: any = ''
+  timer() {
+    let min = 2
+    let seg = 0
+    this.idInterval = setInterval(() => {
+      seg--
+      if (seg < 0) {
+        seg = 20
+        min--
+      }
+      let time = seg.toString().length == 1? `0${min}:0${seg}`:`0${min}:${seg}` 
+      this.questionTime = time
+      if (min == 0 && seg == 0 && this.i < 20) {
+        this.nextQ()
+        this.fails = this.fails - 5
+      }
+      else if (min == 0 && seg == 0 && this.i == 20) {
+        this.themeFinished()
+      }
+    }, 1000)
   }
 
   
@@ -161,6 +184,8 @@ export class TestComponent implements OnInit, CanComponentLeave {
   qv : any
 
   selectedQuestion(resp: any, index: any){
+    clearInterval(this.idInterval)
+    //this.questionTime = 'pause'
     this.clicked = true
    
     this.qv = resp
@@ -177,7 +202,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
 
   playing = false
 
-  questionTime : any
+  questionTime : any = 0 
     
   timeOut() {
    this.questionTime = setTimeout(() => {
@@ -192,15 +217,19 @@ export class TestComponent implements OnInit, CanComponentLeave {
   }
 
   play() {
-    this.timeOut()
+    this.timer()
+    console.log(this.questionTime)
+    //this.timeOut()
     this.finished = false
     this.playing = true
     this.createRestriccion()
   }
 
   nextQ() {
+    clearInterval(this.idInterval)
     this.i = this.i + 1
-    this.timeOut()
+    this.timer()
+    //this.timeOut()
     console.log('iterador: ' + this.i)
     this.currentResps = this.currentQuestion[this.i].respuestas
     this.currentResps = this.currentResps.sort((a, b) => 0.5 - Math.random())
@@ -214,6 +243,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
   }
 
   themeFinished(){
+    clearInterval(this.idInterval)
     this.saveScore()
 
     if ( this.points < this.scoreUserLogged.score) {
