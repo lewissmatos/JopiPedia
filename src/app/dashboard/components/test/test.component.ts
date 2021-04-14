@@ -51,12 +51,12 @@ export class TestComponent implements OnInit, CanComponentLeave {
     private userService: UserServicesService,
     private restrictionService: RestrictionService
   ) {
+    this.getUserLoggedRestriction()
     this.getThemeById()
     this.getAllQuestionsByTheme()
     //this.getHighestUser()
     this.getUserInfo()
     this.getScoreUserLogged()
-    this.getUserLoggedRestriction()
   }
 
   idInterval: any = ''
