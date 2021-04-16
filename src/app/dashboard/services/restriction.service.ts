@@ -29,5 +29,13 @@ export class RestrictionService {
   getUserRestrictionsByUsername(username: string){
     return this.http.get<any>(this.API + '/' + username)
   }
+
+  getRestrictionByTemaId(idtema: string){
+    return this.http.get<any>(this.API + '/getbytema/' + idtema, {
+      headers: new HttpHeaders({    
+        'Authorization': localStorage.getItem('token') + ''
+      })
+    })
+  }
   
 }

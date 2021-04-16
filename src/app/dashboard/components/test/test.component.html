@@ -24,8 +24,8 @@
 
                 <div class=" animated fadeIn but" style="float: right;">
 
-                    <h3 class="d-inline-block mr-3" [style.color]="currentTheme.bgColor">
-                        {{questionTime}}
+                    <h3 class="d-inline-block mr-3" style="font-size: 25px;" [style.color]="currentTheme.bgColor">
+                        <i class="far fa-stopwatch mr-2"></i>{{questionTime}}
                     </h3>
 
                     <button (click)="nextQ()"
@@ -65,7 +65,7 @@
 
     <div class="row p-2" style="color: white !important;" >
 
-        <div [style.border-color]="currentTheme.bgColor" class="question-window mb-2
+        <div [style.border-color]="currentTheme.bgColor" class="question-window mb-4
         
                     col-lg-7
                     col-md-12
@@ -164,7 +164,7 @@
 
         </div>
 
-        <div [style.border-color]="currentTheme.bgColor" class=" animated fadeIn fast desc-window mb-3
+        <div [style.border-color]="currentTheme.bgColor" class="p-3 animated fadeIn fast desc-window mb-3
         
                     col-lg-4 offset-lg-1
                     col-md-12

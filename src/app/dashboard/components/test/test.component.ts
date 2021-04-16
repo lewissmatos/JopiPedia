@@ -51,7 +51,6 @@ export class TestComponent implements OnInit, CanComponentLeave {
     private userService: UserServicesService,
     private restrictionService: RestrictionService
   ) {
-    this.getUserLoggedRestriction()
     this.getThemeById()
     this.getAllQuestionsByTheme()
     //this.getHighestUser()
@@ -131,6 +130,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
           this.getHighestUser()
           
           this.btnColor = this.currentTheme.bgColor
+          this.getUserLoggedRestriction()
         },
         error => {
           console.log(error)
@@ -202,7 +202,7 @@ export class TestComponent implements OnInit, CanComponentLeave {
 
   playing = false
 
-  questionTime : any = 0 
+  questionTime : any = '01:20'
     
   timeOut() {
    this.questionTime = setTimeout(() => {
@@ -369,13 +369,14 @@ export class TestComponent implements OnInit, CanComponentLeave {
   formule : any 
 
   getUserLoggedRestriction(){
-    this.restrictionService.getUserLoggedRestrictions()
+    this.restrictionService.getRestrictionByTemaId(this.currentTheme._id || 'ee')
     .subscribe(
       res => {        
         console.log(res.data)
-        this.restrcitedTheme = res.data.find((x:any)=> x.tema.title == this.currentTheme.title)
+        //this.restrcitedTheme = res.data.find((x:any)=> x.tema.title == this.currentTheme.title)
+        this.restrcitedTheme = res.data
         
-        if (this.restrcitedTheme === undefined) {
+        if (!res.data) {
           this.restricted = false
         }
         else { 
