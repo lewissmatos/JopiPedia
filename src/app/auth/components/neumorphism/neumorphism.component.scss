@@ -1,0 +1,384 @@
+//VARIABLES
+$acent: #152e5e;
+$primary: #4238d1;
+$secondary: #77749e;
+$info: #218e9c;
+$warning: #cfc100;
+$success: #10a310;
+$danger: #d31313;
+$dark: #383838;
+$brdcolor: rgb(221, 221, 221);
+$light: #c2c2c2;
+$bg: #e0e0e0;
+$realbackground:#e0e0e0;
+
+//animaciones
+
+/* Animaciones */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+  }
+  
+  
+
+body{
+    color: $dark !important;
+    overflow-x: hidden;
+    background-color: $realbackground !important;
+    padding: 30px !important;
+}
+
+.bg{
+    background-color: $realbackground !important;
+    padding: 30px !important;
+}
+
+//CARD
+.crd{
+  padding: 20px;        
+  border-radius: 22px;
+background: #e0e0e0;
+box-shadow:  7px 7px 14px #cacaca,
+             -7px -7px 14px #f6f6f6;
+}
+
+.crd-bd{
+    margin-top: 16px;
+  padding: 6px;
+  color: $dark;
+  font-size: 18px;
+}
+
+.crd-tt{
+  text-align: left;
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+//CARD IMG
+.crd-img{
+   
+  border-radius: 20px;
+  width: 100%;
+}
+
+.crd-cont-img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;        
+    border-radius: 20px;
+    background: linear-gradient(145deg, #e3e3e3, #ebebeb);
+    box-shadow:  9px 9px 40px #dadada,
+             -9px -9px 40px #f1f1f1;
+}
+//BUTTONS
+.but{
+  border-radius: 12px;
+  background: $bg;
+    box-shadow:  7px 7px 14px #cacaca,
+             -7px -7px 14px #f6f6f6;
+    border: none;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 8px ;
+  padding-bottom: 8px ;
+  cursor: pointer;
+}
+
+.but-imp{
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+    background: $bg;
+    box-shadow:  7px 7px 14px #cacaca,
+    -3px -3px 10px #f6f6f6;
+  border: none;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 8px ;
+  padding-bottom: 8px ;
+  cursor: pointer;
+}
+
+.but:hover{
+    transform: scale(1.01);
+  }
+
+.but-primary{
+    color: $primary;
+}
+.but-secondary{
+    color: $secondary;
+}
+.but-success{
+    color: $success;
+}
+.but-info{
+    color: $info;
+}
+.but-danger{
+    color: $danger;
+}
+.but-warning{
+    color: $warning;
+}
+.but-dark{
+    color: $dark;
+}
+.but-light{
+    color: $light;
+}
+
+.inp-but{
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    background: $bg;
+    box-shadow: inset 5px 5px 14px #cecece,
+            inset -5px -5px 14px #f2f2f2;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: $dark;
+  border: none;
+}
+//INPUT
+
+.inp {
+    border-radius: 12px;
+    background: $bg;
+    box-shadow: inset 5px 5px 14px #cecece,
+            inset -5px -5px 14px #f2f2f2;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: $dark;
+    border: none;
+}
+  
+input:focus-visible {    
+    outline: transparent !important;
+    border: none !important;
+}
+
+//CHECK
+
+.chbx{
+    border-radius: 50px;
+background: #e0e0e0;
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+}
+
+
+//ALERTS
+
+.alrt{
+    border:solid 0.7px $brdcolor ;
+    border-radius: 14px;
+    background: $bg;
+    box-shadow:  7px 7px 21px #bcbcbc,
+             -7px -7px 21px #ffffff;
+    padding-left:  20px;
+    padding-right: 20px;
+    padding-top: 18px ;
+    padding-bottom: 18px ;
+    margin: 8px;
+    font-weight: bold;
+}
+
+.alrt-primary{
+    color: $primary;
+}
+.alrt-secondary{
+    color: $secondary;
+}
+.alrt-success{
+    color: $success;
+}
+.alrt-info{
+    color: $info;
+}
+.alrt-danger{
+    color: $danger;
+}
+.alrt-warning{
+    color: $warning;
+}
+.alrt-dark{
+    color: $dark;
+}
+.alrt-light{
+    color: $light;
+}
+
+//BADGES
+
+.bdg{
+    border-radius: 50%;
+    background: linear-gradient(145deg, #cacaca, #f0f0f0);
+box-shadow:  5px 5px 17px #cacaca,
+             -5px -5px 17px #f6f6f6;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px ;
+    padding-bottom: 6px ;
+    margin: 1px;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .bdg-primary{
+      color: $primary;
+  }
+  .bdg-secondary{
+      color: $secondary;
+  }
+  .bdg-success{
+      color: $success;
+  }
+  .bdg-info{
+      color: $info;
+  }
+  .bdg-danger{
+      color: $danger;
+  }
+  .bdg-warning{
+      color: $warning;
+  }
+  .bdg-dark{
+      color: $dark;
+  }
+  .bdg-light{
+      color: $light;
+  }
+
+
+  //NAV
+
+  .nvbr{
+    width: 70%;
+    border-radius: 16px;
+    background:$bg;
+    box-shadow:  7px 7px 21px #bcbcbc,
+             -7px -7px 21px #ffffff;
+      margin-left: 15% ;
+      margin-right:  15%;
+
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      text-align: center;
+      font-weight: bold;
+  }
+
+  .nvbr-elmnt{
+      font-size: 22px;
+    margin-left: 14px;
+    margin-right: 14px;
+    cursor: pointer;
+    color: $acent;
+  }
+
+  .nvbr-elmnt:hover{
+    transform: scale(1.06);
+  }
+
+  //LIST
+  .lst-grp{
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+
+  .lst-elmnt{
+    border:solid 0.6px $brdcolor ;
+    border-radius: 10px;
+    background: $bg;
+    box-shadow:  5px 5px 16px #afafaf,
+                 -5px -5px 16px #ffffff;
+    padding-left:  8px;
+    padding-right: 8px;
+    padding-top: 12px ;
+    padding-bottom: 12px ;
+    margin: 6px;
+    list-style:none;
+  }
+
+.lst-elmnt-primary{
+    color: $primary;
+}
+.lst-elmnt-secondary{
+    color: $secondary;
+}
+.lst-elmnt-success{
+    color: $success;
+}
+.lst-elmnt-info{
+    color: $info;
+}
+.lst-elmnt-danger{
+    color: $danger;
+}
+.lst-elmnt-warning{
+    color: $warning;
+}
+.lst-elmnt-dark{
+    color: $dark;
+}
+.lst-elmnt-light{
+    color: $light;
+}
+ 
+//TEXT COLORS
+
+.txt-primary{
+    color: $primary;
+}
+.txt-secondary{
+    color: $secondary;
+}
+.txt-success{
+    color: $success;
+}
+.txt-info{
+    color: $info;
+}
+.txt-warning{
+    color: $warning;
+}
+.txt-danger{
+    color: $danger;
+}
+.txt-dark{
+    color: $dark;
+}
+.txt-light{
+    color: $light;
+}
+
