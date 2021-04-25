@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '**', pathMatch: 'full', redirectTo: 'auth'},
   { path: 'login', component: LoginComponent, canActivate: [InvertAuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [InvertAuthGuard] },
-  { path: 'neumorphism', component: NeumorphismComponent, canActivate: [InvertAuthGuard] },
+  //{ path: 'neumorphism', component: NeumorphismComponent, canActivate: [InvertAuthGuard] },
 ];
 
 @NgModule({
