@@ -17,9 +17,8 @@ export class HomeComponent implements OnInit {
 
   obs = false
 
-  constructor(
-    private themeService: ThemesService
-  ) {    this.getAllThemes()
+  constructor(private themeService: ThemesService){
+    this.getAllThemes()
   }
 
   ngOnInit(): void {
@@ -27,8 +26,7 @@ export class HomeComponent implements OnInit {
   
 
   search = (title: string) => {
-    this.dataFiltered = this.data.filter((cd: cardData) => cd.title?.toLowerCase().includes(title.toLowerCase()))    
-    
+    this.dataFiltered = this.data.filter((cd: cardData) => cd.title?.toLowerCase().includes(title.toLowerCase()))        
   
     if (title.length > 0) {
       this.obs = true

@@ -1,6 +1,6 @@
 
 $line-height: 1.2;
-$lines: 5;
+$lines: 3;
 
 .card-desc-multi{
     display: block;
@@ -16,11 +16,13 @@ $lines: 5;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 10px;
     font-size: 16px;
+    transition: all 0.15s linear;
 }
 
 
 .card-title{
     color: white !important;
+    transition: all 0.15s linear;
 }
 
 .card-container {
@@ -31,6 +33,7 @@ $lines: 5;
     cursor: pointer;
     flex-wrap: nowrap;
     height: 170px;
+    transition: all 0.15s linear;
 }
 
 .card-container  :hover {
