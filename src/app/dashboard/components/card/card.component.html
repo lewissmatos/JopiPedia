@@ -6,16 +6,15 @@
           <p class="m-0 bx bx-flashing-hover">
             <i *ngIf="iconOnTitle" style="padding: 0px 2px;" class="{{cardData.icon}}"></i>      
           </p>
-          <!-- <i class="{{cardData.icon}}"></i>       -->
         </h5> 
         
         <div class="row">
 
-          <div class="col-10 col-sm-12 col-md-12 col-lg-12 pr-1">
+          <div class="col-10 col-sm-12 col-md-12 col-lg-12 ">
             <p class="card-desc-multi">{{cardData.desc}}</p>
           </div>
 
-          <div *ngIf="!iconOnTitle" class=" col-2 pl-2 pr-3 text-center bx bx-flashing " >
+          <div *ngIf="!iconOnTitle" class=" col-2 pl-0 pr-2 text-center bx bx-flashing " >
             <i style="font-size: 40px;" class="mt-3 {{cardData.icon}}"></i>      
           </div>
         

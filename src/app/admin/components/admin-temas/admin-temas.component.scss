@@ -1,6 +1,6 @@
 
 $line-height: 1.2;
-$lines: 5;
+$lines: 3;
 
 .card-desc-multi{
     display: block;
@@ -12,8 +12,7 @@ $lines: 5;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    font-style: italic;
-    color: rgb(255, 255, 255, 0.7);
+    color: rgb(255, 255, 255, 0.8);
     margin-top: 10px;
 }
 
@@ -26,7 +25,7 @@ $lines: 5;
     margin-bottom: 10px; margin-top: 10px;
     cursor: pointer;
     flex-wrap: nowrap;
-    height: 180px;
+    height: 150px;
 }
 
 .card-container  :hover {
