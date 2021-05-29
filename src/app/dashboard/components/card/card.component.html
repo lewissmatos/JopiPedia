@@ -1,7 +1,25 @@
 <div (click)="goTest(cardData._id)" class="card-container" 
   [style.background-color]="cardData.bgColor">
-    <div class="card-body">
-      <b><h5 class="card-title">{{cardData.title | uppercase}}</h5></b>
-      <p class="card-desc-multi">{{cardData.desc}}</p>
+    <div class="card-body p-3">
+        <h5 class="card-title mb-0"> 
+          {{cardData.title | uppercase}}
+          <i *ngIf="iconOnTitle" style="padding: 0px 2px;" class="fas fa-atom"></i>      
+          <!-- <i class="{{cardData.icon}}"></i>       -->
+        </h5> 
+        
+        <div class="row">
+
+          <div class="col-10 col-sm-12 col-md-12 col-lg-12 pr-1">
+            <p class="card-desc-multi">{{cardData.desc}}</p>
+          </div>
+
+          <div *ngIf="!iconOnTitle" class=" col-2 pl-2 text-center bx bx-flashing " >
+            <i style="font-size: 45px;" class="mt-3 fas fa-atom "></i>      
+          </div>
+          <!-- <div class="d-block d-sm-none col-3 text-center" >
+            <i style="font-size: 50px;" class="fas fa-atom"></i>      
+          </div> -->
+
+      </div>
     </div>
 </div>

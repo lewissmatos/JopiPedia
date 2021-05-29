@@ -13,6 +13,7 @@ import { TestComponent } from './components/test/test.component';
 import { SearchPeopleComponent } from './components/search-people/search-people.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterNewComponent } from './components/footer-new/footer-new.component';
+import { LayoutModule } from '@angular/cdk/layout'
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FooterNewComponent } from './components/footer-new/footer-new.component
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FormsModule
+    FormsModule,
+    LayoutModule
   ],
   exports: [
     NavbarComponent,
