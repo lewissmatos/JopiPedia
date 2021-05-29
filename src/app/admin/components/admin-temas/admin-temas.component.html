@@ -10,8 +10,8 @@
                 <label class="label" for="descipcion">DESCRIPCION</label>
                 <input type="text" [(ngModel)]="data.desc" name="desc" id="descipcion" class="form-control mb-2" placeholder="Descripcion" >
                 
-                <label class="label" for="icono">DESCRIPCION</label>
-                <input type="text" [(ngModel)]="data.icon" name="desc" id="icono" class="form-control mb-2" placeholder="Icono" >
+                <label class="label" for="icono">ICONO</label>
+                <input type="text" [(ngModel)]="data.icon" name="icon" id="icono" class="form-control mb-2" placeholder="Icono" >
 
                 <div>
                     <label class="label" for="color">COLOR</label>
@@ -61,7 +61,7 @@
                        {{i + 1}}.  {{theme.title | uppercase}}
                     </b> 
                     <div class="float-right">
-                        <button (click)="editTheme(theme)" class="btn btn-success">
+                        <button (click)="editTheme(theme)" class="btn "[style.background-color]="theme.bgColor" >
                             <i class="fas fa-pen"></i>
                         </button>
                         <button (click)="deteleTheme(theme._id)" class="ml-2 btn btn-danger">
