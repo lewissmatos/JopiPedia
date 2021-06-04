@@ -1,9 +1,9 @@
 <div (click)="goTest(cardData._id)" class="card-container" 
   [style.background-color]="cardData.bgColor">
     <div class="card-body p-3">
-        <h5 class="card-title mb-0"> 
+        <h5 class="card-title mb-0 bx bx-flashing-hover"> 
           {{cardData.title | uppercase}}
-          <p class="m-0 bx bx-flashing-hover">
+          <p class="m-0 ">
             <i *ngIf="iconOnTitle" style="padding: 0px 2px;" class="{{cardData.icon}}"></i>      
           </p>
         </h5> 

@@ -4,7 +4,6 @@ import { cardData } from '../../Models/cardData.model';
 
 
 declare const $:any
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,7 +30,6 @@ export class HomeComponent implements OnInit {
     if (title.length > 0) {
       this.obs = true
     }
-
   }
 
   charg = true
