@@ -31,10 +31,7 @@
     
     <hr class="mb-3">
 
-    <div *ngIf="charg" class="alert alert-success" role="alert">
-      Cargando...
-      <i class=" ml-1 fas fa-sync fa-spin"></i>
-    </div>
+    <app-loading *ngIf="charg"></app-loading>
 
       <div *ngIf="!obs" class="animtated fadeIn fast">
 

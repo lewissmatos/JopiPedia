@@ -55,10 +55,7 @@
        
         <hr class="mb-2">
 
-        <div *ngIf="charg" class="alert alert-success" role="alert">
-          Cargando... 
-          <i class=" ml-1 fas fa-sync fa-spin"></i>
-        </div>
+        <app-loading *ngIf="charg"></app-loading>
 
         <div *ngIf="!charg" class="row animated fadeIn fast mt-4">
         

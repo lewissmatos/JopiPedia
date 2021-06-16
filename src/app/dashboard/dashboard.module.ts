@@ -13,7 +13,8 @@ import { TestComponent } from './components/test/test.component';
 import { SearchPeopleComponent } from './components/search-people/search-people.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FooterNewComponent } from './components/footer-new/footer-new.component';
-import { LayoutModule } from '@angular/cdk/layout'
+import { LayoutModule } from '@angular/cdk/layout';
+import { LoadingComponent } from './loading/loading.component'
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { LayoutModule } from '@angular/cdk/layout'
     TestComponent,
     SearchPeopleComponent,
     FooterComponent,
-    FooterNewComponent,    
+    FooterNewComponent,
+    LoadingComponent,    
   ],
   imports: [
     CommonModule,
